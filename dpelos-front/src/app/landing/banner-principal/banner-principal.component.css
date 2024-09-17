@@ -1,0 +1,144 @@
+/* banner */
+
+#bannerPrincipal {
+	display: flex;
+	flex-direction: row;
+	background: linear-gradient(to bottom, #ffffff, #94edf3);
+	position: relative;
+	overflow: hidden;
+}
+
+.bannerInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	z-index: 2;
+    align-items: center;
+    
+}
+
+.txtBanner {
+	font-size: 40px;
+	font-weight: 500;
+	color: #0a152f;
+	text-align: center;
+	z-index: 2;
+	margin-top: 40px;
+    padding-right: 20px;
+}
+
+#bannerDog {
+    margin: 0;
+    padding: 0;
+	height: auto;
+	width: auto;
+	margin-top: 40px;
+	z-index: 5;
+}
+
+#btnBanner {
+	background-color: #ff8f34;
+	border-radius: 20px;
+	border: 0;
+	width: 200px;
+	font-size: 25px;
+	color: #ffffff;
+	font-weight: 500;
+	align-self: center;
+	z-index: 2;
+}
+
+#btnBanner:hover {
+	background-color: #ffffff;
+	color: #ff8f34;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 576px) {
+	.txtBanner {
+		font-size: 25px;
+		margin-bottom: 20px;
+		margin: 40px 10px 10px 10px;
+	}
+	#bannerDog {
+		margin-right: 10px;
+	}
+
+	#btnBanner {
+		width: 150px;
+		font-size: 20px;
+	}
+}
+
+/* curas del banner */
+.cura1,
+.cura2,
+.cura3,
+.cura4,
+.cura5,
+.cura6,
+.cura7 {
+	position: absolute;
+	z-index: 1;
+}
+
+/* curas del banner */
+.cura1 {
+	position: absolute;
+	top: 80%;
+	left: 25%;
+	height: 100px;
+	width: auto;
+	opacity: 0.7;
+}
+.cura2 {
+	position: absolute;
+	top: 20%;
+	left: 40%;
+	height: 35px;
+	width: auto;
+	opacity: 0.6;
+}
+.cura3 {
+	position: absolute;
+	top: 83%;
+	left: 60%;
+	height: 120px;
+	width: auto;
+	opacity: 0.6;
+}
+.cura4 {
+	position: absolute;
+	top: 70%;
+	left: 80%;
+	height: 130px;
+	width: auto;
+	opacity: 0.4;
+	rotate: -20deg;
+}
+
+.cura5 {
+	position: absolute;
+	top: 50%;
+	left: 70%;
+	height: 50px;
+	width: auto;
+	opacity: 0.3;
+}
+.cura6 {
+	position: absolute;
+	top: 40%;
+	left: 0;
+	height: 50px;
+	width: auto;
+	opacity: 0.5;
+}
+.cura7 {
+	position: absolute;
+	top: 55%;
+	left: 40%;
+	height: 100px;
+	width: auto;
+	opacity: 0.5;
+	rotate: 25deg;
+}
