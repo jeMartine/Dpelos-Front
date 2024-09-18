@@ -1,0 +1,45 @@
+#agendarCita {
+    background-color: #61abc6;
+}
+
+.agendarCitaImg img {
+    margin-left: 50px;
+    object-fit: cover; 
+}
+
+.agendarCitaForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.agendarCitaForm h2 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.agendarCitaForm .form-group label {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-top: 10px;
+}
+
+.agendarCitaForm button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff8f34;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.agendarCitaForm button:hover {
+    background-color: #0056b3;
+    font-weight: bold;
+}

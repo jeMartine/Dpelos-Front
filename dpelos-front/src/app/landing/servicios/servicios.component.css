@@ -1,0 +1,39 @@
+#servicios {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+#servicios > h2 {
+	color: #59c9d1;
+	font-size: 30px;
+	font-weight: 550;
+	margin: 30px;
+}
+
+.row.rowContainer {
+	margin: 10px;
+}
+
+.card.servicio {
+	background-color: #f2f4f4;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 10px;
+	text-align: left;
+	height: 120px;
+	border: 0;
+}
+
+.card-title{
+    font-size: 25px;
+}
+.servicioImg {
+	width: 80px;
+	height: auto;
+}
+
+.servicio:hover {
+	background-color: #f5f795;
+}

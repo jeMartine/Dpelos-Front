@@ -1,0 +1,73 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #121213;
+    padding: 20px 0;
+  }
+  
+  #footerContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  #logoFooter {
+    height: 45px;
+    width: auto;
+  }
+  
+  .footerData {
+    padding: 15px;
+  }
+  
+  .footerData img {
+    height: 35px;
+    width: auto;
+  }
+  
+  footer p,
+  footer h4,
+  .h4Legal {
+    color: #e0dfdf;
+    margin: 0px;
+  }
+  
+  footer h4,
+  .h4Legal {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .h4Legal {
+    margin-top: 10px;
+  }
+  
+  .footer-credits {
+    font-size: 13px;
+  }
+  
+  footer a {
+    color: #e0dfdf;
+    text-decoration: none;
+    margin: 0 9px
+
+  }
+  
+  footer a:hover {
+    color: #fbdc77;
+  }
+
+  .footerData a img {
+    transition: filter 0.3s ease;
+  }
+
+.footerData a:hover img {
+    filter: sepia(1) saturate(13) hue-rotate(-40deg);
+}
+
+.img-perfil {
+    width: 50px;
+    height: auto;
+    margin: 0px 10px 0px 10px;
+}
