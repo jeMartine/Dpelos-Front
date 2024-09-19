@@ -1,0 +1,72 @@
+main {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	position: relative;
+	height: 87vh;
+}
+
+.container-titulo {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	max-width: 800px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: #9496f3;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.container-titulo p {
+	margin-bottom: 0;
+	font-size: 24px;
+	font-family: "Poppins", sans-serif;
+	color: white;
+	font-weight: 600;
+}
+
+#formActulizarDueno {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #eaf4f7;
+	width: 800px;
+	padding: 30px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+#formActulizarDueno p {
+	text-align: center;
+}
+
+#formActulizarDueno .botones {
+	display: flex;
+	justify-content: center;
+}
+
+.form-group {
+	margin-bottom: 25px;
+}
+
+.botones .btn-primary {
+	background-color: #ff8f34;
+	border: none;
+}
+
+.botones .btn-secundary {
+	background-color: #333;
+	border: none;
+	color: white;
+}
+
+label {
+	margin: 0;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+}

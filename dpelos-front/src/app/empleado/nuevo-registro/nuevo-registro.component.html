@@ -1,0 +1,47 @@
+<app-header></app-header>
+<main>
+    <!-- Formulario de selección de tipo de registro -->
+    <div id="seleccionarTipo" class="mb-4">
+        <p>
+            ¡Registra nuevos tipos de razas y enfermedades para acceder
+            a ellas con tan solo un clik!
+        </p>
+        <form th:action="@{/registros/seleccionarTipo}" method="post">
+            <div
+                class="d-flex align-items-center justify-content-center mt-2"
+            >
+                <select
+                    id="tipoRegistro"
+                    name="tipoRegistro"
+                    class="form-control mr-2" required
+                >
+                    <option value="" disabled selected>
+                        Seleccionar tipo de registro
+                    </option>
+                    <option
+                        value="raza"
+                        th:selected="${tipoRegistro == 'raza'}"
+                    >
+                        Raza
+                    </option>
+                    <option
+                        value="enfermedad"
+                        th:selected="${tipoRegistro == 'enfermedad'}"
+                    >
+                        Enfermedad
+                    </option>
+                </select>
+                <button type="submit" id="btnActualizar" class="btn btn-primary">
+                    Actualizar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Mostrar formulario para raza -->
+    <app-crud-raza></app-crud-raza>
+
+    <!-- Mostrar formulario para enfermedad -->
+    <app-crud-enfermedad></app-crud-enfermedad>
+</main>
+<app-footer></app-footer>

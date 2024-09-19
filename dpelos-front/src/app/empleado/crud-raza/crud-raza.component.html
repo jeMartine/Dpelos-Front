@@ -1,0 +1,18 @@
+<div th:if="${tipoRegistro == 'raza'}" id="formulario" class="border p-3 mb-4">
+    <p>Registrar Nueva Raza</p>
+    <form th:action="@{/raza/agregar}" method="post">
+        <div class="form-group">
+            <input
+id="entrada"
+                type="text"
+                name="nombreRaza"
+                class="form-control"
+                placeholder="Nombre de la Raza"
+                required
+            />
+        </div>
+        <button type="submit" id="btnEnviar" class="btn btn-success">
+            Agregar Raza
+        </button>
+    </form>
+</div>

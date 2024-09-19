@@ -1,0 +1,22 @@
+<!-- Mostrar formulario para enfermedad -->
+<div
+	th:if="${tipoRegistro == 'enfermedad'}" id="formulario"
+	class="border p-3 mb-4"
+>
+	<p>Registrar Nueva Enfermedad</p>
+	<form th:action="@{/enfermedad/agregar}" method="post">
+		<div class="form-group">
+			<input
+id="entrada"
+				type="text"
+				name="nombreEnfermedad"
+				class="form-control"
+				placeholder="Nombre de la Enfermedad"
+				required
+			/>
+		</div>
+		<button type="submit" id="btnEnviar" class="btn btn-success">
+			Agregar Enfermedad
+		</button>
+	</form>
+</div>

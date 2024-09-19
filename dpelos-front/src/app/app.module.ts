@@ -13,6 +13,16 @@ import { BannerMolestiasComponent } from './landing/banner-molestias/banner-mole
 import { ComentariosComponent } from './landing/comentarios/comentarios.component';
 import { AgendarCitaComponent } from './landing/agendar-cita/agendar-cita.component';
 import { FooterComponent } from './landing/footer/footer.component';
+import { CrudMascotaComponent } from './empleado/crud-mascota/crud-mascota.component';
+import { CrudDuenoComponent } from './empleado/dueno/crear-dueno/crear-dueno.component';
+import { CrudRazaComponent } from './empleado/crud-raza/crud-raza.component';
+import { CrudEnfermedadComponent } from './empleado/crud-enfermedad/crud-enfermedad.component';
+import { LandingComponent } from './landing/landing/landing.component';
+import { NuevoRegistroComponent } from './empleado/nuevo-registro/nuevo-registro.component';
+import { ListaDuenosComponent } from './empleado/dueno/lista-duenos/lista-duenos.component';
+import { ListaMascotasComponent } from './empleado/mascota/lista-mascotas/lista-mascotas.component';
+import { ActualizarDuenoComponent } from './empleado/dueno/actualizar-dueno/actualizar-dueno.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -25,12 +35,22 @@ import { FooterComponent } from './landing/footer/footer.component';
     BannerMolestiasComponent,
     ComentariosComponent,
     AgendarCitaComponent,
-    FooterComponent
+    FooterComponent,
+    CrudMascotaComponent,
+    CrudDuenoComponent,
+    CrudRazaComponent,
+    CrudEnfermedadComponent,
+    LandingComponent,
+    NuevoRegistroComponent,
+    ListaDuenosComponent,
+    ListaMascotasComponent,
+    ActualizarDuenoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

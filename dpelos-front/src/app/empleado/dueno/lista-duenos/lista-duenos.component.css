@@ -1,0 +1,110 @@
+/*Titulo*/
+#titulo{
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	color: #1C82A7;
+	margin-bottom: 0;
+}
+
+#btn-secundary{
+    background-color: #333;
+    border: 1x solid #333;
+    color: white;
+}
+
+#btn-secundary:hover{
+	background-color: #ffffff;
+	color: #1C82A7;
+	border: 1px solid #1C82A7;
+}
+
+
+/* Buscador */
+#mascota {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+#mascota .input-group {
+	margin-top: 8px;
+	display: flex;
+	align-items: center;
+}
+
+#search-input {
+	height: 40px;
+	width: 500px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#search-button {
+	background-color: #ff8f34;
+	border: #ff8f34 1px solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	width: auto;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+#mascota .btn-añadir {
+	background-color: #C6DDF6;
+	border: 1px solid #9eb3ca;
+	color: #000000;
+	font-weight: 500;
+	margin-left: 100px;
+}
+
+/* Tabla */
+#listadoDuenos table {
+    width: 80%;
+    margin: 0 auto 20px;
+  }
+
+.table .tableHead th{
+	background-color: #fea862; 
+	color: #333;
+	font-weight: 600;
+	text-align: center;
+  }
+
+#tableBody tr:nth-child(odd) {
+	background-color: #ffffff !important;
+  }
+  
+  #tableBody tr:nth-child(even) {
+	background-color: #eaf4f7 !important;
+  }
+
+  .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.img-dueno{
+	height: 55px;
+	width: 55px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.icono-edita, .icono-elimina{
+	color: #000000;
+	font-size: 20px;
+}
+
+.icono-edita:hover, .icono-elimina:hover{
+	color: #ff8f34;
+}
+
+#error-message{
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
