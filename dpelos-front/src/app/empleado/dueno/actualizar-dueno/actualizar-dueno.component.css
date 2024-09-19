@@ -60,6 +60,7 @@ main {
 }
 
 .botones .btn-secundary {
+	margin-left: 5px;
 	background-color: #333;
 	border: none;
 	color: white;

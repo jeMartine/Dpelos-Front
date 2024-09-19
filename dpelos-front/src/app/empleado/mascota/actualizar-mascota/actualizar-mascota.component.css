@@ -31,7 +31,7 @@ main {
   font-weight: 600;
 }
 
-#formActulizarDueno {
+#formUpdateMascota {
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #eaf4f7;
@@ -41,11 +41,11 @@ main {
   border-bottom-right-radius: 8px;
 }
 
-#formActulizarDueno p {
+#formUpdateMascota p {
   text-align: center;
 }
 
-#formActulizarDueno .botones {
+#formUpdateMascota .botones {
   display: flex;
   justify-content: center;
 }
@@ -60,6 +60,7 @@ main {
 }
 
 .botones .btn-secundary {
+  margin-left: 5px;
   background-color: #333;
   border: none;
   color: white;

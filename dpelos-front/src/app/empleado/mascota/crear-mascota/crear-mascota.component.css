@@ -6,7 +6,7 @@ main{
     align-items: center;
     box-sizing: border-box;
     position: relative;
-    height: 87vh;
+    height: 100vh;
 }
 
 .container-titulo{
@@ -31,7 +31,7 @@ main{
     font-weight: 600;
 }
 
-#formDueno{
+#formMascota{
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: white;
@@ -41,11 +41,11 @@ main{
     border-bottom-right-radius: 8px;
 }
 
-#formDueno p{
+#formMascota p{
     text-align: center;
 }
 
-#formDueno .botones{
+#formMascota .botones{
     display: flex;
     justify-content: center;
 }
@@ -54,12 +54,17 @@ main{
     margin-bottom: 25px;
 }
 
+.botones{
+    margin-top: 10px;
+}
+
 .botones .btn-primary{
     background-color: #FF8F34;
     border: none;
 }
 
 .botones .btn-secundary{
+    margin-left: 5px;
     background-color: #333;
     border: none;
     color: white;
