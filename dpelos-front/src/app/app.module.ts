@@ -13,7 +13,6 @@ import { BannerMolestiasComponent } from './landing/banner-molestias/banner-mole
 import { ComentariosComponent } from './landing/comentarios/comentarios.component';
 import { AgendarCitaComponent } from './landing/agendar-cita/agendar-cita.component';
 import { FooterComponent } from './landing/footer/footer.component';
-import { CrudMascotaComponent } from './empleado/crud-mascota/crud-mascota.component';
 import { CrudDuenoComponent } from './empleado/dueno/crear-dueno/crear-dueno.component';
 import { CrudRazaComponent } from './empleado/crud-raza/crud-raza.component';
 import { CrudEnfermedadComponent } from './empleado/crud-enfermedad/crud-enfermedad.component';
@@ -23,6 +22,7 @@ import { ListaDuenosComponent } from './empleado/dueno/lista-duenos/lista-duenos
 import { ListaMascotasComponent } from './empleado/mascota/lista-mascotas/lista-mascotas.component';
 import { ActualizarDuenoComponent } from './empleado/dueno/actualizar-dueno/actualizar-dueno.component';
 import { FormsModule } from '@angular/forms';
+import { CrearMascotaComponent } from './empleado/mascota/crear-mascota/crear-mascota.component';
 
 
 
@@ -36,7 +36,6 @@ import { FormsModule } from '@angular/forms';
     ComentariosComponent,
     AgendarCitaComponent,
     FooterComponent,
-    CrudMascotaComponent,
     CrudDuenoComponent,
     CrudRazaComponent,
     CrudEnfermedadComponent,
@@ -44,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     NuevoRegistroComponent,
     ListaDuenosComponent,
     ListaMascotasComponent,
-    ActualizarDuenoComponent
+    ActualizarDuenoComponent,
+    CrearMascotaComponent
   ],
   imports: [
     BrowserModule,
