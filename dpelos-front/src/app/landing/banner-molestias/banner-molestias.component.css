@@ -1,0 +1,69 @@
+#bannerMolestias {
+	display: flex;
+	flex-direction: row;
+	background-color: #ff8f34;
+	position: relative;
+	overflow: hidden;
+}
+
+.bannerInfo2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	text-align: center;
+	z-index: 5;
+	flex-grow: 1;
+}
+
+#bannerMolestias img {
+	height: auto;
+	width: auto;
+	margin-top: 40px;
+	z-index: 5;
+}
+
+.bannerInfo2 h2 {
+	color: #ffffff;
+	font-size: 40px;
+	font-weight: 500;
+	margin: 20px;
+    margin-bottom: 0;
+	text-align: center;
+    white-space: nowrap;
+}
+
+.bannerInfo2 .txtBanner2 {
+	color: #ffffff;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+#btnBanner2 {
+	background-color: #61abc6;
+	color: #ffffff;
+	border-radius: 20px;
+	border: 0;
+	font-size: 25px;
+	font-weight: 500;
+	align-self: center;
+	z-index: 5;
+	width: 290px;
+	margin-bottom: 30px;
+	line-height: 1.8;
+}
+
+#btnBanner2:hover {
+	background-color: #ffffff;
+	color: #61abc6;
+}
+
+.circle {
+	position: absolute;
+	top: -5%;
+	left: 15%;
+	width: 400px;
+	height: 400px;
+	background-color: #efb358;
+	border-radius: 50%;
+	z-index: 1;
+}

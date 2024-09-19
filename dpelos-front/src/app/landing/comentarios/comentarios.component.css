@@ -1,0 +1,90 @@
+#comentarios {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.testimonial {
+	border: 2px solid #efb358;
+	border-radius: 10px;
+	margin: 15px;
+	max-width: 500px;
+	padding: 20px;
+	background: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-header {
+	display: flex;
+	align-items: center;
+}
+
+.testimonial-header img {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin-right: 15px;
+	object-fit: cover;
+}
+
+.testimonial-header .pet-name {
+	font-weight: bold;
+}
+
+.testimonial-header .owner-name {
+	font-weight: 600;
+	color: #999;
+	font-size: 0.9em;
+}
+
+.separator {
+	border-bottom: 2px solid #efb358;
+	margin: 15px 0;
+}
+
+.stars-date {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.stars {
+	display: flex;
+	align-items: center;
+}
+
+.stars i {
+	color: gold;
+}
+
+.date {
+	color: #999;
+	font-size: 0.8em;
+	font-weight: 600;
+}
+
+.description {
+	margin: 15px 0;
+	font-size: 15px;
+}
+
+.reactions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 15px;
+}
+
+.reactions .heart,
+.reactions .flag {
+	cursor: pointer;
+}
+
+.reactions .heart.liked {
+	color: #ff5a5f;
+}
+
+.like-count {
+	margin-left: 5px;
+}
