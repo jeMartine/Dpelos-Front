@@ -3,7 +3,10 @@
 	margin-bottom: 30px;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	position: relative;
 }
+
 
 .testimonial {
 	border: 2px solid #efb358;
@@ -88,3 +91,39 @@
 .like-count {
 	margin-left: 5px;
 }
+
+::ng-deep .p-carousel {
+	width: 100%; 
+	max-width: 1000px;
+  }
+  
+  ::ng-deep .p-carousel-prev, 
+  ::ng-deep .p-carousel-next {
+	background-color: #ff8f34;
+	border-radius: 50%;
+	border: 0;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+  }
+  
+  ::ng-deep .p-carousel-prev {
+	left: 10px;
+  }
+  
+  ::ng-deep .p-carousel-next {
+	right: 10px;
+  }
+  
+  ::ng-deep .p-carousel-prev.p-link.p-disabled, 
+  ::ng-deep .p-carousel-next.p-link.p-disabled {
+	background-color: #dadada;
+  }
+  

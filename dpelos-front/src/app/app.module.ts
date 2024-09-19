@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { CarouselModule } from 'primeng/carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './landing/header/header.component';
@@ -10,6 +13,8 @@ import { BannerMolestiasComponent } from './landing/banner-molestias/banner-mole
 import { ComentariosComponent } from './landing/comentarios/comentarios.component';
 import { AgendarCitaComponent } from './landing/agendar-cita/agendar-cita.component';
 import { FooterComponent } from './landing/footer/footer.component';
+
+
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import { FooterComponent } from './landing/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

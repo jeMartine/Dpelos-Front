@@ -1,5 +1,52 @@
 <section id="comentarios">
-    <div class="row container col-md-12">
-      <div id="testimonial-slider" class="owl-carousel"></div>
-    </div>
-  </section>
+  <p-carousel
+    [value]="comentarios"
+    [numVisible]="3"
+    [numScroll]="3"
+    [circular]="false"
+    [showIndicators]="false"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-comentario pTemplate="item">
+      <div class="border-1 surface-border border-round m-2 p-3 testimonial">
+        <div class="testimonial-header mb-3 flex">
+          <img
+            [src]="comentario.foto"
+            alt="Foto de {{ comentario.nombre_mascota }}"
+            class="w-10rem border-round"
+          />
+          <div class="ml-3">
+            <div class="pet-name font-bold">
+              {{ comentario.nombre_mascota }} <i class="pi pi-paw paw-icon"></i>
+            </div>
+            <div class="owner-name">{{ comentario.nombre_dueno }}</div>
+          </div>
+        </div>
+        <div class="separator"></div>
+        <div class="stars-date flex justify-content-between mb-3">
+          <div class="stars">
+            <i
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              class="fas"
+              [ngClass]="star <= comentario.rating ? 'fa-star' : 'fa-star-o'"
+              style="font-size: 1.5rem; color: gold"
+            ></i>
+          </div>
+          <div class="date">{{ comentario.fecha_comentario }}</div>
+        </div>
+        <div class="description mb-3">{{ comentario.comentario }}</div>
+        <div class="reactions flex justify-content-between">
+          <div>
+            <i
+              [ngClass]="getLikeIconClass(comentario)"
+              (click)="toggleLike(comentario)"
+              class="heart"
+            ></i>
+            <span class="like-count">{{ comentario.likes }}</span>
+          </div>
+          <i class="fas fa-flag flag"></i>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
