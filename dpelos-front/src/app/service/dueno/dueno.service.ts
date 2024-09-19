@@ -102,6 +102,7 @@ export class DuenoService {
   }
 
   addDueno(dueno: Dueno): void {
+    dueno.idDueno = this.duenosList.length + 1;
     this.duenosList.push(dueno);
   }
 

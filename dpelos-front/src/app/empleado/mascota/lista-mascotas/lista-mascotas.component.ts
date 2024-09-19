@@ -9,19 +9,23 @@ import { MascotaService } from 'src/app/service/mascota/mascota.service';
 })
 export class ListaMascotasComponent {
   mascotas!: Mascota[]; // Define the mascotas property
-
-  constructor(private mascotaService: MascotaService, private router: Router) {}
+  selectedMascota!: Mascota;
+  constructor(
+    private mascotaService: MascotaService, 
+    private router: Router) {}
 
   ngOnInit(): void {
-    this.mascotaService.mascotas$.subscribe((mascotas) => {
-      this.mascotas = mascotas;
-    });
+    this.mascotas = this.mascotaService.findAll();
   }
 
   deleteMascota(mascota: Mascota): void {
     this.mascotaService.deleteMascota(mascota);
   }
-  // regresar(): void {
-  //   this.router.navigate(['/home']);
-  // }
-}
+
+  editarMascota(mascota: Mascota) {
+    this.selectedMascota = mascota;
+  }
+  addMascota(newMascota: Mascota) {
+    this.mascotas.push(newMascota);
+  }
+  }

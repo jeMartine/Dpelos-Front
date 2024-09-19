@@ -40,25 +40,17 @@
         </a>
       </div>
     </div>  -->
-    <div class="form-group col-md-6">
-      <input
-        type="number"
-        class="form-control"
-        id="idMascota"
-        placeholder="ID Mascota"
-        required
-        [(ngModel)]="mascotas.idMascota"
-      />
-    </div>
+
     <div class="form-row">
       <div class="form-group col-md-6">
         <input
           type="text"
+          name="nombreMascota"
           class="form-control"
           id="nombreMascota"
           placeholder="Nombre de la mascotas"
           required
-          [(ngModel)]="mascotas.nombreMascota"
+          [(ngModel)]="mascota.nombreMascota"
           pattern="[A-Za-zÀ-ÿ\s]+"
           title="El nombre solo puede contener letras y espacios"
         />
@@ -70,7 +62,8 @@
           id="edadMascota"
           placeholder="Edad"
           required
-          [(ngModel)]="mascotas.edadMascota"
+          name="edadMascota"
+          [(ngModel)]="mascota.edadMascota"
         />
       </div>
     </div>
@@ -82,7 +75,8 @@
           id="urlFotoMascota"
           placeholder="Url foto"
           required
-          [(ngModel)]="mascotas.urlFotoMascota"
+          name="urlFotoMascota"
+          [(ngModel)]="mascota.urlFotoMascota"
         />
       </div>
 
@@ -102,7 +96,8 @@
           id="razaMascota"
           placeholder="Raza de la mascotas"
           required
-          [(ngModel)]="mascotas.raza"
+          name="razaMascota"
+          [(ngModel)]="mascota.raza"
         />
       </div>
     </div>
@@ -129,7 +124,8 @@
         id="enfermedadMascota"
         placeholder="Enfermedad de la mascotas"
         required
-        [(ngModel)]="mascotas.enfermedad"
+        name="enfermedadMascota"
+        [(ngModel)]="mascota.enfermedad"
       />
     </div>
 

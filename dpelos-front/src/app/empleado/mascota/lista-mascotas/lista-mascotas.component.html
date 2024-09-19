@@ -26,10 +26,9 @@
       <div class="col-md-4" *ngFor="let mascota of mascotas">
         <div
           class="card mb-4"
-          th:attr="data-nombre=${mascota.nombreMascota.toLowerCase().trim()}, data-raza=${mascota.raza.razaMascota.toLowerCase().trim()}"
         >
           <img
-            src="{{ mascota.urlFotoMascota }}"
+            src="{{mascota.urlFotoMascota}}"
             class="img-mascotas"
             alt="Foto de la mascota"
           />
@@ -41,7 +40,7 @@
             <div class="flex-grow-1">
               <p class="card-text">
                 <strong>Edad: </strong
-                ><span>{{ mascota.edadMascota }} años</span><br />
+                ><span>{{mascota.edadMascota}} años</span><br />
                 <strong>Raza: </strong>
                 <!-- <span>{{mascota.raza.razaMascota}}</span> -->
                 <span>algo</span>

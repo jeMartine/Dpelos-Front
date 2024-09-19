@@ -19,7 +19,7 @@ export class ActualizarMascotaComponent {
     private router: Router
   ) {}
 
-  ngOninit(): void {
+  ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.mascota = this.mascotaService.findById(id);

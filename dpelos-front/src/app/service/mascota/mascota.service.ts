@@ -8,6 +8,7 @@ import { Mascota } from 'src/app/entidades/Mascota';
 export class MascotaService {
   constructor() {}
   sqlDate = new Date();
+
   mascotas: Mascota[] = [
     {
       idMascota: 1,
@@ -153,26 +154,24 @@ export class MascotaService {
       enfermedad: 'None', // Add this property
     },
   ];
-  private mascotasSubject: BehaviorSubject<Mascota[]> = new BehaviorSubject(
-    this.mascotas
-  );
-  mascotas$: Observable<Mascota[]> = this.mascotasSubject.asObservable();
+
+//  private mascotasSubject: BehaviorSubject<Mascota[]> = new BehaviorSubject(
+//    this.mascotas
+ // );
+  //mascotas$: Observable<Mascota[]> = this.mascotasSubject.asObservable();
 
   findAll(): Mascota[] {
     return this.mascotas;
   }
 
   findById(id: number): Mascota {
-    const mascota = this.mascotas.find((m) => m.idMascota === id);
-    if (!mascota) {
-      throw new Error(`Mascota with id ${id} not found`);
-    }
+    const mascota: Mascota = this.mascotas.find((m) => m.idMascota === id)!;
     return mascota;
   }
 
   addMascota(mascota: Mascota): void {
+    mascota.idMascota = this.mascotas.length + 1;
     this.mascotas.push(mascota);
-    this.mascotasSubject.next(this.mascotas);
   }
 
   updateMascota(mascota: Mascota): void {

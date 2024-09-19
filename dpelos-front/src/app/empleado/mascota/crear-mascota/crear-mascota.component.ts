@@ -10,7 +10,7 @@ import { MascotaService } from 'src/app/service/mascota/mascota.service';
 export class CrearMascotaComponent {
   constructor(private router: Router, private mascotaService: MascotaService) {}
 
-  mascotas: Mascota = {
+  mascota: Mascota = {
     idMascota: 0,
     nombreMascota: '',
     edadMascota: 0,
@@ -23,7 +23,7 @@ export class CrearMascotaComponent {
   sendMascota!: Mascota;
 
   addMascota() {
-    this.sendMascota = Object.assign({}, this.mascotas);
+    this.sendMascota = Object.assign({}, this.mascota);
     this.mascotaService.addMascota(this.sendMascota);
     this.router.navigate(['/mascota']);
   }
