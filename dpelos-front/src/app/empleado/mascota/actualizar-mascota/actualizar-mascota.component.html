@@ -1,1 +1,144 @@
-<p>actualizar-mascota works!</p>
+<main>
+  <div class="container-titulo">
+    <p>Actualizar Mascota</p>
+  </div>
+  <form
+    id="formUpdateMascota"
+    #mascotaUpdateForm="ngForm"
+    (ngSubmit)="mascotaUpdate()"
+  >
+    <!-- <div class="form-row duenoField">
+  
+        <div class="col-md-6">
+          <input
+            name="cedulaDueno"
+            type="number"
+            class="form-control"
+            id="cedulaDueno"
+            placeholder="Cédula del dueño"
+            required
+            onblur="verificarDueno()"
+          />
+        </div>
+  
+  
+        <div class="col-md-6" id="nombreDuenoContainer" style="display: none">
+          <input
+            type="text"
+            class="form-control"
+            id="nombreDueno"
+            placeholder="Nombre del Dueño"
+            readonly
+          />
+        </div>
+  
+        <div class="col-md-6" id="agregarDuenoContainer" style="display: none">
+          <a
+            type="button"
+            class="btn btn-primary"
+            id="btnAgregarDueno"
+            th:href="@{/dueno/add}"
+          >
+            Agregar Dueño
+          </a>
+        </div>
+      </div>  -->
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          class="form-control"
+          id="nombreMascota"
+          placeholder="Nombre de la mascotas"
+          required
+          [(ngModel)]="mascota.nombreMascota"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El nombre solo puede contener letras y espacios"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="number"
+          class="form-control"
+          id="edadMascota"
+          placeholder="Edad"
+          required
+          [(ngModel)]="mascota.edadMascota"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          class="form-control"
+          id="urlFotoMascota"
+          placeholder="Url foto"
+          required
+          [(ngModel)]="mascota.urlFotoMascota"
+        />
+      </div>
+
+      <!-- Menú Desplegable de Razas -->
+      <div class="form-group col-md-6">
+        <!-- <select th:field="*{raza}" class="form-control" id="raza" required>
+            <option value="" disabled selected>Selecciona una raza</option>
+            <option
+              th:each="raza : ${razas}"
+              th:value="${raza.idRazaMascota}"
+              th:text="${raza.razaMascota}"
+            ></option>
+          </select> -->
+        <input
+          type="text"
+          class="form-control"
+          id="razaMascota"
+          placeholder="Raza de la mascotas"
+          required
+          [(ngModel)]="mascota.raza"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <!-- Menú Desplegable de Enfermedades -->
+      <!-- <div class="form-group col-md-6">
+          <select
+            th:field="*{enfermedad}"
+            class="form-control"
+            id="enfermedad"
+            required
+          >
+            <option value="" disabled selected>Selecciona una enfermedad</option>
+            <option
+              th:each="enfermedad : ${enfermedades}"
+              th:value="${enfermedad.idEnfermedad}"
+              th:text="${enfermedad.nombreEnfermedad}"
+            ></option>
+          </select>
+        </div> -->
+      <input
+        type="text"
+        class="form-control"
+        id="enfermedadMascota"
+        placeholder="Enfermedad de la mascotas"
+        required
+        [(ngModel)]="mascota.enfermedad"
+      />
+    </div>
+
+    <div class="botones">
+      <button
+        type="submit"
+        class="btn btn-primary mr-4"
+        id="ActualizarMascota"
+        [disabled]="!mascotaUpdateForm.form.valid"
+      >
+        Actualizar Mascota
+      </button>
+      <a type="button" class="btn btn-secundary" (click)="regresar()"
+        >Regresar</a
+      >
+    </div>
+  </form>
+</main>

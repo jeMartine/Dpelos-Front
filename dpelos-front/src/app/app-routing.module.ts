@@ -9,24 +9,24 @@ import { ListaDuenosComponent } from './empleado/dueno/lista-duenos/lista-duenos
 import { ListaMascotasComponent } from './empleado/mascota/lista-mascotas/lista-mascotas.component';
 import { ActualizarDuenoComponent } from './empleado/dueno/actualizar-dueno/actualizar-dueno.component';
 import { CrearMascotaComponent } from './empleado/mascota/crear-mascota/crear-mascota.component';
-
+import { ActualizarMascotaComponent } from './empleado/mascota/actualizar-mascota/actualizar-mascota.component';
 const routes: Routes = [
-  {path: 'dueno/add', component: CrudDuenoComponent},
-  {path: 'dueno/update/:id', component: ActualizarDuenoComponent},
-  {path: 'dueno', component: ListaDuenosComponent},
-  {path: 'home', component: LandingComponent},
-  {path: 'mascota/add', component: CrearMascotaComponent},
-  {path: 'mascota', component: ListaMascotasComponent},
-  {path: 'enfermedad', component: CrudEnfermedadComponent},
-  {path: 'registros', component: NuevoRegistroComponent},
-  {path: 'raza', component: CrudRazaComponent},
+  { path: 'dueno/add', component: CrudDuenoComponent },
+  { path: 'dueno/update/:id', component: ActualizarDuenoComponent },
+  { path: 'dueno', component: ListaDuenosComponent },
+  { path: 'home', component: LandingComponent },
+  { path: 'mascota/add', component: CrearMascotaComponent },
+  { path: 'mascota/update/:id', component: ActualizarMascotaComponent },
+  { path: 'mascota', component: ListaMascotasComponent },
+  { path: 'enfermedad', component: CrudEnfermedadComponent },
+  { path: 'registros', component: NuevoRegistroComponent },
+  { path: 'raza', component: CrudRazaComponent },
 
-
-  {path: '', pathMatch: 'full', redirectTo: 'home'}
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

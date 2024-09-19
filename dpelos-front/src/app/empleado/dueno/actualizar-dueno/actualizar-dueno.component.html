@@ -1,90 +1,102 @@
-
 <main id="inicio">
-    <div class="container-titulo">
+  <div class="container-titulo">
     <p>Actualizar información del dueño</p>
-    </div>
-    <form
+  </div>
+  <form
     *ngIf="dueno"
     id="formActulizarDueno"
-    #duenoUpdateForm="ngForm" (ngSubmit)="duenoUpdate()"
-    >
+    #duenoUpdateForm="ngForm"
+    (ngSubmit)="duenoUpdate()"
+  >
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <input
-                type="number"
-                name="cedulaDueno"
-                class="form-control"
-                id="cedulaDueno"
-                placeholder="Número de documento"
-                [(ngModel)]="dueno.cedulaDueno"
-                required
-            />
-        </div>
-        <div class="form-group col-md-6">
-            <input
-                type="text"
-                name="nombreDueno"
-                class="form-control"
-                id="nombreDueno"
-                placeholder="Nombre del dueño"
-                required
-                [(ngModel)]="dueno.nombreDueno"
-                pattern="[A-Za-zÀ-ÿ\s]+"
-                title="El nombre solo puede contener letras y espacios"
-            />
-        </div>
+      <div class="form-group col-md-6">
+        <input
+          type="number"
+          name="cedulaDueno"
+          class="form-control"
+          id="cedulaDueno"
+          placeholder="Número de documento"
+          [(ngModel)]="dueno.cedulaDueno"
+          required
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="nombreDueno"
+          class="form-control"
+          id="nombreDueno"
+          placeholder="Nombre del dueño"
+          required
+          [(ngModel)]="dueno.nombreDueno"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El nombre solo puede contener letras y espacios"
+        />
+      </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <input
-                type="text"
-                name="apellidoDueno"
-                class="form-control"
-                id="apellidoDueno"
-                placeholder="Apellido del dueño"
-                required
-                [(ngModel)]="dueno.apellidoDueno"
-                pattern="[A-Za-zÀ-ÿ\s]+"
-                title="El apellido solo puede contener letras y espacios"
-            />
-        </div>
-        <div class="form-group col-md-6">
-            <input
-                type="email"
-                name="correoDueno"
-                class="form-control"
-                id="correoDueno"
-                placeholder="Correo electrónico"
-                required
-                [(ngModel)]="dueno.correoDueno"
-            />
-        </div>
-        <div class="form-group col-md-6">
-            <input
-                type="number"
-                class="form-control"
-                id="celularDueno"
-                name="celularDueno"
-                placeholder="Número de teléfono"
-                required
-                [(ngModel)]="dueno.celularDueno"
-            />
-        </div>
-        <div class="form-group col-md-6">
-            <input
-                type="text"
-                class="form-control"
-                id="fotoUrl"
-                name="fotoUrl"
-                placeholder="Foto del dueño"
-                required
-                [(ngModel)]="dueno.fotoUrl"
-            />
-        </div>
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="apellidoDueno"
+          class="form-control"
+          id="apellidoDueno"
+          placeholder="Apellido del dueño"
+          required
+          [(ngModel)]="dueno.apellidoDueno"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El apellido solo puede contener letras y espacios"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="email"
+          name="correoDueno"
+          class="form-control"
+          id="correoDueno"
+          placeholder="Correo electrónico"
+          required
+          [(ngModel)]="dueno.correoDueno"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="number"
+          class="form-control"
+          id="celularDueno"
+          name="celularDueno"
+          placeholder="Número de teléfono"
+          required
+          [(ngModel)]="dueno.celularDueno"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          class="form-control"
+          id="fotoUrl"
+          name="fotoUrl"
+          placeholder="Foto del dueño"
+          required
+          [(ngModel)]="dueno.fotoUrl"
+        />
+      </div>
     </div>
     <div class="botones">
-        <button type="submit" class="btn btn-primary mr-4" [disabled]="!duenoUpdateForm.form.valid">Actualizar información</button>
-        <a type="button" class="btn btn-secundary" th:href="@{/dueno}" (click)="regresar()">Regresar</a>
+      <button
+        type="submit"
+        class="btn btn-primary mr-4"
+        [disabled]="!duenoUpdateForm.form.valid"
+      >
+        Actualizar información
+      </button>
+      <a
+        type="button"
+        class="btn btn-secundary"
+        th:href="@{/dueno}"
+        (click)="regresar()"
+        >Regresar</a
+      >
     </div>
-    </form>
+  </form>
 </main>

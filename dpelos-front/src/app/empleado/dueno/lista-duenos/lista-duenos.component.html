@@ -1,94 +1,79 @@
 <main id="inicio">
-    <p id="titulo">Dueños registrados</p>
+  <p id="titulo">Dueños registrados</p>
 
-    <section id="mascota" class="text-center">
-        <div class="input-group justify-content-center">
-            <div class="form-outline" data-mdb-input-init>
-                <input
-                    id="search-input"
-                    type="search"
-                    class="form-control"
-                    placeholder="Busca un dueño D'Pelos (Cédula, nombre o apellido)"
-                />
-            </div>
-            <button
-                id="search-button"
-                type="button"
-                class="btn btn-primary"
-            >
-                <i class="fas fa-search"></i>
-            </button>
+  <section id="mascota" class="text-center">
+    <div class="input-group justify-content-center">
+      <div class="form-outline" data-mdb-input-init>
+        <input
+          id="search-input"
+          type="search"
+          class="form-control"
+          placeholder="Busca un dueño D'Pelos (Cédula, nombre o apellido)"
+        />
+      </div>
+      <button id="search-button" type="button" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+      <a type="button" class="btn btn-añadir" [routerLink]="['/dueno/add']"
+        >Añadir Dueño</a
+      >
+      <a id="btn-secundary" type="button" class="btn" [routerLink]="['/home']"
+        >Regresar</a
+      >
+    </div>
+  </section>
+
+  <div id="error-message" class="text-danger mt-2" style="display: none"></div>
+
+  <section id="listadoDuenos">
+    <table class="table">
+      <thead class="tableHead">
+        <tr>
+          <th>Foto</th>
+          <th>Cedula Dueño</th>
+          <th>Nombre completo</th>
+          <th>Correo Electrónico</th>
+          <th>Celular</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr *ngFor="let dueno of duenosList">
+          <td>
+            <a th:href="@{/}">
+              <img
+                src="{{ dueno.fotoUrl }}"
+                alt="Foto del dueño"
+                class="img-dueno"
+              />
+            </a>
+          </td>
+          <td>{{ dueno.cedulaDueno }}</td>
+          <td>{{ dueno.nombreDueno }} {{ dueno.apellidoDueno }}</td>
+          <td>{{ dueno.correoDueno }}</td>
+          <td>{{ dueno.celularDueno }}</td>
+          <td>
             <a
-                type="button"
-                class="btn btn-añadir"
-                [routerLink]="['/dueno/add']"
-                >Añadir Dueño</a
+              href="#"
+              [routerLink]="['/dueno/update', dueno.idDueno]"
+              aria-label="Editar"
+              class="icono-edita"
             >
+              <i class="fas fa-edit"></i>
+            </a>
+          </td>
+          <td>
             <a
-                id="btn-secundary"
-                type="button"
-                class="btn"
-                th:href="@{/empleado/vet}"
-                >Regresar</a
+              (click)="eliminarDueno(dueno)"
+              aria-label="Eliminar"
+              class="icono-elimina"
             >
-        </div>
-    </section>
-
-    <div
-        id="error-message"
-        class="text-danger mt-2"
-        style="display: none"
-    ></div>
-
-    <section id="listadoDuenos">
-        <table class="table">
-            <thead class="tableHead">
-                <tr>
-                    <th>Foto</th>
-                    <th>Cedula Dueño</th>
-                    <th>Nombre completo</th>
-                    <th>Correo Electrónico</th>
-                    <th>Celular</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <tr *ngFor="let dueno of duenosList">
-                    <td>
-                        <a th:href="@{/}">
-                            <img
-                                src={{dueno.fotoUrl}}
-                                alt="Foto del dueño"
-                                class="img-dueno"
-                            />
-                        </a>
-                    </td>
-                    <td>{{dueno.cedulaDueno}}</td>
-                    <td>{{dueno.nombreDueno}} {{dueno.apellidoDueno}}</td>
-                    <td>{{dueno.correoDueno}}</td>
-                    <td>{{dueno.celularDueno}}</td>
-                    <td>
-                        <a
-                            href="#"
-                            [routerLink]="['/dueno/update', dueno.idDueno]"
-                            aria-label="Editar"
-                            class="icono-edita"
-                        >
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a
-                            (click)="eliminarDueno(dueno)"
-                            aria-label="Eliminar"
-                            class="icono-elimina"
-                        >
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </main>

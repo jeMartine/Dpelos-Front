@@ -25,8 +25,6 @@ import { FormsModule } from '@angular/forms';
 import { CrearMascotaComponent } from './empleado/mascota/crear-mascota/crear-mascota.component';
 import { ActualizarMascotaComponent } from './empleado/mascota/actualizar-mascota/actualizar-mascota.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,15 +44,10 @@ import { ActualizarMascotaComponent } from './empleado/mascota/actualizar-mascot
     ListaMascotasComponent,
     ActualizarDuenoComponent,
     CrearMascotaComponent,
-    ActualizarMascotaComponent
+    ActualizarMascotaComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CarouselModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, CarouselModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
