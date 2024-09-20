@@ -8,7 +8,6 @@ export class DuenoService {
   constructor() {}
 
   //Base de datos falsa de dueños
-
   duenosList: Dueno[] = [
     {
       idDueno: 1,
@@ -95,7 +94,7 @@ export class DuenoService {
   findAll() {
     return this.duenosList;
   }
-
+ 
   findById(id: number): Dueno {
     const dueno: Dueno = this.duenosList.find((dueno) => dueno.idDueno === id)!;
     return dueno;

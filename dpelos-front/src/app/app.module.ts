@@ -14,8 +14,6 @@ import { ComentariosComponent } from './landing/comentarios/comentarios.componen
 import { AgendarCitaComponent } from './landing/agendar-cita/agendar-cita.component';
 import { FooterComponent } from './landing/footer/footer.component';
 import { CrudDuenoComponent } from './empleado/dueno/crear-dueno/crear-dueno.component';
-import { CrudRazaComponent } from './empleado/crud-raza/crud-raza.component';
-import { CrudEnfermedadComponent } from './empleado/crud-enfermedad/crud-enfermedad.component';
 import { LandingComponent } from './landing/landing/landing.component';
 import { NuevoRegistroComponent } from './empleado/nuevo-registro/nuevo-registro.component';
 import { ListaDuenosComponent } from './empleado/dueno/lista-duenos/lista-duenos.component';
@@ -24,6 +22,12 @@ import { ActualizarDuenoComponent } from './empleado/dueno/actualizar-dueno/actu
 import { FormsModule } from '@angular/forms';
 import { CrearMascotaComponent } from './empleado/mascota/crear-mascota/crear-mascota.component';
 import { ActualizarMascotaComponent } from './empleado/mascota/actualizar-mascota/actualizar-mascota.component';
+import { CrearEnfermedadComponent } from './empleado/enfermedad/crear-enfermedad/crear-enfermedad.component';
+import { ActualizarEnfermedadComponent } from './empleado/enfermedad/actualizar-enfermedad/actualizar-enfermedad.component';
+import { ListaEnfermedadComponent } from './empleado/enfermedad/lista-enfermedad/lista-enfermedad.component';
+import { CrearRazaComponent } from './empleado/raza/crear-raza/crear-raza.component';
+import { ActualizarRazaComponent } from './empleado/raza/actualizar-raza/actualizar-raza.component';
+import { ListaRazaComponent } from './empleado/raza/lista-raza/lista-raza.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +40,6 @@ import { ActualizarMascotaComponent } from './empleado/mascota/actualizar-mascot
     AgendarCitaComponent,
     FooterComponent,
     CrudDuenoComponent,
-    CrudRazaComponent,
-    CrudEnfermedadComponent,
     LandingComponent,
     NuevoRegistroComponent,
     ListaDuenosComponent,
@@ -45,6 +47,12 @@ import { ActualizarMascotaComponent } from './empleado/mascota/actualizar-mascot
     ActualizarDuenoComponent,
     CrearMascotaComponent,
     ActualizarMascotaComponent,
+    CrearEnfermedadComponent,
+    ActualizarEnfermedadComponent,
+    ListaEnfermedadComponent,
+    CrearRazaComponent,
+    ActualizarRazaComponent,
+    ListaRazaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CarouselModule, FormsModule],
   providers: [],

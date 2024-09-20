@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrudRazaComponent } from './crud-raza.component';
+import { CrearRazaComponent } from './crear-raza.component';
 
-describe('CrudRazaComponent', () => {
-  let component: CrudRazaComponent;
-  let fixture: ComponentFixture<CrudRazaComponent>;
+describe('CrearRazaComponent', () => {
+  let component: CrearRazaComponent;
+  let fixture: ComponentFixture<CrearRazaComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CrudRazaComponent]
+      declarations: [CrearRazaComponent]
     });
-    fixture = TestBed.createComponent(CrudRazaComponent);
+    fixture = TestBed.createComponent(CrearRazaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
