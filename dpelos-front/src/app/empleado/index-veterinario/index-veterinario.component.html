@@ -52,7 +52,7 @@
           <p>No olvides realizar el registro y darle una calida bienvenida</p>
 
           <a 
-            th:href="@{/mascota/add}"
+          [routerLink]="['/mascota/add']"
             class="boton">Registrar una mascota</a>
         </div>
         <div class="card consultas-hoy">
@@ -74,13 +74,13 @@
           <div class="card-media">
             <p>¿Buscas algún peludito?</p>
             <a 
-            th:href="@{/mascota}"
+            [routerLink]="['/mascota']"
             class="boton-mascota">Ver mascotas</a>
           </div>
           <div class="card-media">
           <p>Contacta a un dueño D'Pelos</p>
             <a 
-            th:href="@{/dueno}"
+            [routerLink]="['/dueno']"
             class="boton-dueno">Ver dueños</a>
         </div>
         </div>

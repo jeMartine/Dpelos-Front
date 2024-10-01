@@ -36,6 +36,6 @@ export class CrearMascotaComponent {
   }
 
   regresar() {
-    this.router.navigate(['/mascota']);
+    this.router.navigate(['/empleado']);
   }
 }
