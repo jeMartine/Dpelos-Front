@@ -13,6 +13,8 @@ import { ActualizarEnfermedadComponent } from './empleado/enfermedad/actualizar-
 import { ListaRazaComponent } from './empleado/raza/lista-raza/lista-raza.component';
 import { ActualizarRazaComponent } from './empleado/raza/actualizar-raza/actualizar-raza.component';
 import { CrearRazaComponent } from './empleado/raza/crear-raza/crear-raza.component';
+import { LoginComponent } from './login/login.component';
+import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
 const routes: Routes = [
   { path: 'dueno/add', component: CrudDuenoComponent },
   { path: 'dueno/update/:id', component: ActualizarDuenoComponent },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'raza', component: ListaRazaComponent },
   { path: 'raza/add', component: CrearRazaComponent },
   { path: 'raza/update/:id', component: ActualizarRazaComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'empleado', component: IndexVeterinarioComponent },
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];

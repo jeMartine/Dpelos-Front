@@ -1,0 +1,73 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container-fluid">
+            <a type="button" (click)="homeEmpreado()">
+                <img
+                    src="/assets/images/logo.png"
+                    alt="logo D'pelos"
+                    id="logo"
+                    class="img-fluid"
+                />
+            </a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                class="collapse navbar-collapse"
+                id="navbarNavDropdown"
+            >
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a
+                            th:href="@{/empleado/vet}"
+                            class="nav-link li_header"
+                            >Inicio</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a href="#servicios" class="nav-link li_header"
+                            >Tratamientos</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="#agendarCita"
+                            class="nav-link li_header"
+                            >Medicamentos</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a href="#servicios" class="nav-link li_header"
+                            >Historiales</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            th:href="@{/registros}"
+                            class="nav-link li_header"
+                            >Registros</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a type="button" (click)="cerrarSesion()">
+                            <img
+                                th:src="@{${veterinario.fotoUrl}}"
+                                alt="User Icon"
+                                id="userIcon"
+                                class="img-perfil rounded-circle me-3"
+                            />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

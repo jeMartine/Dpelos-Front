@@ -28,6 +28,9 @@ import { ListaEnfermedadComponent } from './empleado/enfermedad/lista-enfermedad
 import { CrearRazaComponent } from './empleado/raza/crear-raza/crear-raza.component';
 import { ActualizarRazaComponent } from './empleado/raza/actualizar-raza/actualizar-raza.component';
 import { ListaRazaComponent } from './empleado/raza/lista-raza/lista-raza.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderVeterinarioComponent } from './empleado/header-veterinario/header-veterinario.component';
+import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { ListaRazaComponent } from './empleado/raza/lista-raza/lista-raza.compon
     CrearRazaComponent,
     ActualizarRazaComponent,
     ListaRazaComponent,
+    LoginComponent,
+    HeaderVeterinarioComponent,
+    IndexVeterinarioComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CarouselModule, FormsModule],
   providers: [],

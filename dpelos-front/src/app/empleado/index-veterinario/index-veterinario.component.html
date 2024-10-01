@@ -1,0 +1,91 @@
+<app-header-veterinario></app-header-veterinario>
+<main id="inicio">
+    <section id="info-Veterinario">
+      <div class="container">
+        <div
+          class="container d-flex align-items-center justify-content-center flex-column"
+        >
+          <p
+            class="bienvenida_titulo mb-10"
+            th:text="'¡Hola de nuevo ' + ${veterinario.nombreVeterinario} + ' ' + ${veterinario.apellidoVeterinario} + '!'"
+          ></p>
+
+          <p
+            class="bienvenida mb-0"
+            th:text="'Ya has atendido a ' + ${veterinario.numeroAtenciones} + ' perritos con Dpelos'"
+          ></p>
+          <p class="bienvenida mb-0">¡Continua con tu gran labor!</p>
+        </div>
+      </div>
+
+      <!-- imagenes de fondo -->
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura1" />
+      <img src="/assets/images/landing/curaBannerT2.png" class="cura2" />
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura3" />
+      <img src="/assets/images/landing/curaBannerT3.png" class="cura4" />
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura5" />
+      <img src="/assets/images/landing/curaBannerT2.png" class="cura6" />
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura7" />
+    </section>
+
+    <section id="info-servicios">
+      <div
+        class="container d-flex align-items-center justify-content-center flex-row servicios"
+      >
+        <a class="btn servicio-btn">
+          <img src="/assets/images/empleados/stethoscope.png">
+          Tratamientos
+        </a>
+        <a class="btn servicio-btn">
+          <img src="/assets/images/empleados/pill.png">
+          Medicamentos</a>
+        <a class="btn servicio-btn">
+          <img src="/assets/images/empleados/medical-record.png">
+          Historiales</a>
+      </div>
+
+      <div
+        class="container d-flex align-items-center justify-content-center flex-row info-cards"
+      >
+        <div class="card registro-mascota">
+          <p class="text-center titulo-tarjeta" >¿Tienes un nuevo peludito a tu cuidado?</p>
+          <p>No olvides realizar el registro y darle una calida bienvenida</p>
+
+          <a 
+            th:href="@{/mascota/add}"
+            class="boton">Registrar una mascota</a>
+        </div>
+        <div class="card consultas-hoy">
+          <p class="text-center titulo-tarjeta">Consultas de hoy</p>
+          <div class="consulta">
+            <p>Pato</p>
+            <p>11:30 a.m</p>
+        </div>
+        <div class="consulta">
+            <p>Celeste</p>
+            <p>13:00 p.m</p>
+        </div>
+        <div class="consulta">
+            <p>Pancho</p>
+            <p>15:00 p.m</p>
+        </div>
+        </div>
+        <div >
+          <div class="card-media">
+            <p>¿Buscas algún peludito?</p>
+            <a 
+            th:href="@{/mascota}"
+            class="boton-mascota">Ver mascotas</a>
+          </div>
+          <div class="card-media">
+          <p>Contacta a un dueño D'Pelos</p>
+            <a 
+            th:href="@{/dueno}"
+            class="boton-dueno">Ver dueños</a>
+        </div>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+<app-footer></app-footer>
