@@ -42,12 +42,10 @@
                 <strong>Edad: </strong
                 ><span>{{mascota.edadMascota}} años</span><br />
                 <strong>Raza: </strong>
-                <!-- <span>{{mascota.raza.razaMascota}}</span> -->
-                <span>algo</span>
+                <span>{{mascota.raza?.razaMascota}}</span>
                 <br />
                 <strong>Dueño: </strong>
-                <!-- <span>{{mascota.dueno.nombreDueno}} {{mascota.dueno.apellidoDueno}}</span>> -->
-                <span>algo</span>
+                <span>{{mascota.dueno?.nombreDueno}} {{mascota.dueno?.apellidoDueno}}</span>
               </p>
             </div>
             <div class="d-flex flex-column align-items-center ml-auto">
@@ -63,7 +61,7 @@
                 class="icon-eliminar mt-3"
                 id="icon-eliminar"
                 aria-label="Eliminar"
-                (click)="deleteMascota(mascota)"
+                (click)="deleteMascota(mascota.idMascota!)"
                 onclick="return confirm('¿Estás seguro de que quieres eliminar esta mascota?');"
               >
                 <i class="fas fa-trash fa-2x"></i>

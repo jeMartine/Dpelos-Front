@@ -24,7 +24,7 @@ export class ActualizarDuenoComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      this.dueno = this.duenoService.findById(id);
+      //this.dueno = this.duenoService.findById(id);
     })
   }
 

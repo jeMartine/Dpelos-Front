@@ -14,12 +14,19 @@ export class ListaMascotasComponent {
     private mascotaService: MascotaService, 
     private router: Router) {}
 
+
   ngOnInit(): void {
-    this.mascotas = this.mascotaService.findAll();
+    this.mascotaService.findAll().subscribe(
+      (data: Mascota[]) => {
+        this.mascotas = data; //asignar la lista de mascotas
+      }, (error) => {
+        console.error('Error al cargar la lista de mascotas', error);
+      }
+    );
   }
 
-  deleteMascota(mascota: Mascota): void {
-    this.mascotaService.deleteMascota(mascota);
+  deleteMascota(id: number): void {
+    this.mascotaService.deleteById(id);
   }
 
   editarMascota(mascota: Mascota) {

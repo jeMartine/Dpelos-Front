@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { error } from 'jquery';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { DuenoService } from 'src/app/service/dueno/dueno.service';
 
@@ -20,7 +21,13 @@ export class ListaDuenosComponent {
 
   //Realizo llamados cuando ya se ha cargado la interfaz
   ngOnInit() :void{
-    this.duenosList = this.duenoService.findAll();
+    this.duenoService.findAll().subscribe(
+      (data: Dueno[])=>{
+        this.duenosList = data;// asignar la lista de duenos
+      }, (error)=>{
+        console.error('Error al cargar la lista de dueños', error); // Manejo de errores
+      }
+    );
   }
 
   editarDueno(dueno: Dueno){
@@ -31,7 +38,7 @@ export class ListaDuenosComponent {
     this.duenosList.push(newDueno);
   }
 
-  eliminarDueno(dueno: Dueno): void {
-    this.duenoService.deleteDueno(dueno);
+  eliminarDueno(id: number): void {
+    this.duenoService.deleteById(id);
   }
 }

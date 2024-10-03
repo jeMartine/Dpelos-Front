@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http';
 import { CarouselModule } from 'primeng/carousel';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,7 +59,13 @@ import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-ve
     HeaderVeterinarioComponent,
     IndexVeterinarioComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CarouselModule, FormsModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    CarouselModule, 
+    FormsModule, 
+    HttpClientModule //realizar peticiones Http
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

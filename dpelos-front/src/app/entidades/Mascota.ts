@@ -12,9 +12,7 @@ export interface Mascota {
   fechaCreacion: Date;
   estado: boolean;
   dueno?: Dueno; // `dueno` es opcional
-  //raza?: Raza;          // `raza` es opcional
-  raza: string; //temporal por cuestiones de tiempo
-  enfermedad: string; //temporal por cuestiones de tiempo
-  //enfermedad?: Enfermedad;  // `enfermedad` es opcional
+  raza?: Raza;          // `raza` es opcional
+  enfermedad?: Enfermedad;  // `enfermedad` es opcional
   tratamientos?: Tratamiento[]; // Lista de tratamientos, opcional y puede estar vacía
 }
