@@ -8,43 +8,48 @@
     #mascotaUpdateForm="ngForm"
     (ngSubmit)="mascotaUpdate()"
   >
-    <!-- <div class="form-row duenoField">
+  <div class="row duenoField">
+    <div class=" col-md-6">
+      <input
+        name="cedulaDueno"
+        type="number"
+        class="form-control"
+        id="cedulaDueno"
+        placeholder="Cédula del dueño"
+        required
+        [(ngModel)]="cedulaDueno"
+        (blur)="verificarDueno()"
+      />
+    </div>
   
-        <div class="col-md-6">
-          <input
-            name="cedulaDueno"
-            type="number"
-            class="form-control"
-            id="cedulaDueno"
-            placeholder="Cédula del dueño"
-            required
-            onblur="verificarDueno()"
-          />
-        </div>
+    <div 
+        *ngIf="nombreDueno"
+        class="col-md-6"
+        id="nombreDuenoContainer"
+      >
+      <input
+        type="text"
+        class="form-control col-md-6"
+        id="nombreDueno"
+        placeholder="Nombre del Dueño"
+        readonly
+        [value]="nombreDueno"
+      />
+    </div>
   
-  
-        <div class="col-md-6" id="nombreDuenoContainer" style="display: none">
-          <input
-            type="text"
-            class="form-control"
-            id="nombreDueno"
-            placeholder="Nombre del Dueño"
-            readonly
-          />
-        </div>
-  
-        <div class="col-md-6" id="agregarDuenoContainer" style="display: none">
-          <a
-            type="button"
-            class="btn btn-primary"
-            id="btnAgregarDueno"
-            th:href="@{/dueno/add}"
-          >
-            Agregar Dueño
-          </a>
-        </div>
-      </div>  -->
-
+    <div 
+          class="col-md-6"
+          id="agregarDuenoContainer"
+          *ngIf="!nombreDueno">
+      <a
+        type="button"
+        class="btn btn-primary ms-4"
+        id="btnAgregarDueno"
+        [routerLink]="['/dueno/add']">
+        Agregar Dueño
+      </a>
+    </div>
+  </div>
 
     <div class="row">
       <div class="form-group col-md-6">

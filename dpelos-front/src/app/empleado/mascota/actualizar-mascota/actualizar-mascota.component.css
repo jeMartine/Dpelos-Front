@@ -8,7 +8,15 @@ main {
   position: relative;
   height: 87vh;
 }
-
+.duenoField{
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 15px 7px 15px 7px;
+}
 .container-titulo {
   margin-top: 20px;
   display: flex;

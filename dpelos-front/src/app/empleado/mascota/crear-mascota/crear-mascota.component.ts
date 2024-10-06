@@ -40,8 +40,18 @@ export class CrearMascotaComponent {
 
 
   ngOnInit() {
-   this.razas = this.razaService.findAll();
-   this.enfermedades = this.enfermedadService.findAll();
+
+   this.razaService.findAll().subscribe(
+    (razasRest)=>{
+      this.razas = razasRest
+    }
+   )
+
+   this.enfermedadService.findAll().subscribe(
+    (enfRest)=>{
+      this.enfermedades = enfRest
+    }
+   )
     
   }
   
@@ -55,7 +65,7 @@ export class CrearMascotaComponent {
     raza: undefined,
     enfermedad: undefined, 
     tratamientos: []
-  };
+  }; 
 
   addMascota() {
     

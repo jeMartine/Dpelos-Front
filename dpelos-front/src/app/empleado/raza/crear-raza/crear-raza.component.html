@@ -3,11 +3,12 @@
     <form th:action="@{/raza/agregar}" method="post">
         <div class="form-group">
             <input
-id="entrada"
+                id="entrada"
                 type="text"
                 name="nombreRaza"
                 class="form-control"
                 placeholder="Nombre de la Raza"
+                [(ngModel)]="raza.razaMascota"
                 required
             />
         </div>

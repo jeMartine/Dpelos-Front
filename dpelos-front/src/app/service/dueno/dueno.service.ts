@@ -38,7 +38,6 @@ export class DuenoService {
   }
 
   deleteById(id: number) {
-    console.log(id)
     this.http.delete(`${this.duenoURL}/delete/${id}`).subscribe();
   }
 }

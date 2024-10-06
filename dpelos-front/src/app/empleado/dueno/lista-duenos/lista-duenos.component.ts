@@ -35,10 +35,13 @@ export class ListaDuenosComponent {
   }
 
   addDueno(newDueno: Dueno): void {
+    this.duenoService.addDueno(newDueno);
     this.duenosList.push(newDueno);
-  }
+  } 
 
-  eliminarDueno(id: number): void {
-    this.duenoService.deleteById(id);
+  eliminarDueno(dueno: Dueno): void {
+    var index = this.duenosList.indexOf(dueno);
+    this.duenosList.splice(index, 1);
+    this.duenoService.deleteById(dueno.idDueno!);
   }
 }

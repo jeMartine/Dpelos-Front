@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { DuenoService } from 'src/app/service/dueno/dueno.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-actualizar-dueno',
@@ -17,24 +19,30 @@ export class ActualizarDuenoComponent {
   constructor(
     private duenoService  : DuenoService,
     private route: ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private location: Location
   ){}
 
   //Se llama una unica vez cuando se renderiza la pantalla
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      //this.dueno = this.duenoService.findById(id);
+      console.log(id)
+      this.duenoService.findById(id).subscribe(
+        (duenoRest)=>{
+          this.dueno = duenoRest;
+        }
+      )
     })
   }
 
   duenoUpdate():void{
     this.sendDueno = Object.assign({}, this.dueno)
     this.duenoService.updateDueno(this.sendDueno);
-    this.router.navigate(['/dueno']);
+    this.location.back();
   }
 
   regresar(){
-    this.router.navigate(['/dueno']);
+  this.location.back()
   }
 }

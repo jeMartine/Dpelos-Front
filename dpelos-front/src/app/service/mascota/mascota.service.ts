@@ -31,7 +31,7 @@ export class MascotaService {
   }
 
   updateMascota(mascota: Mascota){
-    this.http.put(this.mascotaURL, mascota).subscribe();
+    this.http.put(this.mascotaURL+"/update", mascota).subscribe();
   }
 
   deleteById(id: number) {

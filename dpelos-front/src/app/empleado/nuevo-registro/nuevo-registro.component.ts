@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-nuevo-registro',
@@ -6,11 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./nuevo-registro.component.css']
 })
 export class NuevoRegistroComponent {
-  tipoSeleccionado: string = ''; // Para vincular el valor seleccionado
-  vistaActual: string = ''; // Para determinar qué vista mostrar
+  tipoSeleccionado: string = ''; 
+  vistaActual: string = '';
 
+  constructor(
+    private location: Location
+  ){}
   // Función para actualizar la vista basada en la selección
   actualizarVista() {
     this.vistaActual = this.tipoSeleccionado;
+  }
+
+  cancelar(){
+    this.location.back()
   }
 }

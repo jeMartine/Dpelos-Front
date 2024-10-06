@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Enfermedad } from 'src/app/entidades/Enfermedad';
@@ -12,7 +13,7 @@ import { RazaService } from 'src/app/service/raza/raza.service';
 })
 export class CrearEnfermedadComponent {
   constructor(
-    private router: Router,
+    private location: Location,
     private enfermedadService: EnfermedadService
   ){}
   //modelo
@@ -26,10 +27,10 @@ export class CrearEnfermedadComponent {
   addEnfermedad(){
     this.sendEnfermedad = Object.assign({}, this.enfermedad);
     this.enfermedadService.addEnfermedad(this.sendEnfermedad);
-    this.router.navigate(['/mascota']);
+    this.location.back()
   }
 
-  regresar(){
-    this.router.navigate(['/mascota']);
-  }
+  // regresar(){
+  //   this.router.navigate(['/mascota']);
+  // }
 }

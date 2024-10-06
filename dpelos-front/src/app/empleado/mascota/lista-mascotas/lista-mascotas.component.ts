@@ -11,8 +11,8 @@ export class ListaMascotasComponent {
   mascotas!: Mascota[]; // Define the mascotas property
   selectedMascota!: Mascota;
   constructor(
-    private mascotaService: MascotaService, 
-    private router: Router) {}
+    private mascotaService: MascotaService
+  ) {}
 
 
   ngOnInit(): void {
@@ -25,14 +25,18 @@ export class ListaMascotasComponent {
     );
   }
 
-  deleteMascota(id: number): void {
-    this.mascotaService.deleteById(id);
+  deleteMascota(mascota: Mascota): void {
+    var index = this.mascotas.indexOf(mascota);
+    this.mascotas.splice(index, 1);
+    this.mascotaService.deleteById(mascota.idMascota!);
   }
 
   editarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;
   }
+  
   addMascota(newMascota: Mascota) {
     this.mascotas.push(newMascota);
+    this.mascotaService.addMascota(newMascota);
   }
-  }
+}

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Raza } from 'src/app/entidades/Raza';
@@ -10,7 +11,7 @@ import { RazaService } from 'src/app/service/raza/raza.service';
 })
 export class CrearRazaComponent {
   constructor(
-    private router: Router,
+    private location: Location,
     private razaService: RazaService
   ){}
   //modelo
@@ -24,10 +25,11 @@ export class CrearRazaComponent {
   addRaza(){
     this.sendRaza = Object.assign({}, this.raza);
     this.razaService.addRaza(this.sendRaza);
-    this.router.navigate(['/mascota']);
+    console.log(this.sendRaza)
+    this.location.back()
   }
 
   regresar(){
-    this.router.navigate(['/mascota']);
+    this.location.back()
   }
 }
