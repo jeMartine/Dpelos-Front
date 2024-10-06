@@ -16,7 +16,6 @@ export class MascotaService {
   ) {}
   sqlDate = new Date();
 
-  
 
 
   findAll(): Observable <Mascota[]> {
@@ -27,7 +26,8 @@ export class MascotaService {
     return this.http.get<Mascota>(`${this.mascotaURL}/${id}`);
   }
 
-  addMascota(mascota: Mascota){
+
+  public addMascota(mascota: Mascota){
     this.http.post(this.mascotaURL+"/add", mascota).subscribe();
   }
 

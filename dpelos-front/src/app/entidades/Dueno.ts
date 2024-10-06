@@ -8,6 +8,6 @@ export interface Dueno {
     correoDueno: string;
     celularDueno: string;
     fotoUrl: string;
-    mascotas?: Mascota[];  // Lista de mascotas asociadas al dueño
+    //mascotas?: Mascota[];  // Lista de mascotas asociadas al dueño
   }
   

@@ -4,8 +4,8 @@
   </div>
   <form id="formMascota" #mascotaForm="ngForm" (ngSubmit)="addMascota()">
     <p>Dale la bienvenida a una mascotas D'Pelos</p>
-    <div class="form-row duenoField">
-      <div class="col-md-6">
+    <div class="row duenoField">
+      <div class=" col-md-6">
         <input
           name="cedulaDueno"
           type="number"
@@ -18,8 +18,11 @@
         />
       </div>
     
-      <!-- Mostramos el nombre del dueño si está disponible -->
-      <div class="col-md-6" *ngIf="nombreDueno">
+      <div 
+          *ngIf="nombreDueno"
+          class="col-md-6"
+          id="nombreDuenoContainer"
+        >
         <input
           type="text"
           class="form-control"
@@ -30,14 +33,15 @@
         />
       </div>
     
-      <!-- Botón para agregar un nuevo dueño si no existe -->
-      <div class="col-md-6" *ngIf="!nombreDueno">
+      <div 
+            class="col-md-6"
+						id="agregarDuenoContainer"
+            *ngIf="!nombreDueno">
         <a
           type="button"
           class="btn btn-primary"
           id="btnAgregarDueno"
-          [routerLink]="['/dueno/add']"
-        >
+          [routerLink]="['/dueno/add']">
           Agregar Dueño
         </a>
       </div>

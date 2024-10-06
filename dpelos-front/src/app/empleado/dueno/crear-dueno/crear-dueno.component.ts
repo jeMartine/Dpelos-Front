@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { Router } from '@angular/router';
 import { DuenoService } from 'src/app/service/dueno/dueno.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-crud-dueno',
@@ -13,7 +15,8 @@ export class CrudDuenoComponent {
 
   constructor(
     private router: Router,
-    private duenoService: DuenoService
+    private duenoService: DuenoService,
+    private location: Location
   ){}
   //modelo
   dueno: Dueno = {
@@ -31,10 +34,10 @@ export class CrudDuenoComponent {
   addDueno(){
     this.sendDueno = Object.assign({}, this.dueno);
     this.duenoService.addDueno(this.sendDueno);
-    this.router.navigate(['/dueno']);
+    //this.router.navigate(['/dueno']);
   }
 
   regresar(){
-    this.router.navigate(['/dueno']);
+    this.location.back();
   }
 }

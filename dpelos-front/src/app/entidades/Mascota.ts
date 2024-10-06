@@ -4,8 +4,7 @@ import { Raza } from './Raza';
 import { Tratamiento } from './Tratamiento';
 
 export interface Mascota {
-  //idMascota?: number; // `idMascota` es opcional, ya que puede no estar definido al crear una nueva mascota
-  idMascota: number; //temporal por cuestiones de tiempo
+  idMascota?: number; // `idMascota` es opcional, ya que puede no estar definido al crear una nueva mascota
   nombreMascota: string;
   edadMascota: number;
   urlFotoMascota: string;
