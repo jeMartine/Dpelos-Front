@@ -75,8 +75,9 @@ main{
     border-radius: 15px;
     margin-bottom: 10px;
     display: flex;
+    justify-content: center;
     flex-direction: row;
-    padding: 15px 0 15px 0;
+    padding: 15px 7px 15px 7px;
 }
 
 #agregarDuenoContainer{
