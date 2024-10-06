@@ -1,0 +1,381 @@
+#info-Dueno {
+  background: linear-gradient(to bottom, #ffffff, #94edf3);
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* curas del banner */
+.cura1,
+.cura2,
+.cura3,
+.cura4,
+.cura5,
+.cura6,
+.cura7 {
+  position: absolute;
+  z-index: 1;
+}
+
+/* curas del banner */
+.cura1 {
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  height: 100px;
+  width: auto;
+  opacity: 0.3;
+}
+.cura2 {
+  position: absolute;
+  top: 20%;
+  left: 28%;
+  height: 35px;
+  width: auto;
+  opacity: 0.2;
+}
+.cura3 {
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  height: 70px;
+  width: auto;
+  opacity: 0.1;
+}
+.cura4 {
+  position: absolute;
+  top: 45%;
+  left: 93%;
+  height: 100px;
+  width: auto;
+  opacity: 0.3;
+  rotate: -20deg;
+}
+
+.cura5 {
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  height: 60px;
+  width: auto;
+  opacity: 0.2;
+}
+.cura6 {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  height: 68px;
+  width: auto;
+  opacity: 0.3;
+}
+.cura7 {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  height: 100px;
+  width: auto;
+  opacity: 0.3;
+  rotate: 25deg;
+}
+
+.img-perfil {
+  z-index: 2;
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+}
+.bienvenida {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+  z-index: 2;
+}
+
+.custom-margin {
+  color: white;
+  margin: 0;
+}
+
+.info-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 80px;
+  z-index: 2;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+  z-index: 2;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  color: black;
+  z-index: 2;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-weight: bold;
+  margin: 0;
+}
+
+.info-content p:last-child {
+  margin: 0;
+}
+
+.custom-margin .col-md-6 {
+  padding-right: 90px;
+  padding-left: 90px;
+}
+
+.custom-margin .col-md-10 {
+  margin-bottom: 2px;
+}
+
+/* Buscador */
+.input-group {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  height: 40px;
+  width: 400px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#search-button {
+  background-color: #ff8f34;
+  border: #ff8f34 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: auto;
+}
+
+/* Carrusel de mascotas */
+#listaMascotas {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Estilo base para los indicadores */
+::ng-deep.p-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+::ng-deep .p-carousel-indicator button {
+  width: 30px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .p-carousel-indicator.p-highlight button {
+  background-color: #ff992b;
+}
+
+::ng-deep .p-carousel-indicator button:hover {
+  background-color: #ffcc80;
+}
+
+::ng-deep .p-carousel-indicator::marker {
+  content: "";
+  display: none;
+}
+
+/* Centrar un item */
+::ng-deep .center-single .p-carousel-items {
+  display: flex;
+  justify-content: center;
+}
+
+/* Centrar dos items */
+::ng-deep .center-double .p-carousel-items {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .center-double .p-carousel-item {
+  width: calc(50% - 10px);
+  margin: 0 5px;
+  padding: 0;
+}
+
+/* Estilo para cada item*/
+::ng-deep .p-carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.img-mascota {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: filter 0.3s;
+  filter: brightness(60%);
+}
+
+.img-mascota.seleccionada {
+  filter: brightness(100%);
+}
+
+.img-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.71);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.img-caption p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card-mascota {
+  overflow: hidden;
+  width: 390px;
+  height: 350px;
+  position: relative;
+}
+
+.img-caption.seleccionada {
+  background-color: #ff992b;
+  filter: brightness(1);
+}
+
+/* Info mascota */
+#info-mascota {
+  margin-top: 20px;
+  padding: 20px 70px;
+  margin-left: 180px;
+  margin-right: 180px;
+  background-color: white;
+  border: 2px solid #ff8f34;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  align-items: center;
+}
+
+.card-text-principal {
+  font-size: 20px;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.estado-en-tratamiento {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 10px;
+  border: 2px solid green;
+  color: green;
+}
+
+.estado-inactivo {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 10px;
+  border: 2px solid red;
+  color: red;
+}
+
+.card-text-principal i {
+  margin-left: 10px;
+}
+
+.info-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  flex-basis: 20px;
+  color: #3775ab;
+}
+
+.subtitle {
+  font-weight: bold;
+  flex-basis: 200px;
+  text-align: left;
+  margin-left: 20px;
+  color: #3775ab;
+}
+
+.value {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Empty item */
+.empty-item {
+  width: 390px;
+  height: 350px;
+  background: transparent;
+  display: none;
+}
+
+/* mensaje de error */
+#error-message {
+  text-align: center;
+  font-size: 15px;
+}
+
+::ng-deep .p-carousel-next,
+::ng-deep .p-carousel-prev {
+  display: none;
+}
