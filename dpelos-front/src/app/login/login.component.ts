@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { LoginRequest } from 'src/app/entidades/LoginRequest';
+import { LoginService } from '../service/login/login.service';
+import { ToastrService } from 'ngx-toastr';
+import { VetStateService } from '../service/vetState/vet-state.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +15,15 @@ export class LoginComponent {
   cedulaVeterinario: string = '';
   contrasenaVeterinario: string = '';
   mensajeError: string = '';
-
   isRegisterActive: boolean = false;
+
+
 
   constructor(
     private router: Router,
+    private loginService: LoginService,
+    private toast: ToastrService,
+    private vetState: VetStateService
   ) {}
 
   onLoginVeterinarioClick(): void {
@@ -28,21 +36,45 @@ export class LoginComponent {
     this.changeBackgroundColor('#9496F3'); // Color del cliente
   }
 
+
   changeBackgroundColor(color: string): void {
     document.body.style.backgroundColor = color;
     document.body.style.transition = 'all 0.6s ease-in-out';
   }
 
   validateVet(): void {
-    this.router.navigate(['/empleado']);
+    const request: LoginRequest = {
+      document: this.cedulaVeterinario, 
+      password: this.contrasenaVeterinario,
+      type: 1
+    }
+
+    this.loginService.login(request).subscribe(
+      (response) => {
+        console.log('Login exitoso:', response);
+        
+        // Guardar el veterinario en el servicio
+        this.vetState.setVeterinario(response);
+
+        this.router.navigate(['/empleado']);
+      },
+      (error) => {
+        this.toast.error(error.error, "Error", {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
+
+    //this.router.navigate(['/empleado']);
   }
 
   validateClient(): void {
-    this.router.navigate(['/cliente']);
+    //this.router.navigate(['/cliente']);
   }
 
   regresar(): void {
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
   }
 
 }
