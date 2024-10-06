@@ -1,3 +1,7 @@
+body{
+	background-color: white;
+}
+
 #info-Veterinario {
 	background: linear-gradient(to bottom, #ffffff, #94edf3);
 	display: flex;

@@ -1,3 +1,4 @@
+<app-header-veterinario></app-header-veterinario>
 <main>
   <div class="container-titulo">
     <p>Registrar mascotas</p>
@@ -25,7 +26,7 @@
         >
         <input
           type="text"
-          class="form-control"
+          class="form-control ms-4"
           id="nombreDueno"
           placeholder="Nombre del Dueño"
           readonly
@@ -39,7 +40,7 @@
             *ngIf="!nombreDueno">
         <a
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary ms-4"
           id="btnAgregarDueno"
           [routerLink]="['/dueno/add']">
           Agregar Dueño
@@ -135,3 +136,4 @@
     </div>
   </form>
 </main>
+<app-footer></app-footer>
