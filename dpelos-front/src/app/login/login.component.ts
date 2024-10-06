@@ -37,6 +37,10 @@ export class LoginComponent {
     this.router.navigate(['/empleado']);
   }
 
+  validateClient(): void {
+    this.router.navigate(['/cliente']);
+  }
+
   regresar(): void {
     this.router.navigate(['/home']);
   }

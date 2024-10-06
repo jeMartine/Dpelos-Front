@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { CarouselModule } from 'primeng/carousel';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importar BrowserAnimationsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,8 +32,8 @@ import { ListaRazaComponent } from './empleado/raza/lista-raza/lista-raza.compon
 import { LoginComponent } from './login/login.component';
 import { HeaderVeterinarioComponent } from './empleado/header-veterinario/header-veterinario.component';
 import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importar BrowserAnimationsModule
+import { IndexClienteComponent } from './cliente/index-cliente/index-cliente.component';
+import { HeaderClienteComponent } from './cliente/header-cliente/header-cliente.component';
 
 
 @NgModule({
@@ -61,6 +63,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
     LoginComponent,
     HeaderVeterinarioComponent,
     IndexVeterinarioComponent,
+    IndexClienteComponent,
+    HeaderClienteComponent,
   ],
   imports: [
     BrowserModule, 

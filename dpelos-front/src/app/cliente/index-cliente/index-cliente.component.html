@@ -1,0 +1,144 @@
+<app-header-cliente></app-header-cliente>
+<main>
+  <section id="info-Dueno">
+    <div class="container">
+      <div class="container d-flex align-items-center justify-content-center">
+        <img
+          src=""
+          alt="User Icon"
+          id="userIcon"
+          class="img-perfil rounded-circle me-3"
+        />
+        <p class="bienvenida mb-0">Bienvenido [nombre]</p>
+      </div>
+      <div class="info-container">
+        <div class="info-item">
+          <i class="fas fa-user info-icon"></i>
+          <div class="info-content">
+            <p class="info-label">Nombre</p>
+            <p>Nombre apellido</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-id-card info-icon"></i>
+          <div class="info-content">
+            <p class="info-label">Cédula</p>
+            <p>xxxx</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope info-icon"></i>
+          <div class="info-content">
+            <p class="info-label">Correo</p>
+            <p>mail</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone info-icon"></i>
+          <div class="info-content">
+            <p class="info-label">Celular</p>
+            <p>xxx</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- imagenes de fondo -->
+    <img src="/assets/images/landing/curaBannerT1.png" class="cura1" />
+    <img src="/assets/images//landing/curaBannerT2.png" class="cura2" />
+    <img src="/assets/images//landing/curaBannerT1.png" class="cura3" />
+    <img src="/assets/images//landing/curaBannerT3.png" class="cura4" />
+    <img src="/assets/images//landing/curaBannerT1.png" class="cura5" />
+    <img src="/assets/images//landing/curaBannerT2.png" class="cura6" />
+    <img src="/assets/images//landing/curaBannerT1.png" class="cura7" />
+  </section>
+
+  <section id="mascota" class="text-center">
+    <div class="input-group justify-content-center">
+      <div class="form-outline" data-mdb-input-init>
+        <input
+          id="search-input"
+          type="search"
+          class="form-control"
+          placeholder="Busca tu mascota"
+        />
+      </div>
+      <button id="search-button" type="button" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <div
+      id="error-message"
+      class="text-danger mt-2"
+      style="display: none"
+    ></div>
+  </section>
+
+  <section id="listaMascotas">
+    <p-carousel
+      [value]="mascotas"
+      [numVisible]="3"
+      [numScroll]="1"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+      [ngClass]="carouselClass"
+    >
+      <ng-template pTemplate="item" let-mascota>
+        <div class="card-mascota">
+          <div class="img-container">
+            <img
+              [src]="mascota.urlFotoMascota"
+              alt="mascota"
+              class="img-mascota"
+              [ngClass]="{ seleccionada: isMascotaSeleccionada(mascota) }"
+              (click)="mostrarInfoMascota(mascota)"
+            />
+            <div
+              class="img-caption"
+              [ngClass]="{ seleccionada: isMascotaSeleccionada(mascota) }"
+            >
+              <p>{{ mascota.nombreMascota }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+
+    <div id="info-mascota" class="info-mascota" *ngIf="selectedMascota">
+      <div class="info-header">
+        <p class="card-text-principal">
+          <span>{{ selectedMascota.nombreMascota }}</span>
+          <i class="fas fa-paw"></i>
+        </p>
+        <div
+          [ngClass]="
+            selectedMascota.estado ? 'estado-en-tratamiento' : 'estado-inactivo'
+          "
+        >
+          {{ selectedMascota.estado ? "En tratamiento" : "Inactivo" }}
+        </div>
+      </div>
+      <div class="info-details">
+        <div class="info-row">
+          <i class="fas fa-dog icon"></i>
+          <span class="subtitle">Raza:</span>
+          <span>{{ selectedMascota.razaMascota }}</span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-calendar-alt icon"></i>
+          <span class="subtitle">Fecha de creación:</span>
+          <span>{{
+            selectedMascota.fechaCreacion | date : "EEEE, dd MMMM yyyy"
+          }}</span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-medkit icon"></i>
+          <span class="subtitle">Enfermedad:</span>
+          <span>{{ selectedMascota.enfermedadMascota }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>
