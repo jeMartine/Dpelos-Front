@@ -30,6 +30,9 @@ import { ListaRazaComponent } from './empleado/raza/lista-raza/lista-raza.compon
 import { LoginComponent } from './login/login.component';
 import { HeaderVeterinarioComponent } from './empleado/header-veterinario/header-veterinario.component';
 import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importar BrowserAnimationsModule
+
 
 @NgModule({
   declarations: [
@@ -64,6 +67,14 @@ import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-ve
     AppRoutingModule, 
     CarouselModule, 
     FormsModule, 
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 3000,
+        positionClass: 'toast-top-center', // Posición del toast
+        preventDuplicates: true, // Evitar toasts duplicados
+      }
+    ), 
     HttpClientModule //realizar peticiones Http
   ],
   providers: [],

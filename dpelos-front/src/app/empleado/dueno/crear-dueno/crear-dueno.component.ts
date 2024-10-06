@@ -34,7 +34,7 @@ export class CrudDuenoComponent {
   addDueno(){
     this.sendDueno = Object.assign({}, this.dueno);
     this.duenoService.addDueno(this.sendDueno);
-    //this.router.navigate(['/dueno']);
+    this.location.back();
   }
 
   regresar(){

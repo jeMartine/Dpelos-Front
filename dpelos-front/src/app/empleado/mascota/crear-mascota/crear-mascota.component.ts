@@ -9,6 +9,9 @@ import { EnfermedadService } from 'src/app/service/enfermedad/enfermedad.service
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
 import { RazaService } from 'src/app/service/raza/raza.service';
 import { Location } from '@angular/common';
+import { Dueno } from 'src/app/entidades/Dueno';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-crear-mascota',
@@ -19,6 +22,7 @@ export class CrearMascotaComponent {
 
   cedulaDueno: string = '';
   nombreDueno: string = '';
+  dueno?: Dueno;
   razas: Raza[] = [];
   enfermedades: Enfermedad[] = [];
   sendMascota!: Mascota;
@@ -30,7 +34,8 @@ export class CrearMascotaComponent {
     private razaService: RazaService,
     private enfermedadService: EnfermedadService, 
     private duenoService: DuenoService,
-    private location: Location
+    private location: Location,
+    private toast: ToastrService
   ) {}
 
 
@@ -45,7 +50,7 @@ export class CrearMascotaComponent {
     nombreMascota: '',
     edadMascota: 0,
     urlFotoMascota: '',
-    fechaCreacion: new Date(),
+    fechaCreacion: undefined,
     estado: true,
     raza: undefined,
     enfermedad: undefined, 
@@ -55,11 +60,20 @@ export class CrearMascotaComponent {
   addMascota() {
     
     this.sendMascota = Object.assign({}, this.mascota);
+    if(this.dueno){
+      this.sendMascota.dueno = this.dueno
 
-    this.mascotaService.addMascota(this.sendMascota);
-    console.log(this.sendMascota);
+      this.toast.success("Mascota Guardada con éxito", 'Ok', {
+        timeOut: 3000,
+        positionClass: 'toast-top-center',
+      });
 
-    //this.router.navigate(['/mascota']);
+      this.mascotaService.addMascota(this.sendMascota);
+    }else{
+      console.error("No existe el dueño")
+    }
+
+    this.location.back();
   }
 
   regresar() {
@@ -75,14 +89,17 @@ export class CrearMascotaComponent {
       (dueno) => {
         if(dueno){
           //Si existe el dueño mostramos su nombre
+          this.dueno = dueno;
           this.nombreDueno = dueno.nombreDueno + ' ' + dueno.apellidoDueno;
         }else{
           //Si no existe ocutamos el nombre
+          this.dueno = undefined;
           this.nombreDueno = '';
         }
       },
       (error) => {
         console.error("Error al mostrar el dueño"+ error)
+        this.dueno=undefined;
         this.nombreDueno = '';
       }
     );

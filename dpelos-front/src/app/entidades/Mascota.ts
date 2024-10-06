@@ -8,7 +8,7 @@ export interface Mascota {
   nombreMascota: string;
   edadMascota: number;
   urlFotoMascota: string;
-  fechaCreacion: Date;
+  fechaCreacion?: Date;
   estado: boolean;
   dueno?: Dueno; // `dueno` es opcional
   raza?: Raza;          // `raza` es opcional

@@ -17,7 +17,6 @@ export class MascotaService {
   sqlDate = new Date();
 
 
-
   findAll(): Observable <Mascota[]> {
     return this.http.get<Mascota[]>(this.mascotaURL);
   }
