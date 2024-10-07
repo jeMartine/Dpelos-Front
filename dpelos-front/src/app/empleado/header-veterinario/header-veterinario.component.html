@@ -41,10 +41,13 @@
               >Registros</a
             >
           </li>
+          <li class="nav-item d-flex align-items-center">
+            <fa-icon [icon]="logoutIcon" class="fa-lg me-3" style="cursor: pointer;" (click)="cerrarSesion()"></fa-icon>
+          </li>
           <li class="nav-item">
-            <a type="button" (click)="cerrarSesion()">
+            <a type="button">
               <img
-                th:src="@{${veterinario.fotoUrl}}"
+                src="{{ veterinario?.fotoUrl }}"
                 alt="User Icon"
                 id="userIcon"
                 class="img-perfil rounded-circle me-3"

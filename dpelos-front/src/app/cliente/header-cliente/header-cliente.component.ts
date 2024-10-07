@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login/login.service';
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-cliente',
@@ -7,12 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./header-cliente.component.css']
 })
 export class HeaderClienteComponent {
+  logoutIcon = faDoorOpen
+
   constructor(
     private router: Router,
+    private loginService: LoginService
   ) {}
 
   cerrarSesion(): void {
-    this.router.navigate(['/login']);
+    this.loginService.logout()
+    this.router.navigate(['/home']);
   }
 
 }

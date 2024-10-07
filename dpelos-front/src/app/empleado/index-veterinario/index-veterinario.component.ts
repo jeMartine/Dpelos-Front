@@ -18,17 +18,15 @@ export class IndexVeterinarioComponent {
 
   ngOnInit(): void {
     document.body.style.backgroundColor = "#FFFFFF";
-    
-    this.veterinario = this.vetState.getVeterinario();
-    
-    if (this.veterinario) {
-      console.log('Veterinario recibido correctamente:', this.veterinario);
-    } else {
-      
-      this.router.navigate(['/login']);
-    }
-    
+
+    this.cargarVet()
   }
 
+  cargarVet(){
+    const user = localStorage.getItem('usuario');
+    if(user){
+      this.veterinario = JSON.parse(user);
+    }
+  }
 
 }

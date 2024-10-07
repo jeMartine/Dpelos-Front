@@ -49,28 +49,15 @@ export class LoginComponent {
       type: 1
     }
 
-    this.loginService.login(request).subscribe(
-      (response) => {
-        console.log('Login exitoso:', response);
-        
-        // Guardar el veterinario en el servicio
-        this.vetState.setVeterinario(response);
-
-        this.router.navigate(['/empleado']);
-      },
-      (error) => {
-        this.toast.error(error.error, "Error", {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
-
-    //this.router.navigate(['/empleado']);
+    this.loginService.login(request)
   }
 
   validateClient(): void {
-    //this.router.navigate(['/cliente']);
+    const request: LoginRequest = {
+      document: this.cedulaDueno,
+      type: 2
+    }
+    this.loginService.login(request)
   }
 
   regresar(): void {

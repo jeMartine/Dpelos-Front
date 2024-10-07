@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Dueno } from 'src/app/entidades/Dueno';
+import { Mascota } from 'src/app/entidades/Mascota';
+import { MascotaService } from 'src/app/service/mascota/mascota.service';
 
 @Component({
   selector: 'app-index-cliente',
@@ -6,12 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index-cliente.component.css']
 })
 export class IndexClienteComponent implements OnInit {
-  mascotas: any[] = [];
-  selectedMascota: any = null;
+  mascotas: Mascota[] = [];
+  dueno?: Dueno
+  selectedMascota?: Mascota;
   responsiveOptions: any[];
   carouselClass: string = '';
 
-  constructor() {
+  constructor(
+    private toast: ToastrService,
+    private mascotaService: MascotaService
+  ) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -32,44 +40,28 @@ export class IndexClienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    //Datos de muestra, llamado a la API
-    this.mascotas = [
-      {
-        nombreMascota: 'Bobby',
-        urlFotoMascota: 'assets/images/prueba.png',
-        razaMascota: 'Golden Retriever',
-        fechaCreacion: new Date(),
-        estado: true,
-        enfermedadMascota: 'Parvovirus'
-      },
-      {
-        nombreMascota: 'Bobby2',
-        urlFotoMascota: 'assets/images/prueba.png',
-        razaMascota: 'Golden Retriever',
-        fechaCreacion: new Date(),
-        estado: true,
-        enfermedadMascota: 'Parvovirus'
-      },
-      {
-        nombreMascota: 'Bobby3',
-        urlFotoMascota: 'assets/images/prueba.png',
-        razaMascota: 'Golden Retriever',
-        fechaCreacion: new Date(),
-        estado: true,
-        enfermedadMascota: 'Parvovirus'
-      },
-      {
-        nombreMascota: 'Bobby4',
-        urlFotoMascota: 'assets/images/prueba.png',
-        razaMascota: 'Golden Retriever',
-        fechaCreacion: new Date(),
-        estado: true,
-        enfermedadMascota: 'Parvovirus'
-      },
-      
-    ];
-
+    
+    this.cargarDueno();
+    this.mascotaService.findMascotasDuenoId(this.dueno?.idDueno!).subscribe(
+      (mascotas) => {
+        this.mascotas = mascotas;
+      }, 
+      (error) => {
+        // Aquí estás mostrando el mensaje de error desde el backend
+        this.toast.error(error.error, 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
     this.actualizarCentradoCarousel();
+  }
+
+  cargarDueno(){
+    const user = localStorage.getItem('usuario');
+    if(user){
+      this.dueno = JSON.parse(user);
+    }
   }
 
   actualizarCentradoCarousel() {
@@ -84,14 +76,15 @@ export class IndexClienteComponent implements OnInit {
     }
   }
 
-  mostrarInfoMascota(mascota: any) {
+  mostrarInfoMascota(mascota: Mascota) {
     if (this.selectedMascota === mascota) {
-      this.selectedMascota = null;
+      this.selectedMascota = undefined;
     } else {
       this.selectedMascota = mascota;
     }
   }
-  isMascotaSeleccionada(mascota: any) {
+
+  isMascotaSeleccionada(mascota: Mascota) {
     return this.selectedMascota === mascota;
   }
 

@@ -48,4 +48,9 @@ header {
         height: 50px;
     }
 }
+
+#userIcon{
+  width: 55px; 
+  height: 55px;
+}
   

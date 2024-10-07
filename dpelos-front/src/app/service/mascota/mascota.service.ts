@@ -16,15 +16,17 @@ export class MascotaService {
   ) {}
   sqlDate = new Date();
 
-
   findAll(): Observable <Mascota[]> {
     return this.http.get<Mascota[]>(this.mascotaURL);
+  }
+
+  findMascotasDuenoId(duenoId: number):Observable<Mascota[]>{
+    return this.http.get<Mascota[]>(`${this.mascotaURL}/dueno/${duenoId}`);
   }
 
   findById(id: number): Observable<Mascota> {
     return this.http.get<Mascota>(`${this.mascotaURL}/${id}`);
   }
-
 
   public addMascota(mascota: Mascota){
     this.http.post(this.mascotaURL+"/add", mascota).subscribe();

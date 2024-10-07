@@ -13,9 +13,7 @@
                 />
             </a>
             <div class="ms-auto d-flex align-items-center">
-                <a type="button" (click)="cerrarSesion()" class="d-block">
-                    <i class="fas fa-door-open" id="logoutIcon"></i>
-                </a>
+                <fa-icon [icon]="logoutIcon" class="fa-lg me-3" style="cursor: pointer;" (click)="cerrarSesion()"></fa-icon>
             </div>
         </div>
     </nav>

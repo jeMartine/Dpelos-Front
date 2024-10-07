@@ -34,6 +34,7 @@ import { HeaderVeterinarioComponent } from './empleado/header-veterinario/header
 import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
 import { IndexClienteComponent } from './cliente/index-cliente/index-cliente.component';
 import { HeaderClienteComponent } from './cliente/header-cliente/header-cliente.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { HeaderClienteComponent } from './cliente/header-cliente/header-cliente.
     BrowserModule, 
     AppRoutingModule, 
     CarouselModule, 
-    FormsModule, 
+    FormsModule,
+    FontAwesomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(
       {

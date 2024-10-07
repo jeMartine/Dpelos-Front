@@ -16,24 +16,26 @@ import { CrearRazaComponent } from './empleado/raza/crear-raza/crear-raza.compon
 import { LoginComponent } from './login/login.component';
 import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
 import { IndexClienteComponent } from './cliente/index-cliente/index-cliente.component';
+import { AuthGuard } from './guard/auth.guard'
+
 const routes: Routes = [
-  { path: 'dueno/add', component: CrudDuenoComponent },
-  { path: 'dueno/update/:id', component: ActualizarDuenoComponent },
-  { path: 'dueno', component: ListaDuenosComponent },
+  { path: 'dueno/add', component: CrudDuenoComponent , canActivate: [AuthGuard]},
+  { path: 'dueno/update/:id', component: ActualizarDuenoComponent , canActivate: [AuthGuard]},
+  { path: 'dueno', component: ListaDuenosComponent , canActivate: [AuthGuard]},
   { path: 'home', component: LandingComponent },
-  { path: 'mascota/add', component: CrearMascotaComponent },
-  { path: 'mascota/update/:id', component: ActualizarMascotaComponent },
-  { path: 'mascota', component: ListaMascotasComponent },
-  { path: 'enfermedad', component: ListaEnfermedadComponent },
-  { path: 'enfermedad/add', component: ListaEnfermedadComponent },
-  { path: 'enfermedad/update/:id', component: ActualizarEnfermedadComponent },
-  { path: 'registros', component: NuevoRegistroComponent },
-  { path: 'raza', component: ListaRazaComponent },
-  { path: 'raza/add', component: CrearRazaComponent },
-  { path: 'raza/update/:id', component: ActualizarRazaComponent },
+  { path: 'mascota/add', component: CrearMascotaComponent, canActivate: [AuthGuard] },
+  { path: 'mascota/update/:id', component: ActualizarMascotaComponent, canActivate: [AuthGuard] },
+  { path: 'mascota', component: ListaMascotasComponent , canActivate: [AuthGuard]},
+  { path: 'enfermedad', component: ListaEnfermedadComponent, canActivate: [AuthGuard] },
+  { path: 'enfermedad/add', component: ListaEnfermedadComponent , canActivate: [AuthGuard]},
+  { path: 'enfermedad/update/:id', component: ActualizarEnfermedadComponent , canActivate: [AuthGuard]},
+  { path: 'registros', component: NuevoRegistroComponent , canActivate: [AuthGuard]},
+  { path: 'raza', component: ListaRazaComponent , canActivate: [AuthGuard]},
+  { path: 'raza/add', component: CrearRazaComponent , canActivate: [AuthGuard]},
+  { path: 'raza/update/:id', component: ActualizarRazaComponent , canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
-  { path: 'empleado', component: IndexVeterinarioComponent },
-  { path: 'cliente', component: IndexClienteComponent},
+  { path: 'empleado', component: IndexVeterinarioComponent , canActivate: [AuthGuard]},
+  { path: 'cliente', component: IndexClienteComponent, canActivate: [AuthGuard]},
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
