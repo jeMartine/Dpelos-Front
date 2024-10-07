@@ -1,0 +1,15 @@
+<app-header-veterinario></app-header-veterinario>
+<div class="upload-area">
+    <h2>Subir archivo de Excel</h2>
+    
+    <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+    
+    <div
+      class="drag-drop-area"
+      (drop)="onFileChange($event)"
+      (dragover)="preventDefault($event)"
+    >
+      Arrastra y suelta un archivo aquí
+    </div>
+  </div>
+<app-footer></app-footer>

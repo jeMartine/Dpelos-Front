@@ -8,7 +8,7 @@ import { MascotaService } from 'src/app/service/mascota/mascota.service';
   styleUrls: ['./lista-mascotas.component.css'],
 })
 export class ListaMascotasComponent {
-  mascotas!: Mascota[]; // Define the mascotas property
+  mascotas!: Mascota[]; 
   selectedMascota!: Mascota;
   constructor(
     private mascotaService: MascotaService

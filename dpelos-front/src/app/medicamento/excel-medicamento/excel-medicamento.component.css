@@ -1,0 +1,16 @@
+.upload-area {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .drag-drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  .drag-drop-area:hover {
+    border-color: #000;
+  }
+  

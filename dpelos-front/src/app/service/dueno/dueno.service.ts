@@ -15,8 +15,6 @@ export class DuenoService {
     private http: HttpClient
   ) {}
 
-
-
   findAll(): Observable<Dueno[]> {
     return this.http.get<Dueno[]>(this.duenoURL);
   }

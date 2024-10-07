@@ -35,6 +35,10 @@ import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-ve
 import { IndexClienteComponent } from './cliente/index-cliente/index-cliente.component';
 import { HeaderClienteComponent } from './cliente/header-cliente/header-cliente.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ListaMedicamentoComponent } from './medicamento/lista-medicamento/lista-medicamento.component';
+import { CrearMedicamentoComponent } from './medicamento/crear-medicamento/crear-medicamento.component';
+import { ActualizarMedicamentoComponent } from './medicamento/actualizar-medicamento/actualizar-medicamento.component';
+import { ExcelMedicamentoComponent } from './medicamento/excel-medicamento/excel-medicamento.component';
 
 
 @NgModule({
@@ -66,6 +70,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     IndexVeterinarioComponent,
     IndexClienteComponent,
     HeaderClienteComponent,
+    ListaMedicamentoComponent,
+    CrearMedicamentoComponent,
+    ActualizarMedicamentoComponent,
+    ExcelMedicamentoComponent,
   ],
   imports: [
     BrowserModule, 

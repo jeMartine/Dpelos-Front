@@ -17,6 +17,10 @@ import { LoginComponent } from './login/login.component';
 import { IndexVeterinarioComponent } from './empleado/index-veterinario/index-veterinario.component';
 import { IndexClienteComponent } from './cliente/index-cliente/index-cliente.component';
 import { AuthGuard } from './guard/auth.guard'
+import { ListaMedicamentoComponent } from './medicamento/lista-medicamento/lista-medicamento.component';
+import { CrearMedicamentoComponent } from './medicamento/crear-medicamento/crear-medicamento.component';
+import { ActualizarMedicamentoComponent } from './medicamento/actualizar-medicamento/actualizar-medicamento.component';
+import { ExcelMedicamentoComponent } from './medicamento/excel-medicamento/excel-medicamento.component';
 
 const routes: Routes = [
   { path: 'dueno/add', component: CrudDuenoComponent , canActivate: [AuthGuard]},
@@ -36,7 +40,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'empleado', component: IndexVeterinarioComponent , canActivate: [AuthGuard]},
   { path: 'cliente', component: IndexClienteComponent, canActivate: [AuthGuard]},
-
+  { path: 'droga', component: ListaMedicamentoComponent, canActivate: [AuthGuard]},
+  { path: 'droga-excel', component: ExcelMedicamentoComponent, canActivate: [AuthGuard]},
+  { path: 'droga/add', component: CrearMedicamentoComponent, canActivate: [AuthGuard]},
+  { path: 'droga/update/:id', component: ActualizarMedicamentoComponent, canActivate: [AuthGuard]},
+  
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
 
