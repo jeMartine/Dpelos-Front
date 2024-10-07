@@ -4,7 +4,7 @@
         <!-- formulario para veterinarios --> 
         <form>
           <a type="button" (click)="regresar()">
-            <img src="/assets/images/logo.png" alt="LogoDpelos" class="logo" />
+            <img src="/assets/images/logo.png" [routerLink]="['/home']" alt="LogoDpelos" class="logo" />
           </a>
   
           <span>¡Es momento de salvar una vida peluda y proteger a nuestros mejores amigos!</span>
@@ -30,7 +30,7 @@
       <div class="form-container sign-in">
         <form>
           <a type="button" (click)="regresar()">
-            <img src="/assets/images/logo.png" alt="LogoDpelos" class="logo" />
+            <img src="/assets/images/logo.png" [routerLink]="['/home']" alt="LogoDpelos" class="logo" />
           </a>
   
           <span>¡Revisar el progreso de tu peludito es una actitud D’pelos!</span>
