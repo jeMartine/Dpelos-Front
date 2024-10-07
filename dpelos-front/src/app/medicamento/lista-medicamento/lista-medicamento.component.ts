@@ -12,6 +12,7 @@ import { MedicamentoService } from 'src/app/service/medicamento/medicamento.serv
 export class ListaMedicamentoComponent {
   drogas!: Droga[] 
   selectedDroga!: Droga
+  isLoading = true
 
   constructor(
     private drogaService: MedicamentoService,
@@ -22,6 +23,7 @@ export class ListaMedicamentoComponent {
     this.drogaService.findAll().subscribe(
       (restDrogas) =>{
         this.drogas = restDrogas;
+        this.isLoading=false
       },
       (error) => {
         this.toast.error(error.error, 'Error', {

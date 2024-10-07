@@ -1,6 +1,12 @@
 <app-header-veterinario></app-header-veterinario>
 <main id="inicio">
-  <section id="buscarMascotas">
+  <div *ngIf="isLoading" class="spinner-container d-flex justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+  <section *ngIf="!isLoading" id="buscarMascotas">
     <div class="input-group justify-content-center">
       <div class="form-outline" data-mdb-input-init>
         <input
@@ -24,8 +30,8 @@
       >
     </div>
   </section>
-  <div id="error-message" style="display: none; color: red"></div>
-  <div id="card-container" class="container">
+
+  <div *ngIf="!isLoading" id="card-container" class="container">
     <div class="d-flex justify-content-center flex-wrap">
       <div class="col-md-4" *ngFor="let droga of drogas">
         <div

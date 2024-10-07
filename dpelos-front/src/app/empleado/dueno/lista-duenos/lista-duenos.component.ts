@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { error } from 'jquery';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { DuenoService } from 'src/app/service/dueno/dueno.service';
 
@@ -11,6 +10,7 @@ import { DuenoService } from 'src/app/service/dueno/dueno.service';
 export class ListaDuenosComponent {
 
   duenosList!: Dueno[]; 
+  isLoading = true;
 
   selectedDueno!: Dueno;
   
@@ -24,6 +24,7 @@ export class ListaDuenosComponent {
     this.duenoService.findAll().subscribe(
       (data: Dueno[])=>{
         this.duenosList = data;// asignar la lista de duenos
+        this.isLoading = false;
       }, (error)=>{
         console.error('Error al cargar la lista de dueños', error); // Manejo de errores
       }

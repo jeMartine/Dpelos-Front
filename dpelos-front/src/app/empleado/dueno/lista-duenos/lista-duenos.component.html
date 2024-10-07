@@ -1,8 +1,15 @@
 <app-header-veterinario></app-header-veterinario>
 <main id="inicio">
-  <p id="titulo">Dueños registrados</p>
 
-  <section id="mascota" class="text-center">
+  <div *ngIf="isLoading" class="spinner-container d-flex justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+  <p *ngIf="!isLoading" id="titulo">Dueños registrados</p>
+
+  <section *ngIf="!isLoading" id="mascota" class="text-center">
     <div class="input-group justify-content-center">
       <div class="form-outline" data-mdb-input-init>
         <input
@@ -24,9 +31,7 @@
     </div>
   </section>
 
-  <div id="error-message" class="text-danger mt-2" style="display: none"></div>
-
-  <section id="listadoDuenos">
+  <section *ngIf="!isLoading" id="listadoDuenos">
     <table class="table">
       <thead class="tableHead">
         <tr>

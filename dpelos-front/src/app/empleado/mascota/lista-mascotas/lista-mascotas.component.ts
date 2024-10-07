@@ -10,6 +10,7 @@ import { MascotaService } from 'src/app/service/mascota/mascota.service';
 export class ListaMascotasComponent {
   mascotas!: Mascota[]; 
   selectedMascota!: Mascota;
+  isLoading = true;
   constructor(
     private mascotaService: MascotaService
   ) {}
@@ -19,6 +20,7 @@ export class ListaMascotasComponent {
     this.mascotaService.findAll().subscribe(
       (data: Mascota[]) => {
         this.mascotas = data; //asignar la lista de mascotas
+        this.isLoading = false;
       }, (error) => {
         console.error('Error al cargar la lista de mascotas', error);
       }
