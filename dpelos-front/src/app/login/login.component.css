@@ -101,6 +101,9 @@ body{
 #login:hover{
     background-color: #82e1c2;
 }
+.textoLogin{
+    color: #000000;
+}
 
 .container form{
     background-color: #ffffff;
