@@ -38,4 +38,8 @@ export class MedicamentoService {
   deleteById(id: number){
     this.http.delete(`${this.drogaURL}/${id}`).subscribe();
   }
+
+  searchByNombre(nombre: string): Observable<Droga[]> {
+    return this.http.get<Droga[]>(`${this.drogaURL}/buscar?nombre=${nombre}`);
+  }
 }

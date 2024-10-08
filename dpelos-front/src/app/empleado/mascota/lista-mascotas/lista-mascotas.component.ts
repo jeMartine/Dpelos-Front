@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Mascota } from 'src/app/entidades/Mascota';
 import { Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-lista-mascotas',
   templateUrl: './lista-mascotas.component.html',
@@ -11,12 +12,18 @@ export class ListaMascotasComponent {
   mascotas!: Mascota[]; 
   selectedMascota!: Mascota;
   isLoading = true;
+  searchTerm: string = '';
   constructor(
-    private mascotaService: MascotaService
+    private mascotaService: MascotaService,
+    private toast: ToastrService
   ) {}
 
 
   ngOnInit(): void {
+    this.loadAllMascotas();
+  }
+
+  loadAllMascotas() {
     this.mascotaService.findAll().subscribe(
       (data: Mascota[]) => {
         this.mascotas = data; //asignar la lista de mascotas
@@ -40,5 +47,34 @@ export class ListaMascotasComponent {
   addMascota(newMascota: Mascota) {
     this.mascotas.push(newMascota);
     this.mascotaService.addMascota(newMascota);
+  }
+
+  onSearchInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchTerm = inputElement.value;
+  }
+  
+  searchDroga() {
+    console.log('Método searchDroga llamado con término:', this.searchTerm);
+    this.isLoading = true;
+    if (this.searchTerm.trim().length === 0) {
+      this.loadAllMascotas();
+    } else {
+      this.mascotaService.searchByNombre(this.searchTerm).subscribe(
+        (data) => {
+          console.log('Macotas encontradas:', data);
+          this.mascotas = data;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.toast.error(error.error, 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+          this.isLoading = false;
+        }
+      );
+    }
+    this.searchTerm = '';
   }
 }

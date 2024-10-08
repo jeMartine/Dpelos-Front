@@ -42,19 +42,20 @@ export class IndexClienteComponent implements OnInit {
   ngOnInit() {
     
     this.cargarDueno();
-    this.mascotaService.findMascotasDuenoId(this.dueno?.idDueno!).subscribe(
-      (mascotas) => {
-        this.mascotas = mascotas;
-      }, 
-      (error) => {
-        // Aquí estás mostrando el mensaje de error desde el backend
-        this.toast.error(error.error, 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
-    this.actualizarCentradoCarousel();
+    if (this.dueno) {
+      this.mascotaService.findMascotasDuenoId(this.dueno.idDueno!).subscribe(
+        (mascotas) => {
+          this.mascotas = mascotas;
+          this.actualizarCentradoCarousel();
+        },
+        (error) => {
+          this.toast.error(error.error, 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+        }
+      );
+    }
   }
 
   cargarDueno(){
@@ -63,6 +64,7 @@ export class IndexClienteComponent implements OnInit {
       this.dueno = JSON.parse(user);
     }
   }
+
 
   actualizarCentradoCarousel() {
     const numItems = this.mascotas.length;
@@ -86,6 +88,20 @@ export class IndexClienteComponent implements OnInit {
 
   isMascotaSeleccionada(mascota: Mascota) {
     return this.selectedMascota === mascota;
+  }
+
+  buscarMascota(nombre: string) {
+    const mascotaEncontrada = this.mascotas.find(mascota => mascota.nombreMascota.toLowerCase() === nombre.toLowerCase());
+
+    if (mascotaEncontrada) {
+      this.selectedMascota = mascotaEncontrada;
+    } else {
+      this.selectedMascota = undefined;
+      this.toast.error('Mascota no encontrada', 'Error', {
+        timeOut: 3000,
+        positionClass: 'toast-top-center',
+      });
+    }
   }
 
 }

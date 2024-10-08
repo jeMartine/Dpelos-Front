@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { Mascota } from 'src/app/entidades/Mascota';
 import { environment } from 'src/app/environments/environment.prod';
 
@@ -39,4 +39,9 @@ export class MascotaService {
   deleteById(id: number) {
     this.http.delete(`${this.mascotaURL}/delete/${id}`).subscribe();
   }
+
+  searchByNombre(nombre: string): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(`${this.mascotaURL}/buscar?nombre=${nombre}`);
+  }
+  
 }

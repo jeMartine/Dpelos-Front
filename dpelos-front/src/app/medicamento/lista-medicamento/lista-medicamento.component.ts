@@ -12,6 +12,7 @@ import { MedicamentoService } from 'src/app/service/medicamento/medicamento.serv
 export class ListaMedicamentoComponent {
   drogas!: Droga[] 
   selectedDroga!: Droga
+  searchTerm: string = '';
   isLoading = true
 
   constructor(
@@ -19,20 +20,25 @@ export class ListaMedicamentoComponent {
     private toast: ToastrService
   ){}
 
-  ngOnInit(){
+  ngOnInit() {
+    this.loadAllDrogas();
+  }
+
+  loadAllDrogas() {
+    this.isLoading = true;
     this.drogaService.findAll().subscribe(
-      (restDrogas) =>{
+      (restDrogas) => {
         this.drogas = restDrogas;
-        this.isLoading=false
+        this.isLoading = false;
       },
       (error) => {
         this.toast.error(error.error, 'Error', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
+        this.isLoading = false;
       }
     );
-
   }
 
   addMascota(newDroga: Droga) {
@@ -49,4 +55,34 @@ export class ListaMedicamentoComponent {
     this.drogas.splice(index, 1);
     this.drogaService.deleteById(droga.idDroga!);
   }
+
+  onSearchInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchTerm = inputElement.value;
+  }
+  
+  searchDroga() {
+    console.log('Método searchDroga llamado con término:', this.searchTerm);
+    this.isLoading = true;
+    if (this.searchTerm.trim().length === 0) {
+      this.loadAllDrogas();
+    } else {
+      this.drogaService.searchByNombre(this.searchTerm).subscribe(
+        (restDrogas) => {
+          console.log('Drogas encontradas:', restDrogas);
+          this.drogas = restDrogas;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.toast.error(error.error, 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+          this.isLoading = false;
+        }
+      );
+    }
+    this.searchTerm = '';
+  }
+  
 }

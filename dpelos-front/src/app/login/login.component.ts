@@ -38,8 +38,11 @@ export class LoginComponent {
 
 
   changeBackgroundColor(color: string): void {
-    document.body.style.backgroundColor = color;
-    document.body.style.transition = 'all 0.6s ease-in-out';
+    const container = document.getElementById('container');
+    if (container) {
+      container.style.backgroundColor = color;
+      container.style.transition = 'all 0.6s ease-in-out';
+    }
   }
 
   validateVet(): void {

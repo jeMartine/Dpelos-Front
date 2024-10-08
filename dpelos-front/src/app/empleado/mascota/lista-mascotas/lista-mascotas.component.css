@@ -1,6 +1,6 @@
 main {
-	height: 100vh;
-}
+	min-height: 23vh;
+  }
 
 .card {
 	width: 300px;
@@ -29,11 +29,17 @@ main {
 }
 
 #card-container {
-	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 10px;
+	flex: 1;
 }
+
+.col-md-4 {
+	width: auto;
+	margin-left: 10px;
+	margin-right: 10px;
+  }
 
 .img-mascotas {
 	border-radius: 20px;

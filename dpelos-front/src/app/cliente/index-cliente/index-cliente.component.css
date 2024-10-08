@@ -231,22 +231,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 auto;
+  flex: 0 0 auto; 
   max-width: 100%;
   box-sizing: border-box;
 }
 
+::ng-deep .img-container{
+  position: relative;
+  width: 390px;
+  height: 350px;
+}
+
 .img-mascota {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   transition: filter 0.3s;
   filter: brightness(60%);
 }
 
 .img-mascota.seleccionada {
-  filter: brightness(100%);
-}
+    filter: brightness(100%);
+  }
 
 .img-caption {
   position: absolute;
@@ -307,7 +313,7 @@
 }
 
 .estado-en-tratamiento {
-  padding: 5px 10px;
+padding: 5px 10px;
   border-radius: 15px;
   font-size: 12px;
   font-weight: bold;
@@ -318,7 +324,7 @@
 }
 
 .estado-inactivo {
-  padding: 5px 10px;
+    padding: 5px 10px;
   border-radius: 15px;
   font-size: 12px;
   font-weight: bold;

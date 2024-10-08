@@ -18,7 +18,7 @@ export class HeaderClienteComponent {
 
   cerrarSesion(): void {
     this.loginService.logout()
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 
 }
