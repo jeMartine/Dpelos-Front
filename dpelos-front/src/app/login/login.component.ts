@@ -4,6 +4,7 @@ import { LoginRequest } from 'src/app/entidades/LoginRequest';
 import { LoginService } from '../service/login/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { VetStateService } from '../service/vetState/vet-state.service';
+import { faUser, faStethoscope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,8 @@ export class LoginComponent {
   contrasenaVeterinario: string = '';
   mensajeError: string = '';
   isRegisterActive: boolean = false;
+  userIcon = faUser;
+  stethoscopeIcon = faStethoscope;
 
 
 
