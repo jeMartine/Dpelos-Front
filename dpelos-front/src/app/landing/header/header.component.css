@@ -48,3 +48,11 @@ header {
         height: 50px;
     }
 }
+
+.btnIngresa {
+  color: #ff992b !important;
+}
+
+.btnIngresa:hover {
+  color: black !important; 
+}

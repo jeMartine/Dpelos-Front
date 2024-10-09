@@ -83,10 +83,10 @@ body{
 }
 
 .container button.hidden{
-    background-color: transparent;
+    background-color: rgb(236, 119, 65);
     border: 2px solid #99532b;
     margin-top: 0%;
-    color: #99532b;
+    color: #ffffff;
     font-style: 900;
 }
 
@@ -100,6 +100,9 @@ body{
 
 #login:hover{
     background-color: #82e1c2;
+}
+.textoLogin{
+    color: #000000;
 }
 
 .container form{
