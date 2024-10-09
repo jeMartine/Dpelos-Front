@@ -59,7 +59,7 @@ export class IndexClienteComponent implements OnInit {
   }
 
   cargarDueno(){
-    const user = localStorage.getItem('usuario');
+    const user = localStorage.getItem('userDueno');
     if(user){
       this.dueno = JSON.parse(user);
     }

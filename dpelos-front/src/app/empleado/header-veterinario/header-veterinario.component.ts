@@ -24,13 +24,13 @@ export class HeaderVeterinarioComponent {
   }
 
   cargarVet(){
-    const user = localStorage.getItem('usuario');
+    const user = localStorage.getItem('userVet');
     if(user){
       this.veterinario = JSON.parse(user);
     }
   }
   cerrarSesion(): void {
-    this.loginService.logout()
+    this.loginService.logout('userVet', "isVetLogged")
     this.router.navigate(['/home']);
   }
 

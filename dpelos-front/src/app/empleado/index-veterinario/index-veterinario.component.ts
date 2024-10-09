@@ -23,7 +23,7 @@ export class IndexVeterinarioComponent {
   }
 
   cargarVet(){
-    const user = localStorage.getItem('usuario');
+    const user = localStorage.getItem('userVet');
     if(user){
       this.veterinario = JSON.parse(user);
     }

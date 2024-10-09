@@ -22,12 +22,14 @@ export class LoginService {
   public login(peticion: LoginRequest): void {
     this.http.post<any>(this.loginURL, peticion).subscribe(
       (restBackend) => {
-        console.log(restBackend)
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('usuario', JSON.stringify(restBackend));
+        // console.log(restBackend)
         if (peticion.type == 1) {
+          localStorage.setItem('isVetLogged', 'true');        
+          localStorage.setItem('userVet', JSON.stringify(restBackend));
           this.router.navigate(['/empleado']);
         } else {
+          localStorage.setItem('isDuenoLogged', 'true');        
+          localStorage.setItem('userDueno', JSON.stringify(restBackend));
           this.router.navigate(['/cliente']);
         }
       },
@@ -40,13 +42,13 @@ export class LoginService {
     );
   }
 
-  public logout(): void {
-    localStorage.removeItem('usuario');
-    localStorage.removeItem('isLoggedIn');
+  public logout(usuario: string, type: string): void {
+    localStorage.removeItem(usuario);
+    localStorage.removeItem(type);
     this.router.navigate(['/login']);
   }
 
-  isLoggedIn(): boolean {
-    return localStorage.getItem('isLoggedIn') === 'true';
+  isLoggedIn(type: string): boolean {
+    return localStorage.getItem(type) === 'true';
   }
 }
