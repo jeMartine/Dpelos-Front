@@ -19,17 +19,25 @@ export class LoginService {
     private toast: ToastrService
   ) {}
 
+  //Recibe un objeto y lo almancena en el localstorage para manejar la sesión
   public login(peticion: LoginRequest): void {
     this.http.post<any>(this.loginURL, peticion).subscribe(
       (restBackend) => {
-        // console.log(restBackend)
-        if (peticion.type == 1) {
+        const user = restBackend.user;
+        const role = restBackend.role;
+
+
+        if (role === 'VET') {
           localStorage.setItem('isVetLogged', 'true');        
-          localStorage.setItem('userVet', JSON.stringify(restBackend));
+          localStorage.setItem('userVet', JSON.stringify(user));
           this.router.navigate(['/empleado']);
-        } else {
+        } else if (role === 'ADMIN'){
+          localStorage.setItem('isAdminLogged', 'true');        
+          localStorage.setItem('userAdmin', JSON.stringify(user));
+          this.router.navigate(['/admin']);
+        } else if (role === 'DUENO'){
           localStorage.setItem('isDuenoLogged', 'true');        
-          localStorage.setItem('userDueno', JSON.stringify(restBackend));
+          localStorage.setItem('userDeno', JSON.stringify(user));
           this.router.navigate(['/cliente']);
         }
       },

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditarVetComponent } from './editar-vet.component';
+import { ListaVetComponent } from './lista-vet.component';
 
-describe('EditarVetComponent', () => {
-  let component: EditarVetComponent;
-  let fixture: ComponentFixture<EditarVetComponent>;
+describe('ListaVetComponent', () => {
+  let component: ListaVetComponent;
+  let fixture: ComponentFixture<ListaVetComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditarVetComponent]
+      declarations: [ListaVetComponent]
     });
-    fixture = TestBed.createComponent(EditarVetComponent);
+    fixture = TestBed.createComponent(ListaVetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

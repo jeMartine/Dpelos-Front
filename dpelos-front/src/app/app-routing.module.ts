@@ -21,6 +21,9 @@ import { ListaMedicamentoComponent } from './medicamento/lista-medicamento/lista
 import { CrearMedicamentoComponent } from './medicamento/crear-medicamento/crear-medicamento.component';
 import { ActualizarMedicamentoComponent } from './medicamento/actualizar-medicamento/actualizar-medicamento.component';
 import { ExcelMedicamentoComponent } from './medicamento/excel-medicamento/excel-medicamento.component';
+import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
+import { CrearVetComponent } from './admin/vet/crear-vet/crear-vet.component';
+import { ActualizarVetComponent } from './admin/vet/actualizar-vet/actualizar-vet.component';
 
 const routes: Routes = [
   { path: 'dueno/add', component: CrudDuenoComponent , canActivate: [AuthGuard], data: { expectedType: 'vet' }},
@@ -44,7 +47,10 @@ const routes: Routes = [
   { path: 'droga-excel', component: ExcelMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
   { path: 'droga/add', component: CrearMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
   { path: 'droga/update/:id', component: ActualizarMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
-  
+  { path: 'admin', component: IndexAdminComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
+  { path: 'vet/add', component: CrearVetComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
+  { path: 'vet/update/:id', component: ActualizarVetComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
+
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
 

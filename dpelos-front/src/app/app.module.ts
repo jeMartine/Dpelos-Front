@@ -39,9 +39,9 @@ import { ListaMedicamentoComponent } from './medicamento/lista-medicamento/lista
 import { CrearMedicamentoComponent } from './medicamento/crear-medicamento/crear-medicamento.component';
 import { ActualizarMedicamentoComponent } from './medicamento/actualizar-medicamento/actualizar-medicamento.component';
 import { ExcelMedicamentoComponent } from './medicamento/excel-medicamento/excel-medicamento.component';
-import { CrearVetComponent } from './empleado/vet/crear-vet/crear-vet.component';
-import { ActualizarVetComponent } from './empleado/vet/actualizar-vet/actualizar-vet.component';
-import { EditarVetComponent } from './empleado/vet/editar-vet/editar-vet.component';
+import { CrearVetComponent } from './admin/vet/crear-vet/crear-vet.component';
+import { ActualizarVetComponent } from './admin/vet/actualizar-vet/actualizar-vet.component';
+import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
 
 
 @NgModule({
@@ -79,7 +79,7 @@ import { EditarVetComponent } from './empleado/vet/editar-vet/editar-vet.compone
     ExcelMedicamentoComponent,
     CrearVetComponent,
     ActualizarVetComponent,
-    EditarVetComponent,
+    IndexAdminComponent,
   ],
   imports: [
     BrowserModule, 
