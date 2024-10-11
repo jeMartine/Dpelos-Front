@@ -19,14 +19,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./crear-mascota.component.css'],
 })
 export class CrearMascotaComponent {
-
   cedulaDueno: string = '';
   nombreDueno: string = '';
   dueno?: Dueno;
   razas: Raza[] = [];
   enfermedades: Enfermedad[] = [];
   sendMascota!: Mascota;
-
 
   constructor(
     private router: Router, 
@@ -40,7 +38,6 @@ export class CrearMascotaComponent {
 
 
   ngOnInit() {
-
    this.razaService.findAll().subscribe(
     (razasRest)=>{
       this.razas = razasRest
@@ -52,13 +49,12 @@ export class CrearMascotaComponent {
       this.enfermedades = enfRest
     }
    )
-    
   }
   
   mascota: Mascota = {
     idMascota: 0,
     nombreMascota: '',
-    edadMascota: 0,
+    edadMascota: undefined,
     urlFotoMascota: '',
     fechaCreacion: undefined,
     estado: true,

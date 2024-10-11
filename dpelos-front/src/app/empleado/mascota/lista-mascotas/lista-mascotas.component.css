@@ -135,4 +135,28 @@ main {
 	background-color: rgba(255, 255, 255, 0.8); 
 	z-index: 10;
   }
+
+  .container-paginacion{
+	display: flex;
+	width: 90%;
+	padding-right: 15px;
+	justify-content: end;
+  }
+
+  .container-paginacion p{
+	margin: 0;
+	font-weight: 500;
+	color: #ababab;
+  }
+
+  .btn-primary{
+	background-color: #ff8f34;
+	border-color: #ff8f34;
+  }
+
+  .btn-primary:active{
+	background-color: #fc801a;
+	border-color: #fc801a;
+  }
+  
   

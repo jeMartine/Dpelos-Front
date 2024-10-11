@@ -71,6 +71,7 @@
           required
           name="edadMascota"
           [(ngModel)]="mascota.edadMascota"
+          [value]="mascota.edadMascota !== undefined ? mascota.edadMascota : ''"
         />
       </div>
     </div>
@@ -94,7 +95,7 @@
           name="razaMascota" 
           class="form-control"
           required>
-            <option value="" disabled selected>Selecciona una raza</option>
+            <option [ngValue]="undefined" disabled>Selecciona una raza</option>
             <option *ngFor="let raza of razas" [ngValue]="raza">
               {{ raza.razaMascota }}
             </option>
@@ -110,7 +111,7 @@
         name="enfermedadMascota"
         class="form-control"
         required>
-          <option value="" disabled selected>Enfermedad de la mascota</option>
+          <option [ngValue]="undefined" disabled>Enfermedad de la mascota</option>
           <option *ngFor="let enfermedad of enfermedades" [ngValue]="enfermedad">
             {{ enfermedad.nombreEnfermedad }}
           </option>

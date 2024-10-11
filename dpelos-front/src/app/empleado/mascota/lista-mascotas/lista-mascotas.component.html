@@ -1,13 +1,13 @@
 <app-header-veterinario></app-header-veterinario>
 <main id="inicio">
-
+  <!--Spinner de carga-->
   <div *ngIf="isLoading" class="spinner-container d-flex justify-content-center align-items-center">
     <div class="spinner-border text-primary" role="status">
       <span class="sr-only">Cargando...</span>
     </div>
   </div>
-  
 
+  <!--Sección de busqueda-->
   <section id="buscarMascotas" *ngIf="!isLoading">
     <div class="input-group justify-content-center">
       <div class="form-outline" data-mdb-input-init>
@@ -16,11 +16,11 @@
           type="search"
           class="form-control"
           (input)="onSearchInput($event)"
-          (keydown.enter)="searchDroga()"
+          (keydown.enter)="searchMascotas()"
           placeholder="Busca una mascota D'Pelos"
         />
       </div>
-      <button id="search-button" type="button" class="btn btn-primary" (click)="searchDroga()">
+      <button id="search-button" type="button" class="btn btn-primary" (click)="searchMascotas()">
         <i class="fas fa-search"></i>
       </button>
       <a type="button" class="btn btn-añadir" [routerLink]="['/mascota/add']"
@@ -31,9 +31,17 @@
       >
     </div>
   </section>
+
+  <!--Contador de paginación-->
+  <div class="container-paginacion mb-3" *ngIf="!isLoading">
+    <p>{{ displayedMascotas.length === 0 ? '0' : (currentPage - 1) * pageSize + 1 }} - {{ (currentPage - 1) * pageSize + displayedMascotas.length }} de {{ totalMascotas }} mascotas</p>
+  </div>
+  
+
+  <!--Tarjetas de las mascotas-->
   <div id="card-container" class="container" *ngIf="!isLoading">
     <div class="d-flex justify-content-center flex-wrap">
-      <div class="col-md-4" *ngFor="let mascota of mascotas">
+      <div class="col-md-4" *ngFor="let mascota of displayedMascotas">
         <div
           class="card mb-4"
         >
@@ -81,6 +89,25 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!--Botones de paginación-->
+  <div class="d-flex justify-content-center mb-3" *ngIf="!isLoading && totalMascotas > pageSize">
+    <button class="btn btn-primary mx-2" (click)="previousPage()" [disabled]="currentPage === 1">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+    <button
+      class="btn btn-primary mx-2"
+      (click)="nextPage()"
+      [disabled]="currentPage * pageSize >= totalMascotas"
+    >
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </button>
+  </div>
+  
+  <!--Alerta de no resultados-->
+  <div *ngIf="noResults" class="alert alert-warning text-center mt-3 mb-4">
+    <i class="fas fa-dog"></i> No se encontraron coincidencias para tu búsqueda <i class="fas fa-dog"></i>
   </div>
 </main>
 <app-footer></app-footer>
