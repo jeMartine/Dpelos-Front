@@ -75,7 +75,7 @@
           class="form-control"
           (ngModelChange)="checkFormDirty()"
           required>
-            <option value="" disabled selected>Selecciona una raza</option>
+            <option value="" disabled selected>Selecciona una especialidad</option>
             <option *ngFor="let especialidad of especialidad" [ngValue]="especialidad">
               {{ especialidad.nombreEspecialidad}}
             </option>

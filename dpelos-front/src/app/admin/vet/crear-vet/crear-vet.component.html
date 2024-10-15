@@ -75,13 +75,31 @@
             class="form-control"
             (ngModelChange)="checkFormDirty()"
             required>
-              <option value="" disabled selected>Selecciona una raza</option>
+              <option value="" disabled selected>Selecciona una especialidad</option>
               <option *ngFor="let especialidad of especialidad" [ngValue]="especialidad">
                 {{ especialidad.nombreEspecialidad}}
               </option>
           </select>
         </div>
       </div>
+        <!-- 
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input
+            type="text"
+            name="nombreMascota"
+            class="form-control"
+            id="nombreMascota"
+            placeholder="Contraseña"
+            required
+            [(ngModel)]="veterinario.passwordVeterinario"
+            (ngModelChange)="checkFormDirty()"
+            pattern="[A-Za-z0-9\s]+"
+            title="Ingresa una clave valida"
+          />
+        </div>
+      </div> -->
+
       <div class="botones">
         <button
           type="submit"

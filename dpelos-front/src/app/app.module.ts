@@ -48,6 +48,7 @@ import { ActualizarTratamientoComponent } from './empleado/tratamientos/actualiz
 import { AgregarMedicamentoComponent } from './empleado/tratamientos/agregar-medicamento/agregar-medicamento.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -98,6 +99,7 @@ import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
     AppRoutingModule, 
     CarouselModule, 
     FormsModule,
+    NgbModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(

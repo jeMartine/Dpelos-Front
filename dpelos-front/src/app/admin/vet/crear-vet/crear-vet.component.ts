@@ -42,42 +42,36 @@ export class CrearVetComponent {
 
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const id = Number(params.get('id'));
 
-      this.veterinarioService
-        .findById(id)
-        .pipe(
-          mergeMap((veterinarioInfo) => {
-            this.veterinario = veterinarioInfo;
-            this.originalVeterinario = { ...this.veterinario };
-            return forkJoin({
-              especialidad: this.especialidadService.findAll(),
-            });
-          })
-        )
-        .subscribe(
-          ({ especialidad }) => {
-            //cargar datos de la especialidad y asignar seleccionada
-            this.especialidad = especialidad;
-            this.veterinario.especialidad = this.especialidad.find(
-              (especialidad) =>
-                especialidad.idEspecialidad ===
-                this.veterinario.especialidad?.idEspecialidad
-            );
-          },
-          (error) => {
-            this.toast.error(error.message, 'Error', {
-              timeOut: 3000,
-              positionClass: 'toast-top-center',
-            });
-          }
-        );
-    });
+    this.especialidadService.findAll().subscribe(
+      (especialidadRest) =>{
+        this.especialidad =  especialidadRest
+      },
+      (error) => {
+        this.toast.error(error.message, 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    )
+
   }
 
   veterinarioCreate(){
+    this.sendVeterinario = Object.assign({}, this.veterinario);
 
+    if(this.especialidad){
+      this.toast.success("Veterinario Guardada con éxito", 'Ok', {
+        timeOut: 3000,
+        positionClass: 'toast-top-center',
+      });
+      //Contraseña quemada para todos los veterinarios
+      this.sendVeterinario.passwordVeterinario = "dpelos123"
+      this.veterinarioService.addVeterinario(this.sendVeterinario)
+    }else{
+      console.error("No existe especialidad")
+    }
+    this.location.back();
   }
 
   regresar() {
@@ -88,7 +82,7 @@ export class CrearVetComponent {
       });
     }, 0);
   }
-  
+
   checkFormDirty() {
     this.isFormDirty =
       JSON.stringify(this.originalVeterinario) !== JSON.stringify(this.veterinario);
