@@ -5,7 +5,9 @@
       <div
         class="container d-flex align-items-center justify-content-center flex-column"
       >
-        <p class="bienvenida_titulo mb-10">D'pelos</p>
+        <p class="bienvenida_titulo mb-10">
+          Hay {{ totalMascotas }} mascotas en D'pelos!
+        </p>
         <p class="bienvenida mb-0">¡Manten todo bajo control!</p>
       </div>
     </div>
@@ -43,21 +45,21 @@
     <div
       class="container d-flex align-items-center justify-content-center flex-row info-cards"
     >
-      <div class="card registro-mascota">
+      <!-- <div class="card registro-mascota">
         <p>
           Tu veterinaria ha recopilado $1.500.000 en el mes de agosto.<br /><br />
           Conoce el los movimientos de tu veterinaria.
         </p>
         <a [routerLink]="['/vet']" class="boton">Ver movimientos</a>
-      </div>
+      </div> -->
       <div>
         <div class="card-media">
-          <p>Tienes {{ totalVets }} veterinarios aliados a D'Pelos</p>
+          <p>Tienes {{ totalVets }} veterinarios aliados a D'Pelos.</p>
         </div>
         <div class="card-media">
           <p>
             D'Pelos tiene a disposición {{ totalDrogas }} medicamentos para
-            tratar a los peluditos
+            tratar a los peluditos.
           </p>
         </div>
       </div>
@@ -67,6 +69,14 @@
         </div>
         <div class="card-media">
           <p>Mascotas en Tratamiento (Activas): {{ totalMascotasActivas }}.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card-media">
+          <p>Total de Ventas de la Veterinaria: ${{ totalVentas }}.</p>
+        </div>
+        <div class="card-media">
+          <p>Total de Ganancias de la Veterinaria: ${{ totalGancias }} .</p>
         </div>
       </div>
     </div>

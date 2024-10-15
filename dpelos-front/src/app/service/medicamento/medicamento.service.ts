@@ -58,4 +58,11 @@ export class MedicamentoService {
   obtenerTotalDrogas(): Observable<number> {
     return this.http.get<number>(`${this.drogaURL}/total`);
   }
+
+  obtenerTotalVentas(): Observable<number> {
+    return this.http.get<number>(`${this.drogaURL}/totalVentas`);
+  }
+  obtenerTotalGanancias(): Observable<number> {
+    return this.http.get<number>(`${this.drogaURL}/totalGanancias`);
+  }
 }

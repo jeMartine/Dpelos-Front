@@ -17,6 +17,8 @@ export class IndexAdminComponent {
   totalDrogas: number = 0;
   totalTratamientos: number = 0;
   totalMascotasActivas: number = 0;
+  totalVentas: number = 0.0;
+  totalGancias: number = 0.0;
   constructor(
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
@@ -30,6 +32,8 @@ export class IndexAdminComponent {
     this.obtenerTotalDrogas();
     this.obtenerTotalTratamientos();
     this.obtenerTotalMascotasActivas();
+    this.obtenerTotalVentas();
+    this.obtenerTotalGanancias();
   }
 
   obtenerTotalMascotas(): void {
@@ -86,6 +90,28 @@ export class IndexAdminComponent {
       },
       (error) => {
         console.error('Error al obtener el total de mascotas activas:', error);
+      }
+    );
+  }
+
+  obtenerTotalVentas(): void {
+    this.drogasService.obtenerTotalVentas().subscribe(
+      (total: number) => {
+        this.totalVentas = total;
+      },
+      (error) => {
+        console.error('Error al obtener el total de ventas:', error);
+      }
+    );
+  }
+
+  obtenerTotalGanancias(): void {
+    this.drogasService.obtenerTotalGanancias().subscribe(
+      (total: number) => {
+        this.totalGancias = total;
+      },
+      (error) => {
+        console.error('Error al obtener el total de ganancias:', error);
       }
     );
   }
