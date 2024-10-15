@@ -29,6 +29,7 @@ export class ActualizarVetComponent implements OnInit {
     passwordVeterinario: '',
     fotoUrl: '',
     numeroAtenciones: 0,
+    estadoVeterinario: true, // Add this line
   };
   locationStrategy: any;
 

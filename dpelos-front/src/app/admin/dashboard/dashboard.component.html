@@ -1,0 +1,67 @@
+<app-header-admin></app-header-admin>
+<main id="inicio">
+  <section id="info-Veterinario">
+    <div class="container">
+      <div
+        class="container d-flex align-items-center justify-content-center flex-column"
+      >
+        <p class="bienvenida_titulo mb-10">Dashboard D'pelos</p>
+        <p class="bienvenida mb-0">¡Manten todo bajo control!</p>
+      </div>
+    </div>
+
+    <!-- imagenes de fondo -->
+    <img src="/assets/images/landing/curaBannerT1.png" class="cura1" />
+    <img src="/assets/images/landing/curaBannerT2.png" class="cura2" />
+    <img src="/assets/images/landing/curaBannerT1.png" class="cura3" />
+    <img src="/assets/images/landing/curaBannerT3.png" class="cura4" />
+    <img src="/assets/images/landing/curaBannerT1.png" class="cura5" />
+    <img src="/assets/images/landing/curaBannerT2.png" class="cura6" />
+    <img src="/assets/images/landing/curaBannerT1.png" class="cura7" />
+  </section>
+
+  <div
+    class="container d-flex align-items-center justify-content-center flex-row info-cards"
+  >
+    <div>
+      <div class="card-media">
+        <p><b>Total Veterinarios:</b> {{ totalVets }}.</p>
+      </div>
+      <div class="card-media">
+        <p><b>Total Medicamentos:</b> {{ totalDrogas }}.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card-media">
+        <p><b>Tratamientos en el último mes:</b> {{ totalTratamientos }}.</p>
+      </div>
+      <div class="card-media">
+        <p>
+          <b>Mascotas en Tratamiento (Activas):</b> {{ totalMascotasActivas }}.
+        </p>
+      </div>
+    </div>
+    <div>
+      <div class="card-media">
+        <p><b>Total de Ventas de la Veterinaria:</b> ${{ totalVentas }}.</p>
+      </div>
+      <div class="card-media">
+        <p>
+          <b>Total de Ganancias de la Veterinaria:</b> ${{ totalGancias }} .
+        </p>
+      </div>
+    </div>
+    <div>
+      <div class="card-media">
+        <p><b>Veterinarios Activos:</b> {{ totalVetActivos }}.</p>
+      </div>
+      <div class="card-media">
+        <p><b>Veterinarios Inactivos:</b> {{ totalVetInactivos }}.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="info-servicios">
+    <a class="btn servicio-btn" [routerLink]="['/admin']"> Regresar </a>
+  </section>
+</main>
