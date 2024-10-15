@@ -3,32 +3,32 @@
   <section id="DatosMascota">
     <div class="mascota-info">
       <div class="mascota-info-image">
-        <img [src]="tratamiento?.mascota?.urlFotoMascota" alt="foto" />
+        <img [src]="tratamiento.mascota?.urlFotoMascota" alt="foto" />
       </div>
       <div class="mascota-info-details">
-        <h2>Tratamiento de {{ tratamiento?.mascota?.nombreMascota }}</h2>
+        <h2>Tratamiento de {{ tratamiento.mascota?.nombreMascota }}</h2>
         <p class="fechaAdministracion">
           <strong>Fecha de Registro:</strong>
-          {{ tratamiento?.mascota?.fechaCreacion | date : "dd/MM/yyyy" }}
+          {{ tratamiento.mascota?.fechaCreacion | date : "dd/MM/yyyy" }}
         </p>
         <p>
-          <strong>Nombre:</strong> {{ tratamiento?.mascota?.nombreMascota }}
+          <strong>Nombre:</strong> {{ tratamiento.mascota?.nombreMascota }}
         </p>
         <p>
-          <strong>Raza:</strong> {{ tratamiento?.mascota?.raza?.razaMascota }}
+          <strong>Raza:</strong> {{ tratamiento.mascota?.raza?.razaMascota }}
         </p>
         <p>
-          <strong>Edad:</strong> {{ tratamiento?.mascota?.edadMascota }} años
+          <strong>Edad:</strong> {{ tratamiento.mascota?.edadMascota }} años
         </p>
         <p class="estado">
           <strong>Estado:</strong>
           {{
-            tratamiento?.mascota?.estado ? "En tratamiento" : "Sin tratamiento"
+            tratamiento.mascota?.estado ? "En tratamiento" : "Sin tratamiento"
           }}
         </p>
         <p>
           <strong>Enfermedad:</strong>
-          {{ tratamiento?.mascota?.enfermedad?.nombreEnfermedad }}
+          {{ tratamiento.mascota?.enfermedad?.nombreEnfermedad }}
         </p>
       </div>
     </div>
@@ -73,7 +73,11 @@
         <div *ngIf="selectedMedicamentos.length === 0">
           <p>No hay medicamentos seleccionados.</p>
         </div>
-        <br />
+        <ul *ngIf="selectedMedicamentos.length > 0">
+          <li *ngFor="let medicamento of selectedMedicamentos">
+            {{ medicamento.nombreDroga }}
+          </li>
+        </ul>
         <span>Recomendaciones generales</span>
         <textarea
           class="form-control"

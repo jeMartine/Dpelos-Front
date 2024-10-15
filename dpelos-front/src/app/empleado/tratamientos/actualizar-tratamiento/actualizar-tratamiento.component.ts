@@ -35,7 +35,7 @@ export class ActualizarTratamientoComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
-
+  
       this.tratamientoService
         .findById(id)
         .pipe(
@@ -43,14 +43,14 @@ export class ActualizarTratamientoComponent {
             this.tratamiento = tratamientoInfo;
             this.originalTratamiento = { ...this.tratamiento };
             this.isLoading = false;
-
-            // Devolver un Observable vacío ya que no hay más operaciones
-            return of(null);
+  
+            // Cargar los medicamentos asociados al tratamiento
+            return this.tratamientoService.getMedicamentosPorTratamiento(id);
           })
         )
         .subscribe(
-          () => {
-            // Aquí podrías cargar más datos si es necesario.
+          (medicamentos: Droga[]) => {
+            this.selectedMedicamentos = medicamentos;
           },
           (error) => {
             this.toast.error(error.message, 'Error', {
@@ -62,6 +62,7 @@ export class ActualizarTratamientoComponent {
         );
     });
   }
+  
   removeMedicamento(medicamento: Droga): void {
     const index = this.selectedMedicamentos.indexOf(medicamento);
     if (index !== -1) {

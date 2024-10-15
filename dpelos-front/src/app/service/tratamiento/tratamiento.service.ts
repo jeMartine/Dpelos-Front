@@ -47,9 +47,9 @@ export class TratamientoService {
   updateMedicamentosDelTratamiento(idTratamiento: number, medicamentos: Droga[]): Observable<void> {
     return this.http.put<void>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`, medicamentos);
   }
-  
+
   getMedicamentosPorTratamiento(idTratamiento: number): Observable<Droga[]> {
-    return this.http.get<Droga[]>(`${this.tratamientoURL}/tratamientos/${idTratamiento}/medicamentos`)
+    return this.http.get<Droga[]>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`)
       .pipe(
         catchError((error: any) => {
           console.error('Error en la llamada al servicio:', error); // Imprime el error en la consola
