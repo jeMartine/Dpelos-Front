@@ -7,6 +7,7 @@ import { Veterinario } from 'src/app/entidades/Veterinario';
 import { EspecialidadService } from 'src/app/service/especialidad/especialidad.service';
 import { VeterinarioService } from 'src/app/service/veterinario/veterinario.service';
 import { VetStateService } from 'src/app/service/vetState/vet-state.service';
+import { Location, LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-actualizar-vet',
@@ -29,12 +30,14 @@ export class ActualizarVetComponent implements OnInit {
     fotoUrl: '',
     numeroAtenciones: 0,
   };
+  locationStrategy: any;
 
   constructor(
     private veterinarioService: VeterinarioService,
     private especialidadService: EspecialidadService,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private toast: ToastrService
   ) {}
 
@@ -79,34 +82,32 @@ export class ActualizarVetComponent implements OnInit {
     });
   }
 
+  //FUnción para actualizar un veterinario
   veterinarioUpdate(): void {
     this.sendVeterinario = Object.assign({}, this.veterinario);
+    this.toast.success('Veterinario actualizadoo con éxito', 'Ok', {
+      timeOut: 3000,
+      positionClass: 'toast-top-center',
+    });
+    this.veterinarioService.updateVeterinario(this.sendVeterinario);
 
-    this.veterinarioService.updateVeterinario(this.sendVeterinario).subscribe(
-      (response) => {
-        console.log('Veterinario actualizado:', response);
-        this.router.navigate(['/veterinario']);
-        this.toast.success('Veterinario actualizado con éxito', 'Éxito', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      },
-      (error) => {
-        console.error('Error actualizando veterinario:', error);
-        this.toast.error('Error actualizando veterinario', 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
+    this.router.navigate(['/vet/list']);
   }
 
+  //Función para regresar a la vista anterior
   regresar() {
-    this.router.navigate(['/mascota']);
+    this.location.back();
+    setTimeout(() => {
+      this.locationStrategy.onPopState(() => {
+        window.location.reload();
+      });
+    }, 0);
   }
 
+  //Función para comprobar si hay cambios
   checkFormDirty() {
     this.isFormDirty =
-      JSON.stringify(this.originalVeterinario) !== JSON.stringify(this.veterinario);
+      JSON.stringify(this.originalVeterinario) !==
+      JSON.stringify(this.veterinario);
   }
 }

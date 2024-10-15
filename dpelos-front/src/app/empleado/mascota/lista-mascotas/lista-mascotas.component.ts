@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Mascota } from 'src/app/entidades/Mascota';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -30,11 +30,19 @@ export class ListaMascotasComponent {
 
   constructor(
     private mascotaService: MascotaService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadMascotas(this.currentPage);
+
+    //Obtiene el evento de cambio de ruta y actualiza la lista de mascotas
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.loadMascotas(this.currentPage);
+      }
+    });
   }
 
   //Función para cargar todas las mascotas por paginas

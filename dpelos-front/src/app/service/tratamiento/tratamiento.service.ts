@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Droga } from 'src/app/entidades/Droga';
 import { Page } from 'src/app/entidades/Page';
 import { Tratamiento } from 'src/app/entidades/Tratamiento';
@@ -44,11 +44,19 @@ export class TratamientoService {
     return this.http.get<Tratamiento[]>(`${this.tratamientoURL}/buscar`, { params });
   }
 
-  getMedicamentosPorTratamiento(idTratamiento: number): Observable<Droga[]> {
-    return this.http.get<Droga[]>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`);
-  }
   updateMedicamentosDelTratamiento(idTratamiento: number, medicamentos: Droga[]): Observable<void> {
     return this.http.put<void>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`, medicamentos);
   }
   
+  getMedicamentosPorTratamiento(idTratamiento: number): Observable<Droga[]> {
+    return this.http.get<Droga[]>(`${this.tratamientoURL}/tratamientos/${idTratamiento}/medicamentos`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('Error en la llamada al servicio:', error); // Imprime el error en la consola
+          return throwError(error); // Propaga el error
+        })
+      );
+  }
+  
+
 }

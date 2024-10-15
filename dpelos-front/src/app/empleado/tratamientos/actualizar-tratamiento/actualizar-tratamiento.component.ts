@@ -9,7 +9,7 @@ import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.serv
 @Component({
   selector: 'app-actualizar-tratamiento',
   templateUrl: './actualizar-tratamiento.component.html',
-  styleUrls: ['./actualizar-tratamiento.component.css']
+  styleUrls: ['./actualizar-tratamiento.component.css'],
 })
 export class ActualizarTratamientoComponent {
   sendTratamiento!: Tratamiento;
@@ -17,12 +17,12 @@ export class ActualizarTratamientoComponent {
     recomendacionesGenerales: '',
     fechaAdministracion: new Date(),
     descripcionTratamiento: '',
-    estado: false
+    estado: false,
   };
   originalTratamiento!: Tratamiento;
   isFormDirty: boolean = false;
   mostrarTratamientoFlag: boolean = true;
-  selectedMedicamentos: Droga[] = []; 
+  selectedMedicamentos: Droga[] = [];
   isLoading: boolean = true;
 
   constructor(
@@ -36,27 +36,30 @@ export class ActualizarTratamientoComponent {
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
 
-      this.tratamientoService.findById(id).pipe(
-        mergeMap((tratamientoInfo) => {
-          this.tratamiento = tratamientoInfo;
-          this.originalTratamiento = { ...this.tratamiento };
-          this.isLoading = false;
+      this.tratamientoService
+        .findById(id)
+        .pipe(
+          mergeMap((tratamientoInfo) => {
+            this.tratamiento = tratamientoInfo;
+            this.originalTratamiento = { ...this.tratamiento };
+            this.isLoading = false;
 
-          // Devolver un Observable vacío ya que no hay más operaciones
-          return of(null); 
-        })
-      ).subscribe(
-        () => {
-          // Aquí podrías cargar más datos si es necesario.
-        },
-        (error) => {
-          this.toast.error(error.message, 'Error', {
-            timeOut: 3000,
-            positionClass: 'toast-top-center',
-          });
-          this.isLoading = false;
-        }
-      );
+            // Devolver un Observable vacío ya que no hay más operaciones
+            return of(null);
+          })
+        )
+        .subscribe(
+          () => {
+            // Aquí podrías cargar más datos si es necesario.
+          },
+          (error) => {
+            this.toast.error(error.message, 'Error', {
+              timeOut: 3000,
+              positionClass: 'toast-top-center',
+            });
+            this.isLoading = false;
+          }
+        );
     });
   }
   removeMedicamento(medicamento: Droga): void {
@@ -73,15 +76,27 @@ export class ActualizarTratamientoComponent {
 
   //Función para msotrar la vista de resumen
   mostrarResumen(): void {
-    this.mostrarTratamientoFlag = false; 
+    this.mostrarTratamientoFlag = false;
   }
 
   regresar(): void {
-    this.router.navigate(['/tratamientos']); 
+    this.router.navigate(['/tratamientos']);
   }
 
   checkFormDirty(): void {
-    this.isFormDirty = JSON.stringify(this.originalTratamiento) !== JSON.stringify(this.tratamiento);
+    this.isFormDirty =
+      JSON.stringify(this.originalTratamiento) !==
+      JSON.stringify(this.tratamiento);
   }
 
+  navigateToAgregarMedicamento() {
+    const tratamientoId = this.tratamiento.idTratamiento;
+    console.log('Navegando a Medicamentos con ID:', tratamientoId);
+
+    this.router.navigate([
+      '/tratamiento/update',
+      tratamientoId,
+      'addMedicamento',
+    ]);
+  }
 }

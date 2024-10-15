@@ -28,7 +28,7 @@ export class HeaderAdminComponent {
     }
   }
   cerrarSesion(): void {
-    this.loginService.logout('userVet', "isVetLogged")
+    this.loginService.logout('userAdmin', "isAdminLogged")
     this.router.navigate(['/home']);
   }
 
