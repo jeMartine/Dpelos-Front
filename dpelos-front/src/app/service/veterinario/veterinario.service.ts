@@ -25,7 +25,7 @@ export class VeterinarioService {
   }
 
   updateVeterinario(vet: Veterinario) {
-    return this.http.put<Veterinario>(`${this.vetURL}/update`, vet); 
+    this.http.put(this.vetURL + '/update', vet).subscribe(); 
 }
 
   addVeterinario(vet: Veterinario) {
