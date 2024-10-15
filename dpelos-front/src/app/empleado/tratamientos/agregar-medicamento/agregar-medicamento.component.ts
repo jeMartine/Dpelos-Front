@@ -40,12 +40,19 @@ export class AgregarMedicamentoComponent {
   ){}
 
   ngOnInit() {
+    this.loadDrogas(this.currentPage);
     this.route.params.subscribe(params => {
-      this.tratamientoId = +params['idTratamiento'];
-      this.loadDrogas(this.currentPage);
-      this.loadMedicamentosDelTratamiento(this.tratamientoId);
-    });
+      this.tratamientoId = +params['id'];
+      console.log('ID de tratamiento antes de la llamada:', this.tratamientoId);
+      if (!isNaN(this.tratamientoId)) {
+          this.loadMedicamentosDelTratamiento(this.tratamientoId);
+      } else {
+          console.error('ID de tratamiento inválido:', this.tratamientoId);
+      }
+  });
+  
   }
+  
 
   //Función para cargar todas las drogas por paginas
   loadDrogas(page: number) {
@@ -172,12 +179,19 @@ export class AgregarMedicamentoComponent {
     }
   }
 
-  loadMedicamentosDelTratamiento(idTratamiento: number) {
+  loadMedicamentosDelTratamiento(idTratamiento: number = 1) {
+    if (isNaN(idTratamiento) || idTratamiento <= 0) {
+      console.error('ID de tratamiento inválido:', idTratamiento);
+      return;
+    }
+  
     this.tratamientoService.getMedicamentosPorTratamiento(idTratamiento).subscribe(
       (response) => {
+        console.log('Medicamentos recibidos:', response);
         this.selectedMedicamentos = response;
       },
       (error) => {
+        console.error('Error al cargar los medicamentos del tratamiento:', error);
         this.toast.error("Error al cargar los medicamentos del tratamiento", 'Error', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
@@ -185,6 +199,7 @@ export class AgregarMedicamentoComponent {
       }
     );
   }
+  
 
 
   confirmarAdicion() {
