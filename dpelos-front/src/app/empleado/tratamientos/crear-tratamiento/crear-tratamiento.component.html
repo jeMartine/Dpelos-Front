@@ -1,0 +1,93 @@
+<app-header-veterinario></app-header-veterinario>
+
+<section id="DatosMascota">
+    <div class="mascota-info">
+      <div class="mascota-info-image">
+        <img [src]="tratamiento.mascota?.urlFotoMascota" alt="foto" />
+      </div>
+      <div class="mascota-info-details">
+        <h2>Tratamiento de {{ tratamiento.mascota?.nombreMascota }}</h2>
+        <p class="fechaAdministracion">
+          <strong>Fecha de Registro:</strong>
+          {{ tratamiento.mascota?.fechaCreacion | date : "dd/MM/yyyy" }}
+        </p>
+        <p>
+          <strong>Nombre:</strong> {{ tratamiento.mascota?.nombreMascota }}
+        </p>
+        <p>
+          <strong>Raza:</strong> {{ tratamiento.mascota?.raza?.razaMascota }}
+        </p>
+        <p>
+          <strong>Edad:</strong> {{ tratamiento.mascota?.edadMascota }} años
+        </p>
+        
+        <p>
+          <strong>Enfermedad:</strong>
+          {{ tratamiento.mascota?.enfermedad?.nombreEnfermedad }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tratamiento">
+    <!-- Barra de botones -->
+    <div class="botones">
+      <button
+        (click)="crearTratamiento()"
+        [class.active]="mostrarTratamientoFlag"
+      >
+        Tratamiento
+      </button>
+      <button
+        (click)="mostrarHistorial()"
+        [class.active]="!mostrarTratamientoFlag"
+      >
+        Historial
+      </button>
+    </div>
+
+    <div class="contenido-dinamico">
+        <ng-container *ngIf="mostrarTratamientoFlag; else resumenTemplate">
+          <h3 class="Detalles text-center">Detalles del Tratamiento</h3>
+          <p class="fechaAdministracion">
+            <span>Fecha de inicio de Tratamiento: </span>
+            {{ tratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM" }}
+          </p>
+          <br />
+          <span>Motivo de tratamiento</span>
+          <textarea
+            class="form-control mb-3"
+            [(ngModel)]="tratamiento.descripcionTratamiento"
+          ></textarea>
+  
+          <span>Medicamentos</span>
+          <i
+            class="fas fa-plus"
+            style="margin-left: 8px; cursor: pointer; font-size: 20px"
+            (click)=" navigateToAgregarMedicamento()"
+          ></i>
+          <div *ngIf="selectedMedicamentos.length === 0">
+            <p>No hay medicamentos seleccionados.</p>
+          </div>
+          <ul *ngIf="selectedMedicamentos.length > 0">
+            <li *ngFor="let medicamento of selectedMedicamentos">
+              {{ medicamento.nombreDroga }}
+            </li>
+          </ul>
+          <span>Recomendaciones generales</span>
+          <textarea
+            class="form-control"
+            [(ngModel)]="tratamiento.recomendacionesGenerales"
+          ></textarea>
+          <div class="button-container">
+            <button class="btn btn-primary">Guardar</button>
+            <button (click)="regresar()" class="btn btn-secondary">Cancelar</button>
+          </div>
+        </ng-container>
+  
+        <ng-template #resumenTemplate>
+          <p>holaaa</p>
+        </ng-template>
+      </div>
+  </section>
+<app-footer></app-footer>

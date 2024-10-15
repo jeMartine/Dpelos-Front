@@ -29,6 +29,7 @@ import { ListaTratamientosComponent } from './empleado/tratamientos/lista-tratam
 import { ActualizarTratamientoComponent } from './empleado/tratamientos/actualizar-tratamiento/actualizar-tratamiento.component';
 import { AgregarMedicamentoComponent } from './empleado/tratamientos/agregar-medicamento/agregar-medicamento.component';
 import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
+import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
 
 const routes: Routes = [
   { path: 'dueno/add', component: CrudDuenoComponent , canActivate: [AuthGuard], data: { expectedType: 'vet' }},
@@ -60,6 +61,7 @@ const routes: Routes = [
   { path: 'tratamientos', component: ListaTratamientosComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
   { path: 'tratamiento/update/:id', component: ActualizarTratamientoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
   { path: 'tratamiento/update/:id/addMedicamento', component: AgregarMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
+  { path: 'tratamiento/add/:idMascota', component: CrearTratamientoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];
