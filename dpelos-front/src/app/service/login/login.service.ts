@@ -26,7 +26,6 @@ export class LoginService {
         const user = restBackend.user;
         const role = restBackend.role;
 
-
         if (role === 'VET') {
           localStorage.setItem('isVetLogged', 'true');        
           localStorage.setItem('userVet', JSON.stringify(user));
@@ -36,8 +35,8 @@ export class LoginService {
           localStorage.setItem('userAdmin', JSON.stringify(user));
           this.router.navigate(['/admin']);
         } else if (role === 'DUENO'){
-          localStorage.setItem('isDuenoLogged', 'true');        
-          localStorage.setItem('userDeno', JSON.stringify(user));
+          localStorage.setItem('isDuenoLogged', 'true');
+          localStorage.setItem('userDueno', JSON.stringify(user));        
           this.router.navigate(['/cliente']);
         }
       },
