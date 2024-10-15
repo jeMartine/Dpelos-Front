@@ -48,7 +48,7 @@ export class ListaVetComponent implements OnInit{
         this.noResults = this.veterinarios.length === 0;
       },
       (error) => {
-        this.toast.error('Error al cargar las mascotas', 'Error', {
+        this.toast.error('Error al cargar las veterinario', 'Error', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
