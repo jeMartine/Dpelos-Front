@@ -63,6 +63,20 @@ export class ActualizarTratamientoComponent {
     });
   }
   
+  finalizarTratamiento(): void {
+    this.tratamiento.estado = false;
+    
+    this.tratamientoService.updateTratamiento(this.tratamiento).subscribe();
+    this.toast.success('Tratamiento finalizado correctamente.', 'Éxito');
+    this.router.navigate(['/tratamientos']); // Redirigir a la lista de tratamientos
+  
+  }
+
+  calcularTotal(): number {
+    return this.selectedMedicamentos.reduce((total, medicamento) => {
+      return total + (medicamento.precioVenta || 0); // Suma el precio de cada medicamento, manejando el caso de precios nulos
+    }, 0);
+  }
   removeMedicamento(medicamento: Droga): void {
     const index = this.selectedMedicamentos.indexOf(medicamento);
     if (index !== -1) {

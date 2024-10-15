@@ -89,6 +89,33 @@
         <h3>Resumen del Tratamiento</h3>
         <p>{{ tratamiento.fechaAdministracion }}</p>
         <!--Mostrar el precio total por todos los medicamentos-->
+        <!-- Tabla de medicamentos -->
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nombre del Medicamento</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let medicamento of selectedMedicamentos">
+              <td>{{ medicamento.nombreDroga }}</td>
+              <td>{{ medicamento.precioVenta | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mostrar el precio total de los medicamentos -->
+        <div class="total">
+          <strong>Total: </strong> {{ calcularTotal() | currency }}
+        </div>
+
+        <!-- Botón de finalizar tratamiento -->
+        <div class="finalizar-tratamiento mt-3">
+          <button class="btn btn-success" (click)="finalizarTratamiento()">
+            Finalizar Tratamiento
+          </button>
+        </div>
       </ng-template>
     </div>
 
