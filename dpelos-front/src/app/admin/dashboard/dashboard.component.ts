@@ -4,7 +4,7 @@ import { MascotaService } from 'src/app/service/mascota/mascota.service';
 import { MedicamentoService } from 'src/app/service/medicamento/medicamento.service';
 import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.service';
 import { VeterinarioService } from 'src/app/service/veterinario/veterinario.service';
-
+// import { TrataDrogaAux } from 'src/app/entidades/TrataDrogaAux';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,7 +21,7 @@ export class DashboardComponent {
   totalGancias: number = 0.0;
   totalVetActivos: number = 0;
   totalVetInactivos: number = 0;
-
+  // tratamientosMasVendidos?: TrataDrogaAux;
   constructor(
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
@@ -39,6 +39,7 @@ export class DashboardComponent {
     this.obtenerTotalGanancias();
     this.obtenerTotalVetActivos();
     this.obtenerTotalVetInactivos();
+    // this.obtenerTratamientosMasVendidos();
   }
 
   obtenerTotalMascotas(): void {
@@ -148,4 +149,17 @@ export class DashboardComponent {
       }
     );
   }
+
+  // obtenerTratamientosMasVendidos(): void {
+  //   this.tratamientoService.tratamientosMasUnidadesVendidas().subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       const tratamientos = response.slice(0, 3); // Extract the first three elements
+  //       this.tratamientosMasVendidos = tratamientos; // Store the data
+  //     },
+  //     (error) => {
+  //       console.error('Error al obtener los tratamientos más vendidos:', error);
+  //     }
+  //   );
+  // }
 }

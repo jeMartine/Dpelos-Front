@@ -7,11 +7,10 @@ import { Tratamiento } from 'src/app/entidades/Tratamiento';
 import { environment } from 'src/app/environments/environment.prod';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TratamientoService {
-
-  tratamientoURL = environment.apiResrURL+`/tratamiento`;
+  tratamientoURL = environment.apiResrURL + `/tratamiento`;
 
   constructor(private http: HttpClient) {}
 
@@ -27,11 +26,11 @@ export class TratamientoService {
     this.http.post(this.tratamientoURL + '/add', tratamiento).subscribe();
   }
 
-  updateTratamiento(tratamiento: Tratamiento){
+  updateTratamiento(tratamiento: Tratamiento) {
     this.http.put(this.tratamientoURL + '/update', tratamiento).subscribe();
   }
 
-  deleteById(id: number){
+  deleteById(id: number) {
     this.http.delete(`${this.tratamientoURL}/delete/${id}`).subscribe();
   }
 
@@ -39,17 +38,28 @@ export class TratamientoService {
     return this.http.get<Tratamiento[]>(`${this.tratamientoURL}/activos`);
   }
 
-  buscarTratamientosPorNombre(nombreMascota: string): Observable<Tratamiento[]> {
+  buscarTratamientosPorNombre(
+    nombreMascota: string
+  ): Observable<Tratamiento[]> {
     const params = new HttpParams().set('nombre', nombreMascota);
-    return this.http.get<Tratamiento[]>(`${this.tratamientoURL}/buscar`, { params });
+    return this.http.get<Tratamiento[]>(`${this.tratamientoURL}/buscar`, {
+      params,
+    });
   }
 
-  updateMedicamentosDelTratamiento(idTratamiento: number, medicamentos: Droga[]): Observable<void> {
-    return this.http.put<void>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`, medicamentos);
+  updateMedicamentosDelTratamiento(
+    idTratamiento: number,
+    medicamentos: Droga[]
+  ): Observable<void> {
+    return this.http.put<void>(
+      `${this.tratamientoURL}/${idTratamiento}/medicamentos`,
+      medicamentos
+    );
   }
 
   getMedicamentosPorTratamiento(idTratamiento: number): Observable<Droga[]> {
-    return this.http.get<Droga[]>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`)
+    return this.http
+      .get<Droga[]>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`)
       .pipe(
         catchError((error: any) => {
           console.error('Error en la llamada al servicio:', error); // Imprime el error en la consola
@@ -57,6 +67,10 @@ export class TratamientoService {
         })
       );
   }
-  
 
+  // tratamientosMasUnidadesVendidas(): Observable<Tratamiento[]> {
+  //   return this.http.get<Tratamiento[]>(
+  //     `${this.tratamientoURL}/masUnidadesVendidas`
+  //   );
+  // }
 }
