@@ -56,4 +56,8 @@ export class MascotaService {
   obtenerTotalMascotas(): Observable<number> {
     return this.http.get<number>(`${this.mascotaURL}/total`);
   }
+
+  obtenerTotalMascotasActivas(): Observable<number> {
+    return this.http.get<number>(`${this.mascotaURL}/totalActivas`);
+  }
 }
