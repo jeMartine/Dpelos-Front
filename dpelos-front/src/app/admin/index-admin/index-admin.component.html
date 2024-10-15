@@ -1,1 +1,69 @@
-<p>index-admin works!</p>
+<app-header-admin></app-header-admin>
+<main id="inicio">
+    <section id="info-Veterinario">
+      <div class="container">
+        <div
+          class="container d-flex align-items-center justify-content-center flex-column"
+        >
+          <p class="bienvenida_titulo mb-10"> 
+            D'pelos ha atendido {{totalMascotas}} peluditos
+          </p>
+          <p class="bienvenida mb-0">¡Manten todo bajo control!</p>
+        </div>
+      </div>
+
+      <!-- imagenes de fondo -->
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura1" />
+      <img src="/assets/images/landing/curaBannerT2.png" class="cura2" />
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura3" />
+      <img src="/assets/images/landing/curaBannerT3.png" class="cura4" />
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura5" />
+      <img src="/assets/images/landing/curaBannerT2.png" class="cura6" />
+      <img src="/assets/images/landing/curaBannerT1.png" class="cura7" />
+    </section>
+
+    <section id="info-servicios">
+      <div
+        class="container d-flex align-items-center justify-content-center flex-row servicios"
+      >
+        <a class="btn servicio-btn">
+          <img src="/assets/images/admin/verificar.png">
+          Dashboard
+        </a>
+
+        <a class="btn servicio-btn" [routerLink]="['/vet/list']">
+            <img src="/assets/images/admin/veterinario.png">
+            Veterinarios</a>
+
+        <a 
+          [routerLink]="['/droga']"
+          class="btn servicio-btn">
+          <img src="/assets/images/empleados/pill.png">
+          Medicamentos</a>
+
+      </div>
+
+      <div
+        class="container d-flex align-items-center justify-content-center flex-row info-cards"
+      >
+        <div class="card registro-mascota">
+          <p>Tu veterinaria ha recopilado $1.500.000 en el mes de agosto.<br/><br/>
+            Conoce el los movimientos de tu veterinaria.
+          </p>
+          <a 
+          [routerLink]="['/vet']"
+            class="boton">Ver movimientos</a>
+        </div>
+        <div >
+          <div class="card-media">
+            <p>Tienes {{totalVets}} veterinarios aliados a D'Pelos</p>
+          </div>
+          <div class="card-media">
+          <p>D'Pelos tiene a disposición {{totalDrogas}} para tratar a los peluditos</p>
+        </div>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+<app-footer></app-footer>

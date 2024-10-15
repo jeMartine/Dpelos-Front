@@ -1,1 +1,101 @@
-<p>actualizar-vet works!</p>
+<app-header-admin></app-header-admin>
+<main>
+  <div class="container-titulo">
+    <p>Actualizar Mascota</p>
+  </div>
+  <form
+    id="formUpdateMascota"
+    #mascotaUpdateForm="ngForm"
+    (ngSubmit)="veterinarioUpdate()"
+  >
+  <div class="row duenoField">
+    <div class=" col-md-6">
+      <input
+        name="cedulaDueno"
+        type="number"
+        class="form-control"
+        id="cedulaDueno"
+        placeholder="Cédula del veterinario"
+        required
+        [(ngModel)]="veterinario.cedulaVeterinario"
+      />
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="nombreMascota"
+          class="form-control"
+          id="nombreMascota"
+          placeholder="Nombre del veterinario"
+          required
+          [(ngModel)]="veterinario.nombreVeterinario"
+          (ngModelChange)="checkFormDirty()"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El nombre solo puede contener letras y espacios"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="edadMascota"
+          class="form-control"
+          id="edadMascota"
+          placeholder="Apellido del veterinario"
+          required
+          [(ngModel)]="veterinario.apellidoVeterinario"
+          (ngModelChange)="checkFormDirty()"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El apellido solo puede contener letras y espacios"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="urlFotoMascota"
+          class="form-control"
+          id="urlFotoMascota"
+          placeholder="Url foto"
+          required
+          [(ngModel)]="veterinario.fotoUrl"
+          (ngModelChange)="checkFormDirty()"
+        />
+      </div>
+
+      <!-- Menú Desplegable de Especialidad -->
+      <div class="form-group col-md-6">
+        <select 
+          [(ngModel)]="veterinario.especialidad" 
+          name="razaMascota" 
+          class="form-control"
+          (ngModelChange)="checkFormDirty()"
+          required>
+            <option value="" disabled selected>Selecciona una raza</option>
+            <option *ngFor="let especialidad of especialidad" [ngValue]="especialidad">
+              {{ especialidad.nombreEspecialidad}}
+            </option>
+        </select>
+      </div>
+    </div>
+    <div class="botones">
+      <button
+        type="submit"
+        class="btn btn-primary mr-4"
+        id="ActualizarMascota"
+        [disabled]="!isFormDirty || !mascotaUpdateForm.form.valid"
+      >
+        Actualizar Mascota
+      </button>
+      <a type="button" class="btn btn-secundary" (click)="regresar()"
+        >Regresar</a
+      >
+    </div>
+  
+  </form>
+</main>
+<app-footer></app-footer>

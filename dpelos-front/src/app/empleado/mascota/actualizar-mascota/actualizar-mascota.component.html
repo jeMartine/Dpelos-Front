@@ -61,6 +61,7 @@
           placeholder="Nombre de la mascotas"
           required
           [(ngModel)]="mascota.nombreMascota"
+          (ngModelChange)="checkFormDirty()"
           pattern="[A-Za-zÀ-ÿ\s]+"
           title="El nombre solo puede contener letras y espacios"
         />
@@ -74,6 +75,7 @@
           placeholder="Edad"
           required
           [(ngModel)]="mascota.edadMascota"
+          (ngModelChange)="checkFormDirty()"
         />
       </div>
     </div>
@@ -88,6 +90,7 @@
           placeholder="Url foto"
           required
           [(ngModel)]="mascota.urlFotoMascota"
+          (ngModelChange)="checkFormDirty()"
         />
       </div>
 
@@ -97,6 +100,7 @@
           [(ngModel)]="mascota.raza" 
           name="razaMascota" 
           class="form-control"
+          (ngModelChange)="checkFormDirty()"
           required>
             <option value="" disabled selected>Selecciona una raza</option>
             <option *ngFor="let raza of razas" [ngValue]="raza">
@@ -111,6 +115,7 @@
       <!-- Menú Desplegable de Enfermedades -->
       <select 
         [(ngModel)]="mascota.enfermedad" 
+        (ngModelChange)="checkFormDirty()"
         name="enfermedadMascota"
         class="form-control"
         required>
@@ -127,7 +132,7 @@
         type="submit"
         class="btn btn-primary mr-4"
         id="ActualizarMascota"
-        [disabled]="!mascotaUpdateForm.form.valid"
+        [disabled]="!isFormDirty || !mascotaUpdateForm.form.valid"
       >
         Actualizar Mascota
       </button>

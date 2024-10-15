@@ -24,6 +24,11 @@ import { ExcelMedicamentoComponent } from './medicamento/excel-medicamento/excel
 import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
 import { CrearVetComponent } from './admin/vet/crear-vet/crear-vet.component';
 import { ActualizarVetComponent } from './admin/vet/actualizar-vet/actualizar-vet.component';
+import { VerMedicamentoComponent } from './medicamento/ver-medicamento/ver-medicamento.component';
+import { ListaTratamientosComponent } from './empleado/tratamientos/lista-tratamientos/lista-tratamientos.component';
+import { ActualizarTratamientoComponent } from './empleado/tratamientos/actualizar-tratamiento/actualizar-tratamiento.component';
+import { AgregarMedicamentoComponent } from './empleado/tratamientos/agregar-medicamento/agregar-medicamento.component';
+import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
 
 const routes: Routes = [
   { path: 'dueno/add', component: CrudDuenoComponent , canActivate: [AuthGuard], data: { expectedType: 'vet' }},
@@ -48,8 +53,13 @@ const routes: Routes = [
   { path: 'droga/add', component: CrearMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
   { path: 'droga/update/:id', component: ActualizarMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
   { path: 'admin', component: IndexAdminComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
+  { path: 'vet/list', component: ListaVetComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
   { path: 'vet/add', component: CrearVetComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
   { path: 'vet/update/:id', component: ActualizarVetComponent, canActivate: [AuthGuard], data: { expectedType: 'admin' }},
+  { path: 'detalle-medicamento/:id', component: VerMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
+  { path: 'tratamientos', component: ListaTratamientosComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
+  { path: 'tratamiento/update/:id', component: ActualizarTratamientoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
+  { path: 'tratamiento/update/:id/addMedicamento', component: AgregarMedicamentoComponent, canActivate: [AuthGuard], data: { expectedType: 'vet' }},
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];

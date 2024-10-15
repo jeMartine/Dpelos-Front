@@ -8,7 +8,7 @@ import { DuenoService } from 'src/app/service/dueno/dueno.service';
 import { EnfermedadService } from 'src/app/service/enfermedad/enfermedad.service';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
 import { RazaService } from 'src/app/service/raza/raza.service';
-import { Location } from '@angular/common';
+import { Location, LocationStrategy } from '@angular/common';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { ToastrService } from 'ngx-toastr';
 
@@ -33,7 +33,8 @@ export class CrearMascotaComponent {
     private enfermedadService: EnfermedadService, 
     private duenoService: DuenoService,
     private location: Location,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private locationStrategy: LocationStrategy
   ) {}
 
 
@@ -84,6 +85,11 @@ export class CrearMascotaComponent {
 
   regresar() {
     this.location.back();
+    setTimeout(() => {
+      this.locationStrategy.onPopState(() => {
+        window.location.reload();
+      });
+    }, 0);
   }
 
   verificarDueno(){

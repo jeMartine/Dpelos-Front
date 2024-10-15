@@ -1,0 +1,123 @@
+<app-header-veterinario></app-header-veterinario>
+
+<main id="agregar-medicamento">
+  <!--Sección de búsqueda-->
+  <section *ngIf="!isLoading" id="buscarMascotas">
+    <div class="input-group justify-content-center">
+      <div class="form-outline" data-mdb-input-init>
+        <input
+          id="search-input"
+          type="search"
+          class="form-control"
+          [(ngModel)]="searchTerm"
+          (keydown.enter)="onSearchInput()"
+          placeholder="Busca un medicamento D'Pelos"
+        />
+      </div>
+      <button
+        id="search-button"
+        type="button"
+        class="btn btn-primary"
+        (click)="onSearchInput()"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+      <!-- Contador de paginación -->
+      <div class="container-paginacion mb-3" *ngIf="!isLoading">
+        <p>
+          {{ drogas.length === 0 ? "0" : (currentPage - 1) * pageSize + 1 }} -
+          {{
+            currentPage * pageSize > totalMedicamentos
+              ? totalMedicamentos
+              : currentPage * pageSize
+          }}
+          de {{ totalMedicamentos }} medicamentos
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container d-flex flex-row">
+    <!-- Tarjetas de medicamentos -->
+    <div id="card-container" class="container mt-4 flex-grow-1">
+      <div class="d-flex justify-content-center flex-wrap">
+        <div class="col-md-4" *ngFor="let droga of drogas">
+          <div class="card mb-4">
+            <img
+              src="{{ droga.urlFotoDroga }}"
+              class="img-mascotas"
+              alt="Foto de la droga"
+            />
+            <p class="titulo">
+              <span>{{ droga.nombreDroga }} </span>
+            </p>
+            <p class="precio">
+              <span> ${{ droga.precioVenta | number : "1.0-0" }} </span>
+            </p>
+            <div
+              class="d-flex flex-wrap align-items-center ml-auto"
+              style="gap: 20px"
+            >
+              <i
+                class="fas fa-plus fa-2x"
+                (click)="addMedicamento(droga)"
+                style="cursor: pointer"
+                aria-label="Añadir"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cuadro que muestra los medicamentos seleccionados -->
+    <div
+      class="medicamento-list"
+    >
+      <h4 class="text-center">Medicamentos Seleccionados</h4>
+      <ul style="padding: 0; margin-bottom: auto">
+        <li
+          *ngFor="let medicamento of selectedMedicamentos"
+          class="medicamento-item"
+        >
+          <span>{{ medicamento.nombreDroga }}</span>
+          <i
+            class="fas fa-trash"
+            (click)="removeMedicamento(medicamento)"
+            style="cursor: pointer"
+          ></i>
+        </li>
+      </ul>
+      <button class="btn btn-enviar mt-3" (click)="confirmarAdicion()">
+        Añadir Medicamento
+      </button>
+    </div>
+  </div>
+
+  <!-- Mensaje de éxito o error -->
+  <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+
+  <!-- Botones de paginación -->
+  <div
+    class="d-flex justify-content-center align-items-center mb-3"
+    *ngIf="totalPages > 0 && totalMedicamentos > 0"
+  >
+    <button
+      class="btn btn-primary mx-2"
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+    >
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button
+      class="btn btn-primary mx-2"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </button>
+  </div>
+</main>
+
+<app-footer></app-footer>

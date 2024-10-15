@@ -42,6 +42,12 @@ import { ExcelMedicamentoComponent } from './medicamento/excel-medicamento/excel
 import { CrearVetComponent } from './admin/vet/crear-vet/crear-vet.component';
 import { ActualizarVetComponent } from './admin/vet/actualizar-vet/actualizar-vet.component';
 import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
+import { VerMedicamentoComponent } from './medicamento/ver-medicamento/ver-medicamento.component';
+import { ListaTratamientosComponent } from './empleado/tratamientos/lista-tratamientos/lista-tratamientos.component';
+import { ActualizarTratamientoComponent } from './empleado/tratamientos/actualizar-tratamiento/actualizar-tratamiento.component';
+import { AgregarMedicamentoComponent } from './empleado/tratamientos/agregar-medicamento/agregar-medicamento.component';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
 
 
 @NgModule({
@@ -80,6 +86,12 @@ import { IndexAdminComponent } from './admin/index-admin/index-admin.component';
     CrearVetComponent,
     ActualizarVetComponent,
     IndexAdminComponent,
+    VerMedicamentoComponent,
+    ListaTratamientosComponent,
+    ActualizarTratamientoComponent,
+    AgregarMedicamentoComponent,
+    HeaderAdminComponent,
+    ListaVetComponent,
   ],
   imports: [
     BrowserModule, 

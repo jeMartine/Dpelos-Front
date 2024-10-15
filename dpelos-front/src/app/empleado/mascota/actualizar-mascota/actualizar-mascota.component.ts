@@ -19,13 +19,25 @@ import { RazaService } from 'src/app/service/raza/raza.service';
 })
 export class ActualizarMascotaComponent {
   @Input()
-  mascota!: Mascota;
   sendMascota!: Mascota;
   nombreDueno: string = ''
   cedulaDueno: string = ''
   dueno? : Dueno
   razas: Raza[] = [];
   enfermedades: Enfermedad[] = [];
+  originalMascota!: Mascota;
+  isFormDirty: boolean = false;
+
+  mascota: Mascota = {
+    nombreMascota: '',
+    edadMascota: 0,
+    urlFotoMascota: '',
+    raza: undefined,
+    enfermedad: undefined,
+    estado: true,
+    dueno: undefined,
+    tratamientos: [],
+  };
 
   constructor(
     private mascotaService: MascotaService,
@@ -51,6 +63,7 @@ export class ActualizarMascotaComponent {
         mergeMap(
           (mascotaInfo) =>{
             this.mascota = mascotaInfo;
+            this.originalMascota = { ...this.mascota };
             return forkJoin({
               duenoMascota: this.duenoService.findById(this.mascota.dueno?.idDueno!),
               razas: this.razaService.findAll(),
@@ -58,13 +71,12 @@ export class ActualizarMascotaComponent {
             });
           })
       ).subscribe(
-
         ({duenoMascota, razas, enfermedades}) =>{
           
           //Cargar datos del dueño 
           this.dueno = duenoMascota;
           this.cedulaDueno = duenoMascota.cedulaDueno;
-          this.nombreDueno = duenoMascota.nombreDueno + ' '+ duenoMascota.apellidoDueno;
+          this.nombreDueno = `${duenoMascota.nombreDueno} ${duenoMascota.apellidoDueno}`;
 
           //cargar datos de la raza y asignar seleccionada
           this.razas = razas;
@@ -131,5 +143,9 @@ export class ActualizarMascotaComponent {
   }
   regresar() {
     this.router.navigate(['/mascota']);
+  }
+
+  checkFormDirty() {
+    this.isFormDirty = JSON.stringify(this.originalMascota) !== JSON.stringify(this.mascota);
   }
 }

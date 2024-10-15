@@ -1,0 +1,162 @@
+main {
+	min-height: 23vh;
+  }
+
+.card {
+	width: 300px;
+	height: 350px;
+	background: linear-gradient(to bottom, #d8f9fa, #c0cde1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	border: none;
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.btn-secundary{
+    background-color: #333;
+    border: 1x solid #333;
+    color: white;
+	margin-left: 10px;
+}
+
+.btn-secundary:hover{
+	background-color: #ffffff;
+	color: #94f3d4;
+	border: 1px solid #94f3d4;
+}
+
+#card-container {
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	flex: 1;
+}
+
+.col-md-4 {
+	width: auto;
+	margin-left: 10px;
+	margin-right: 10px;
+  }
+
+.img-mascotas {
+	border-radius: 20px;
+	width: 220px;
+	height: 350px;
+	object-fit: cover;
+	overflow: hidden;
+	object-position: top;
+	box-sizing: border-box;
+}
+
+.card-body {
+	margin-top: 10px;
+	text-align: left;
+	width: 100%;
+	padding: 0 10px;
+}
+
+.titulo {
+	margin-top: 10px;
+	text-align: center;
+	margin-bottom: 0;
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+}
+
+.card-text strong {
+	font-weight: 600;
+}
+#icon-eliminar,
+#icon-editar {
+	font-size: 10px;
+	color: #ff8f34;
+}
+
+#icon-eliminar:hover,
+#icon-editar:hover {
+	color: #333;
+}
+
+/*search*/
+#buscarMascotas {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+#buscarMascotas .input-group {
+	margin-top: 8px;
+	display: flex;
+	align-items: center;
+}
+
+#search-input {
+	height: 40px;
+	width: 500px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#search-button {
+	background-color: #ff8f34;
+	border: #ff8f34 1px solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	width: auto;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#buscarMascotas .btn-añadir {
+	background-color: #94f3d4;
+	border: 1px solid #94f3d4;
+	color: #000000;
+	font-weight: 500;
+	margin-left: 100px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.spinner-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.8); 
+	z-index: 10;
+  }
+
+  .container-paginacion{
+	display: flex;
+	width: 90%;
+	padding-right: 15px;
+	justify-content: end;
+  }
+
+  .container-paginacion p{
+	margin: 0;
+	font-weight: 500;
+	color: #ababab;
+  }
+
+  .btn-primary{
+	background-color: #ff8f34;
+	border-color: #ff8f34;
+  }
+
+  .btn-primary:active{
+	background-color: #fc801a;
+	border-color: #fc801a;
+  }
+  
+  

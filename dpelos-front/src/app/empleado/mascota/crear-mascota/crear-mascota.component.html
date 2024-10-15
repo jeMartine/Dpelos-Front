@@ -111,7 +111,7 @@
         name="enfermedadMascota"
         class="form-control"
         required>
-          <option [ngValue]="undefined" disabled>Enfermedad de la mascota</option>
+          <option [ngValue]="undefined" disabled selected>Enfermedad de la mascota</option>
           <option *ngFor="let enfermedad of enfermedades" [ngValue]="enfermedad">
             {{ enfermedad.nombreEnfermedad }}
           </option>

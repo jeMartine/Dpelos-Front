@@ -1,0 +1,62 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-white">
+      <div class="container-fluid">
+        <a type="button" (click)="homeEmpreado()">
+          <img
+            src="/assets/images/logo.png"
+            alt="logo D'pelos"
+            id="logo"
+            class="img-fluid"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link li_header" [routerLink]="['/admin']"
+                >Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link li_header" [routerLink]="['/']"
+              >Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link li_header" [routerLink]="['/']"
+              >Medicamentos</a>
+            </li>
+          
+            <li class="nav-item">
+              <a [routerLink]="['/vet/list']" class="nav-link li_header"
+                >Veterinarios</a
+              >
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <fa-icon [icon]="logoutIcon" class="fa-lg me-3" style="cursor: pointer;" (click)="cerrarSesion()"></fa-icon>
+            </li>
+            <li class="nav-item">
+              <a type="button">
+                <img
+                  src="/assets/images/administrador.png" 
+                  alt="User Icon"
+                  id="userIcon"
+                  class="img-perfil rounded-circle me-3"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  

@@ -1,0 +1,75 @@
+<app-header-veterinario></app-header-veterinario>
+<div class="container">
+  <!-- Spinner de carga -->
+  <div
+    *ngIf="isLoading"
+    class="spinner-container d-flex justify-content-center align-items-center"
+  >
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Sección de búsqueda -->
+  <section id="buscarTratamientos" *ngIf="!isLoading">
+    <div class="input-group justify-content-center">
+      <div class="form-outline" data-mdb-input-init>
+        <input
+          id="search-input"
+          type="search"
+          class="form-control"
+          [(ngModel)]="searchTerm"
+          (keydown.enter)="onSearchInput()"
+          placeholder="Busca una mascota D'Pelos en tratamiento"
+        />
+      </div>
+      <button
+        id="search-button"
+        type="button"
+        class="btn btn-primary"
+        (click)="onSearchInput()"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- Tarjetas de tratamientos -->
+  <div *ngIf="tratamientos.length > 0" class="tratamiento-list">
+    <div *ngFor="let tratamiento of tratamientos" class="tratamiento-card">
+      <img
+        [src]="tratamiento.mascota?.urlFotoMascota"
+        alt="{{ tratamiento.mascota?.nombreMascota }}"
+        class="mascota-img"
+      />
+      <div class="tratamiento-info ml-3">
+        <p class="titulo">
+          <span>{{ tratamiento.mascota?.nombreMascota }}</span>
+          <i class="fas fa-paw ml-2"></i>
+        </p>
+        <p>
+          <span>Nombre del dueño: </span
+          >{{ tratamiento.mascota?.dueno?.nombreDueno }}
+        </p>
+        <p>
+          <span>Fecha de inicio de tratamiento: </span
+          >{{ tratamiento.fechaAdministracion | date : "fullDate" }}
+        </p>
+        <p>
+          <span>Estado: </span
+          >{{ tratamiento.estado ? "En tratamiento" : "Finalizado" }}
+        </p>
+        <div class="tratamiento-button-container">
+            <button class="tratamiento-button" [routerLink]="['/tratamiento/update', tratamiento.idTratamiento]">Ver tratamiento</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alerta de no resultados -->
+  <div *ngIf="noResults" class="alert alert-warning text-center mt-3 mb-4">
+    <i class="fas fa-dog"></i> {{ mensajeError }} <i class="fas fa-dog"></i>
+  </div>
+</div>
+
+<app-footer></app-footer>

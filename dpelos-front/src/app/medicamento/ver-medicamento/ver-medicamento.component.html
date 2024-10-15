@@ -1,0 +1,62 @@
+<app-header-veterinario></app-header-veterinario>
+<!--Detalle de un medicamento-->
+<div class="detalle-medicamento-container row" *ngIf="medicamento">
+  <div class="medicamento-detalle">
+    <div class="medicamento-imagen">
+      <img [src]="medicamento.urlFotoDroga" alt="Imagen del medicamento" />
+    </div>
+    <div class="medicamento-informacion">
+      <h2 class="medicamento-nombre">{{ medicamento.nombreDroga }}</h2>
+      <p class="precio-venta">
+        Precio de venta:
+        <span>${{ medicamento.precioVenta | number : "1.0-0" }}</span>
+      </p>
+      <div class="disponibilidad">
+        <span
+          class="badge"
+          [ngClass]="{
+            disponible: disponible,
+            agotado: !disponible
+          }"
+        >
+          {{ disponible ? "Disponible" : "Agotado" }}
+        </span>
+      </div>
+      
+
+      <!-- Unidades disponibles -->
+      <p>{{ medicamento.unitDisponibles }} unidades disponibles en tienda</p>
+
+      <!-- Información adicional -->
+      <div class="informacion-adicional">
+        <button
+          (click)="toggleInformacion()"
+          [ngClass]="{
+            'btn-info': !mostrarInformacion,
+            'btn-info-active': mostrarInformacion
+          }"
+          class="btn"
+        >
+          {{
+            mostrarInformacion ? "Ocultar Información" : "Mostrar Información"
+          }}
+        </button>
+        <hr *ngIf="mostrarInformacion" />
+        <div *ngIf="mostrarInformacion">
+          <p>
+            <strong>Precio de compra:</strong> ${{
+              medicamento.precioCompra | number : "1.0-0"
+            }}
+            por unidad
+          </p>
+          <p>
+            <strong>Unidades vendidas:</strong>
+            {{ medicamento.unitVendidas }} unidades
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
