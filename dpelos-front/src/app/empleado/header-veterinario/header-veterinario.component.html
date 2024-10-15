@@ -44,6 +44,9 @@
           <li class="nav-item d-flex align-items-center">
             <fa-icon [icon]="logoutIcon" class="fa-lg me-3" style="cursor: pointer;" (click)="cerrarSesion()"></fa-icon>
           </li>
+          <li class="nav-item d-flex align-items-center">
+            <fa-icon [icon]="passIcon" class="fa-lg me-3" style="cursor: pointer;" (click)="cambiarClave()"></fa-icon>
+          </li>
           <li class="nav-item">
             <a type="button">
               <img
@@ -58,4 +61,37 @@
       </div>
     </div>
   </nav>
+ <!-- Modal -->
+<div #changePasswordModal class="modal fade" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordModalLabel">Cambiar Clave</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #passwordForm="ngForm">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Clave Actual</label>
+            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nueva Clave</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" required ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirmar Nueva Clave</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required ngModel>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="guardarNuevaClave()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </header>

@@ -1,7 +1,7 @@
 <app-header-admin></app-header-admin>
 <main>
   <div class="container-titulo">
-    <p>Actualizar Mascota</p>
+    <p>Actualizar Veterinario</p>
   </div>
   <form
     id="formUpdateMascota"
@@ -75,7 +75,7 @@
           class="form-control"
           (ngModelChange)="checkFormDirty()"
           required>
-            <option value="" disabled selected>Selecciona una raza</option>
+            <option value="" disabled selected>Selecciona una especialidad</option>
             <option *ngFor="let especialidad of especialidad" [ngValue]="especialidad">
               {{ especialidad.nombreEspecialidad}}
             </option>
@@ -89,7 +89,7 @@
         id="ActualizarMascota"
         [disabled]="!isFormDirty || !mascotaUpdateForm.form.valid"
       >
-        Actualizar Mascota
+        Actualizar veterinario
       </button>
       <a type="button" class="btn btn-secundary" (click)="regresar()"
         >Regresar</a
