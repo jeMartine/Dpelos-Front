@@ -7,6 +7,7 @@ import { Veterinario } from 'src/app/entidades/Veterinario';
 import { EspecialidadService } from 'src/app/service/especialidad/especialidad.service';
 import { VeterinarioService } from 'src/app/service/veterinario/veterinario.service';
 import { VetStateService } from 'src/app/service/vetState/vet-state.service';
+import { Location, LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-actualizar-vet',
@@ -29,12 +30,14 @@ export class ActualizarVetComponent implements OnInit {
     fotoUrl: '',
     numeroAtenciones: 0,
   };
+  locationStrategy: any;
 
   constructor(
     private veterinarioService: VeterinarioService,
     private especialidadService: EspecialidadService,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private toast: ToastrService
   ) {}
 
@@ -102,7 +105,12 @@ export class ActualizarVetComponent implements OnInit {
   }
 
   regresar() {
-    this.router.navigate(['/mascota']);
+    this.location.back();
+    setTimeout(() => {
+      this.locationStrategy.onPopState(() => {
+        window.location.reload();
+      });
+    }, 0);
   }
 
   checkFormDirty() {
