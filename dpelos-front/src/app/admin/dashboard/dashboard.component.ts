@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Chart } from 'chart.js/auto';
 import { Administrador } from 'src/app/entidades/Administrador';
 import { TratamientoDrogaAux } from 'src/app/entidades/TratamientoDrogaAux';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
@@ -129,6 +130,7 @@ export class DashboardComponent {
     this.veterinarioService.obtenerActivos().subscribe(
       (total: number) => {
         this.totalVetActivos = total;
+        this.verificarYMostrarGrafico();
       },
       (error) => {
         console.error(
@@ -143,6 +145,7 @@ export class DashboardComponent {
     this.veterinarioService.obtenerInactivos().subscribe(
       (total: number) => {
         this.totalVetInactivos = total;
+        this.verificarYMostrarGrafico();
       },
       (error) => {
         console.error(
@@ -179,4 +182,41 @@ export class DashboardComponent {
       }
     );
   }
-}
+
+  verificarYMostrarGrafico() {
+    if (this.totalVetActivos > 0 || this.totalVetInactivos > 0) {
+      this.loadChart(); 
+    }
+  }
+  loadChart() {
+    const canvasElement = document.getElementById('veterinariosChart') as HTMLCanvasElement;
+  
+    if (canvasElement) {
+      new Chart(canvasElement, {
+        type: 'pie',
+        data: {
+          labels: ['Veterinarios Activos', 'Veterinarios Inactivos'],
+          datasets: [{
+            label: 'Distribución de Veterinarios',
+            data: [this.totalVetActivos, this.totalVetInactivos],
+            backgroundColor: ['#36A2EB', '#FF6384'],
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top'
+            }
+          }
+        }
+      });
+    } else {
+      console.error('El elemento canvas no está disponible');
+    }
+  }
+}  
+
+
