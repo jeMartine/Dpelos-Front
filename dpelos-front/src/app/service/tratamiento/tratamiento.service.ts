@@ -27,11 +27,17 @@ export class TratamientoService {
     this.http.post(this.tratamientoURL + '/add', tratamiento).subscribe();
   }
 
-  updateTratamiento(tratamiento: Tratamiento) {
-    this.http.put(this.tratamientoURL + '/update', tratamiento).subscribe();
+  updateTratamiento(tratamiento: Tratamiento): Observable<void> {
+    return this.http.put<void>(`${this.tratamientoURL}/update`, tratamiento)
+      .pipe(
+        catchError((error) => {
+          console.error('Error al actualizar el tratamiento', error);
+          return throwError(error);
+        })
+      );
   }
-
-  deleteById(id: number) {
+  
+  deleteById(id: number){
     this.http.delete(`${this.tratamientoURL}/delete/${id}`).subscribe();
   }
 

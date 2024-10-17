@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Mascota } from 'src/app/entidades/Mascota';
+import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
 import { ToastrService } from 'ngx-toastr';
@@ -31,7 +32,8 @@ export class ListaMascotasComponent {
   constructor(
     private mascotaService: MascotaService,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -150,5 +152,9 @@ export class ListaMascotasComponent {
         ? this.searchMascotas(this.currentPage)
         : this.loadMascotas(this.currentPage);
     }
+  }
+
+  regresar(){
+    this.location.back()
   }
 }

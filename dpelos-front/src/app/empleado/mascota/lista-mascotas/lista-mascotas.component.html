@@ -23,10 +23,10 @@
       <button id="search-button" type="button" class="btn btn-primary" (click)="onSearchInput()">
         <i class="fas fa-search"></i>
       </button>
-      <a type="button" class="btn btn-añadir" [routerLink]="['/vet/add']"
-        >Añadir veterinario</a
+      <a type="button" class="btn btn-añadir" [routerLink]="['/mascota/add']"
+        >Añadir mascota</a
       >
-      <a type="button" class="btn btn-secundary" [routerLink]="['/admin']"
+      <a type="button" class="btn btn-secundary" (click)="regresar()"
         >Regresar</a
       >
     </div>

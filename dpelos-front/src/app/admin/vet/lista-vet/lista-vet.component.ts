@@ -3,6 +3,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { ToastrService } from 'ngx-toastr';
 import { Veterinario } from 'src/app/entidades/Veterinario';
 import { VeterinarioService } from 'src/app/service/veterinario/veterinario.service';
+import { Location, LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-lista-vet',
@@ -24,10 +25,12 @@ export class ListaVetComponent implements OnInit{
   searchTerm: string = '';
   noResults: boolean = false;
   isSearching: boolean = false;
+  locationStrategy: any;
 
   constructor(
     private veterinarioService: VeterinarioService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private location: Location,
   ) {}
 
   ngOnInit(): void {
@@ -141,4 +144,12 @@ export class ListaVetComponent implements OnInit{
     }
   }
 
+  regresar() {
+    this.location.back();
+    setTimeout(() => {
+      this.locationStrategy.onPopState(() => {
+        window.location.reload();
+      });
+    }, 0);
+  }
 }
