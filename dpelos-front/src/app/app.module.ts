@@ -49,6 +49,7 @@ import { AgregarMedicamentoComponent } from './empleado/tratamientos/agregar-med
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
 
 
@@ -94,6 +95,7 @@ import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratami
     AgregarMedicamentoComponent,
     HeaderAdminComponent,
     ListaVetComponent,
+    DashboardComponent,
     CrearTratamientoComponent,
   ],
   imports: [

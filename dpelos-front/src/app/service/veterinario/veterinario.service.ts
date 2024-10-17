@@ -6,41 +6,40 @@ import { Veterinario } from 'src/app/entidades/Veterinario';
 import { environment } from 'src/app/environments/environment.prod';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VeterinarioService {
+  vetURL = environment.apiResrURL + '/vet';
+  constructor(private http: HttpClient) {}
 
-  vetURL = environment.apiResrURL+'/vet';
-  constructor(
-    private http: HttpClient
-  ) { }
-
-    
   findAll(): Observable<Veterinario[]> {
     return this.http.get<Veterinario[]>(this.vetURL);
   }
 
-  findById(id: number):Observable<Veterinario> {
+  findById(id: number): Observable<Veterinario> {
     return this.http.get<Veterinario>(`${this.vetURL}/${id}`);
   }
 
   updateVeterinario(vet: Veterinario) {
-    this.http.put(this.vetURL + '/update', vet).subscribe(); 
-}
+    this.http.put(this.vetURL + '/update', vet).subscribe();
+  }
 
   addVeterinario(vet: Veterinario) {
     this.http.post<Veterinario>(this.vetURL, vet).subscribe();
   }
 
   deleteById(id: number) {
-    this.http.delete(`${this.vetURL}/delete/${id}`, { responseType: 'text' })
-      .subscribe(response => {
-        console.log('Veterinario eliminado:', response);
-      }, error => {
-        console.error('Error eliminando veterinario:', error);
-      });
+    this.http
+      .delete(`${this.vetURL}/delete/${id}`, { responseType: 'text' })
+      .subscribe(
+        (response) => {
+          console.log('Veterinario eliminado:', response);
+        },
+        (error) => {
+          console.error('Error eliminando veterinario:', error);
+        }
+      );
   }
-  
 
   searchByNombrePaginado(
     nombre: string,
@@ -51,6 +50,7 @@ export class VeterinarioService {
       `${this.vetURL}/buscar?nombre=${nombre}&page=${page}&size=${size}`
     );
   }
+
   getVeterinariosPaginados(
     page: number,
     size: number
@@ -62,5 +62,13 @@ export class VeterinarioService {
 
   obtenerTotalVeterinarios(): Observable<number> {
     return this.http.get<number>(`${this.vetURL}/total`);
+  }
+
+  obtenerActivos(): Observable<number> {
+    return this.http.get<number>(`${this.vetURL}/totalActivos`);
+  }
+
+  obtenerInactivos(): Observable<number> {
+    return this.http.get<number>(`${this.vetURL}/totalInactivos`);
   }
 }

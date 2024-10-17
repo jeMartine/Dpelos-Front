@@ -26,7 +26,7 @@
     <div
       class="container d-flex align-items-center justify-content-center flex-row servicios"
     >
-      <a class="btn servicio-btn">
+      <a class="btn servicio-btn" [routerLink]="['/dashboard']">
         <img src="/assets/images/admin/verificar.png" />
         Dashboard
       </a>
@@ -41,45 +41,28 @@
         Medicamentos</a
       >
     </div>
-
-    <div
-      class="container d-flex align-items-center justify-content-center flex-row info-cards"
-    >
-      <!-- <div class="card registro-mascota">
+  </section>
+  <div
+    class="container d-flex align-items-center justify-content-center flex-row info-cards"
+  >
+    <div class="card registro-mascota">
+      <p>
+        Tu veterinaria ha ganado $1.500.000 en el mes de agosto.<br /><br />
+        Conoce el los movimientos de tu veterinaria.
+      </p>
+      <a [routerLink]="['/vet']" class="boton">Ver movimientos</a>
+    </div>
+    <div>
+      <div class="card-media">
+        <p>Tienes {{ totalVets }} veterinarios aliados a D'Pelos.</p>
+      </div>
+      <div class="card-media">
         <p>
-          Tu veterinaria ha recopilado $1.500.000 en el mes de agosto.<br /><br />
-          Conoce el los movimientos de tu veterinaria.
+          D'Pelos tiene a disposición {{ totalDrogas }} medicamentos para tratar
+          a los peluditos.
         </p>
-        <a [routerLink]="['/vet']" class="boton">Ver movimientos</a>
-      </div> -->
-      <div>
-        <div class="card-media">
-          <p>Tienes {{ totalVets }} veterinarios aliados a D'Pelos.</p>
-        </div>
-        <div class="card-media">
-          <p>
-            D'Pelos tiene a disposición {{ totalDrogas }} medicamentos para
-            tratar a los peluditos.
-          </p>
-        </div>
-      </div>
-      <div>
-        <div class="card-media">
-          <p>Tratamientos en el último mes: {{ totalTratamientos }}.</p>
-        </div>
-        <div class="card-media">
-          <p>Mascotas en Tratamiento (Activas): {{ totalMascotasActivas }}.</p>
-        </div>
-      </div>
-      <div>
-        <div class="card-media">
-          <p>Total de Ventas de la Veterinaria: ${{ totalVentas }}.</p>
-        </div>
-        <div class="card-media">
-          <p>Total de Ganancias de la Veterinaria: ${{ totalGancias }} .</p>
-        </div>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 <app-footer></app-footer>
