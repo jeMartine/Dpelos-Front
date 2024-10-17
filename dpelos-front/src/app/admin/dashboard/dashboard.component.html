@@ -58,15 +58,37 @@
       <div class="card-media">
         <p><b>Veterinarios Inactivos:</b> {{ totalVetInactivos }}.</p>
       </div>
-      <!-- <div class="card-media">
-        <p><b>Tratamientos Más Vendidos</b></p>
-        <ul>
+      <div class="card-media">
+        <p><b>Top 3 Tratamientos con las Drogas Más Vendidas</b></p>
+        <ul class="tratamientos-list">
           <li *ngFor="let tratamiento of tratamientosMasVendidos">
-            {{ tratamiento.nombre }} -
-            {{ tratamiento.unidadesVendidas }} unidades vendidas
+            {{ tratamiento }}
           </li>
         </ul>
-      </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add the table here -->
+  <div class="container info-cards">
+    <div class="card-media">
+      <p><b>Tratamientos por Tipo de Droga</b></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID Droga</th>
+            <th>Nombre Droga</th>
+            <th>Tratamientos Atendidos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tratamiento of tratamientosTipoDroga">
+            <td>{{ tratamiento.idDroga }}</td>
+            <td>{{ tratamiento.nombreDroga }}</td>
+            <td>{{ tratamiento.tratamientoCount }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 

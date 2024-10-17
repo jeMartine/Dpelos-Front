@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Administrador } from 'src/app/entidades/Administrador';
+import { TratamientoDrogaAux } from 'src/app/entidades/TratamientoDrogaAux';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
 import { MedicamentoService } from 'src/app/service/medicamento/medicamento.service';
 import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.service';
 import { VeterinarioService } from 'src/app/service/veterinario/veterinario.service';
-// import { TrataDrogaAux } from 'src/app/entidades/TrataDrogaAux';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,7 +22,8 @@ export class DashboardComponent {
   totalGancias: number = 0.0;
   totalVetActivos: number = 0;
   totalVetInactivos: number = 0;
-  // tratamientosMasVendidos?: TrataDrogaAux;
+  tratamientosMasVendidos?: string[];
+  tratamientosTipoDroga?: TratamientoDrogaAux[];
   constructor(
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
@@ -39,7 +41,8 @@ export class DashboardComponent {
     this.obtenerTotalGanancias();
     this.obtenerTotalVetActivos();
     this.obtenerTotalVetInactivos();
-    // this.obtenerTratamientosMasVendidos();
+    this.obtenerTratamientosMasVendidos();
+    this.obtenerTratamientosTipoDroga();
   }
 
   obtenerTotalMascotas(): void {
@@ -150,16 +153,30 @@ export class DashboardComponent {
     );
   }
 
-  // obtenerTratamientosMasVendidos(): void {
-  //   this.tratamientoService.tratamientosMasUnidadesVendidas().subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       const tratamientos = response.slice(0, 3); // Extract the first three elements
-  //       this.tratamientosMasVendidos = tratamientos; // Store the data
-  //     },
-  //     (error) => {
-  //       console.error('Error al obtener los tratamientos más vendidos:', error);
-  //     }
-  //   );
-  // }
+  obtenerTratamientosMasVendidos(): void {
+    this.tratamientoService.tratamientosMasUnidadesVendidas().subscribe(
+      (tratamientos) => {
+        console.log(tratamientos);
+        this.tratamientosMasVendidos = tratamientos;
+      },
+      (error) => {
+        console.error('Error al obtener los tratamientos más vendidos:', error);
+      }
+    );
+  }
+
+  obtenerTratamientosTipoDroga(): void {
+    this.tratamientoService.tratamientosPorTipoDrogas().subscribe(
+      (tratamientos) => {
+        console.log(tratamientos);
+        this.tratamientosTipoDroga = tratamientos;
+      },
+      (error) => {
+        console.error(
+          'Error al obtener los tratamientos por tipo de droga:',
+          error
+        );
+      }
+    );
+  }
 }
