@@ -4,6 +4,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Droga } from 'src/app/entidades/Droga';
 import { Page } from 'src/app/entidades/Page';
 import { Tratamiento } from 'src/app/entidades/Tratamiento';
+import { TratamientoDrogaAux } from 'src/app/entidades/TratamientoDrogaAux';
 import { environment } from 'src/app/environments/environment.prod';
 
 @Injectable({
@@ -68,9 +69,13 @@ export class TratamientoService {
       );
   }
 
-  // tratamientosMasUnidadesVendidas(): Observable<Tratamiento[]> {
-  //   return this.http.get<Tratamiento[]>(
-  //     `${this.tratamientoURL}/masUnidadesVendidas`
-  //   );
-  // }
+  tratamientosMasUnidadesVendidas(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.tratamientoURL}/top3`);
+  }
+
+  tratamientosPorTipoDrogas(): Observable<TratamientoDrogaAux[]> {
+    return this.http.get<TratamientoDrogaAux[]>(
+      `${this.tratamientoURL}/tratamientos-por-tipo-drogas`
+    );
+  }
 }
