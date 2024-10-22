@@ -30,6 +30,8 @@ export class AgregarMedicamentoComponent {
   message: string | null = null;
   tratamiento!: Tratamiento;
   tratamientoId!: number;
+  isCreate = false
+  id_mascota!: number
 
   constructor(
     private drogaService: MedicamentoService,
@@ -41,18 +43,34 @@ export class AgregarMedicamentoComponent {
 
   ngOnInit() {
     this.loadDrogas(this.currentPage);
-    this.route.params.subscribe(params => {
-      this.tratamientoId = +params['id'];
-      console.log('ID de tratamiento antes de la llamada:', this.tratamientoId);
+
+    this.cargarTratamiento()
+
+    if(this.tratamiento){
+      this.tratamientoId = this.tratamiento.idTratamiento!
       if (!isNaN(this.tratamientoId)) {
           this.loadMedicamentosDelTratamiento(this.tratamientoId);
       } else {
-          console.error('ID de tratamiento inválido:', this.tratamientoId);
+          this.isCreate = true
+          var idleido = localStorage.getItem('id_mascota')
+          if(idleido){
+            this.id_mascota = JSON.parse(idleido)
+            localStorage.removeItem('id_mascota')
+
+            this.tratamiento.drogas?.forEach((droga:Droga)=>{
+              this.addMedicamento(droga)
+            })
+          }
       }
-  });
-  
+    }
   }
   
+  cargarTratamiento(){
+    const tratamiento = localStorage.getItem('tratamiento')
+    if(tratamiento){
+      this.tratamiento = JSON.parse(tratamiento)
+    }
+  }
 
   //Función para cargar todas las drogas por paginas
   loadDrogas(page: number) {
@@ -181,46 +199,53 @@ export class AgregarMedicamentoComponent {
 
   loadMedicamentosDelTratamiento(idTratamiento: number = 1) {
     if (isNaN(idTratamiento) || idTratamiento <= 0) {
-      console.error('ID de tratamiento inválido:', idTratamiento);
-      return;
+      console.error('ID de tratamiento invádfdlido:', idTratamiento);
+    }else{
+      this.tratamientoService.getMedicamentosPorTratamiento(idTratamiento).subscribe(
+        (response) => {
+          console.log('Medicamentos recibidos:', response);
+          this.selectedMedicamentos = response;
+        },
+        (error) => {
+          console.error('Error al cargar los medicamentos del tratamiento:', error);
+          this.toast.error("Error al cargar los medicamentos del tratamiento", 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+        }
+      );
     }
-  
-    this.tratamientoService.getMedicamentosPorTratamiento(idTratamiento).subscribe(
-      (response) => {
-        console.log('Medicamentos recibidos:', response);
-        this.selectedMedicamentos = response;
-      },
-      (error) => {
-        console.error('Error al cargar los medicamentos del tratamiento:', error);
-        this.toast.error("Error al cargar los medicamentos del tratamiento", 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
   }
   
 
 
   confirmarAdicion() {
-    this.tratamientoService.updateMedicamentosDelTratamiento(this.tratamientoId, this.selectedMedicamentos).subscribe(
-      () => {
-        this.toast.success('Medicamentos actualizados exitosamente.', 'Éxito', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
+    //Ejecuta si se va a crear un tratamiento, guarda los medicamentos en el local storage
+    if(this.isCreate){
+
+        localStorage.setItem('medicamentosSeleccionados',JSON.stringify( this.selectedMedicamentos))
+        localStorage.removeItem('tratamientos')
         // Redirigir a la pantalla de actualización del tratamiento
-        this.router.navigate(['/tratamiento/update', this.tratamientoId]);
-      },
-      (error) => {
-        this.toast.error('Error al actualizar los medicamentos del tratamiento.', 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
-  
+        this.router.navigate(['/tratamiento/add', this.id_mascota]);
+    }else{    
+      this.tratamientoService.updateMedicamentosDelTratamiento(this.tratamientoId, this.selectedMedicamentos).subscribe(
+        () => {
+          this.toast.success('Medicamentos actualizados exitosamente.', 'Éxito', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+          // Redirigir a la pantalla de actualización del tratamiento
+          this.router.navigate(['/tratamiento/updatetrat', this.tratamiento.idTratamiento]);
+        },
+        (error) => {
+          this.toast.error('Error al actualizar los medicamentos del tratamiento.', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+        }
+      );
     
+    }
   }
   
 

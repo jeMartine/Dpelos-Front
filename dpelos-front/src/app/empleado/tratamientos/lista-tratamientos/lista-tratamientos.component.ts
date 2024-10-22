@@ -79,6 +79,6 @@ export class ListaTratamientosComponent implements OnInit {
 
   //Función para navegar al componente de actualización
   verTratamiento(idTratamiento: number): void {
-    this.router.navigate([`tratamiento/update`, idTratamiento]);
+    this.router.navigate([`tratamiento/updatetrat`, idTratamiento]);
   }
 }

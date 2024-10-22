@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { finalize } from 'rxjs';
 @Component({
   selector: 'app-lista-mascotas',
   templateUrl: './lista-mascotas.component.html',
@@ -38,6 +39,7 @@ export class ListaMascotasComponent {
 
   ngOnInit(): void {
     this.loadMascotas(this.currentPage);
+    localStorage.removeItem('tratamiento')
 
     //Obtiene el evento de cambio de ruta y actualiza la lista de mascotas
     this.router.events.subscribe((event) => {
@@ -51,7 +53,12 @@ export class ListaMascotasComponent {
   loadMascotas(page: number) {
     this.isLoading = true;
     this.isSearching = false;
-    this.mascotaService.getMascotasPaginadas(page - 1, this.pageSize).subscribe(
+
+    this.mascotaService.getMascotasPaginadas(page - 1, this.pageSize).pipe(
+      finalize(() => {
+        this.isLoading = false
+      })
+    ).subscribe(
       (response) => {
         console.log(response);
         this.mascotas = response.content;
@@ -69,6 +76,7 @@ export class ListaMascotasComponent {
       }
     );
   }
+
 
   //Función para eliminar una mascota seleccionada
   deleteMascota(mascota: Mascota): void {
@@ -155,6 +163,6 @@ export class ListaMascotasComponent {
   }
 
   regresar(){
-    this.location.back()
+    this.router.navigate(['/empleado']);
   }
 }

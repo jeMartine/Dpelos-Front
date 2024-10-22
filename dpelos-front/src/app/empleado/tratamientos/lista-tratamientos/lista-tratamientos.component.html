@@ -60,7 +60,8 @@
           >{{ tratamiento.estado ? "En tratamiento" : "Finalizado" }}
         </p>
         <div class="tratamiento-button-container">
-            <button class="tratamiento-button" [routerLink]="['/tratamiento/update', tratamiento.idTratamiento]">Ver tratamiento</button>
+            <!-- <button class="tratamiento-button" [routerLink]="['/tratamiento/update', tratamiento.idTratamiento]">Ver tratamiento</button> -->
+            <button class="tratamiento-button" (click)="verTratamiento(tratamiento.idTratamiento!)">Ver tratamiento</button>
         </div>
       </div>
     </div>

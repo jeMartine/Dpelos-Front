@@ -161,7 +161,7 @@ main {
       display: flex;
       width: 90%;
       padding-right: 15px;
-      justify-content: end;
+      justify-content: flex-end;
     }
   
     .container-paginacion p{

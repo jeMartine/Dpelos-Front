@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { mergeMap, of } from 'rxjs';
 import { Droga } from 'src/app/entidades/Droga';
@@ -62,6 +63,13 @@ export class ActualizarTratamientoComponent {
         );
     });
   }
+
+  cargarTratamiento(){
+    const tratamiento = localStorage.getItem('tratamiento')
+    if(tratamiento){
+      this.tratamiento = JSON.parse(tratamiento)
+    }
+  }
   
   finalizarTratamiento(): void {
     this.tratamiento.estado = false;
@@ -72,11 +80,14 @@ export class ActualizarTratamientoComponent {
   
   }
 
+  // Suma el precio de cada medicamento, manejando el caso de precios nulos
   calcularTotal(): number {
     return this.selectedMedicamentos.reduce((total, medicamento) => {
-      return total + (medicamento.precioVenta || 0); // Suma el precio de cada medicamento, manejando el caso de precios nulos
+      return total + (medicamento.precioVenta || 0); 
     }, 0);
   }
+
+  //Elimina un medicamento del tratamiento
   removeMedicamento(medicamento: Droga): void {
     const index = this.selectedMedicamentos.indexOf(medicamento);
     if (index !== -1) {
@@ -95,6 +106,7 @@ export class ActualizarTratamientoComponent {
   }
 
   regresar(): void {
+    localStorage.removeItem('tratamiento');
     this.router.navigate(['/tratamientos']);
   }
 
@@ -105,13 +117,28 @@ export class ActualizarTratamientoComponent {
   }
 
   navigateToAgregarMedicamento() {
-    const tratamientoId = this.tratamiento.idTratamiento;
-    console.log('Navegando a Medicamentos con ID:', tratamientoId);
-
+    localStorage.setItem('tratamiento', JSON.stringify(this.tratamiento))
     this.router.navigate([
-      '/tratamiento/update',
-      tratamientoId,
-      'addMedicamento',
+      '/tratamiento/update/addMedicamento',
     ]);
   }
+
+  actualizarTratamiento() {
+    this.tratamientoService.updateTratamiento(this.tratamiento).subscribe(
+      response => {
+        // Si la respuesta es exitosa, muestra el mensaje recibido
+        this.toast.success(response, 'Éxito');
+        this.router.navigate(['/tratamientos']); // Redirigir a la lista de tratamientos
+      },
+      error => {
+        // Si ocurre un error, muestra un mensaje adecuado
+        this.toast.error(error.message || 'Error al actualizar el tratamiento', 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
+  }
+  
+  
 }
