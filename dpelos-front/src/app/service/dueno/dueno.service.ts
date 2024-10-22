@@ -31,9 +31,10 @@ export class DuenoService {
     this.http.post<Dueno>(this.duenoURL, dueno).subscribe();
   }
 
-  updateDueno(dueno: Dueno): void {
-    this.http.put<Dueno>(this.duenoURL+"/update", dueno).subscribe();
-  }
+
+  updateDueno(dueno: Dueno): Observable<Dueno> {
+    return this.http.put<Dueno>(this.duenoURL + "/update", dueno);
+  }  
 
   deleteById(id: number) {
     this.http.delete(`${this.duenoURL}/delete/${id}`).subscribe();

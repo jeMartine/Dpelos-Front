@@ -174,7 +174,7 @@
 /* Carrusel de mascotas */
 #listaMascotas {
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 /* Estilo base para los indicadores */
@@ -385,3 +385,55 @@ padding: 5px 10px;
 ::ng-deep .p-carousel-prev {
   display: none;
 }
+
+#info-tratamiento {
+  padding: 20px;
+  margin-left: 180px;
+  margin-right: 180px;
+  background-color: white;
+  border: 2px solid #ff8f34;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#listaTratamientos{
+  margin: 0;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.columna-fechas {
+  width: 27%;
+  margin-right: 20px;
+}
+
+.columna-descripcion {
+  width: 68%;
+}
+
+.tratamiento-fecha {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f0f0f0;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.tratamiento-fecha:hover {
+  background-color: #ddd;
+}
+
+.fecha-item.active .tratamiento-fecha {
+  font-weight: bold;
+  color: #3775ab;
+}
+
+ul {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0; 
+}
+
+

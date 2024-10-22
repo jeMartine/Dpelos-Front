@@ -23,6 +23,11 @@ export class TratamientoService {
     return this.http.get<Tratamiento>(`${this.tratamientoURL}/${id}`);
   }
 
+  findTratamientosByMascotaId(idMascota: number): Observable<Tratamiento[]> {
+  return this.http.get<Tratamiento[]>(`${this.tratamientoURL}/mascota/${idMascota}`);
+}
+
+
   addTratamiento(tratamiento: Tratamiento) {
     this.http.post(this.tratamientoURL + '/add', tratamiento).subscribe();
   }

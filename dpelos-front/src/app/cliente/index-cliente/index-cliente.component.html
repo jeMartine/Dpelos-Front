@@ -4,40 +4,40 @@
     <div class="container">
       <div class="container d-flex align-items-center justify-content-center">
         <img
-          src={{dueno?.fotoUrl}}
+          src="{{ dueno?.fotoUrl }}"
           alt="User Icon"
           id="userIcon"
           class="img-perfil rounded-circle me-3"
         />
-        <p class="bienvenida mb-0">Bienvenido {{dueno?.nombreDueno}}</p>
+        <p class="bienvenida mb-0">Bienvenido {{ dueno?.nombreDueno }}</p>
       </div>
       <div class="info-container">
         <div class="info-item">
           <i class="fas fa-user info-icon"></i>
           <div class="info-content">
             <p class="info-label">Nombre</p>
-            <p>{{dueno?.nombreDueno}} {{dueno?.apellidoDueno}}</p>
+            <p>{{ dueno?.nombreDueno }} {{ dueno?.apellidoDueno }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-id-card info-icon"></i>
           <div class="info-content">
             <p class="info-label">Cédula</p>
-            <p>{{dueno?.cedulaDueno}}</p>
+            <p>{{ dueno?.cedulaDueno }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-envelope info-icon"></i>
           <div class="info-content">
             <p class="info-label">Correo</p>
-            <p>{{dueno?.correoDueno}}</p>
+            <p>{{ dueno?.correoDueno }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-phone info-icon"></i>
           <div class="info-content">
             <p class="info-label">Celular</p>
-            <p>{{dueno?.celularDueno}}</p>
+            <p>{{ dueno?.celularDueno }}</p>
           </div>
         </div>
       </div>
@@ -56,9 +56,21 @@
   <section id="mascota" class="text-center">
     <div class="input-group justify-content-center">
       <div class="form-outline" data-mdb-input-init>
-        <input id="search-input" type="search" class="form-control" placeholder="Buscar mascotas" #searchInput (keyup.enter)="buscarMascota(searchInput.value)" />
+        <input
+          id="search-input"
+          type="search"
+          class="form-control"
+          placeholder="Buscar mascotas"
+          #searchInput
+          (keyup.enter)="buscarMascota(searchInput.value)"
+        />
       </div>
-      <button id="search-button" type="button" class="btn btn-primary" (click)="buscarMascota(searchInput.value)">
+      <button
+        id="search-button"
+        type="button"
+        class="btn btn-primary"
+        (click)="buscarMascota(searchInput.value)"
+      >
         <i class="fas fa-search"></i>
       </button>
     </div>
@@ -129,11 +141,33 @@
         <div class="info-row">
           <i class="fas fa-medkit icon"></i>
           <span class="subtitle">Enfermedad:</span>
-          <span>{{ selectedMascota.enfermedad?.nombreEnfermedad}}</span>
+          <span>{{ selectedMascota.enfermedad?.nombreEnfermedad }}</span>
         </div>
       </div>
     </div>
   </section>
+
+  <section id="listaTratamientos" class="mt-4">
+    <div id="info-tratamiento" *ngIf="selectedMascota" class="d-flex justify-content-between">
+      <div class="columna-fechas">
+        <ul>
+          <li *ngFor="let tratamiento of tratamientos" class="fecha-item" 
+            [class.active]="tratamiento === selectedTratamiento"
+            (click)="mostrarDescripcion(tratamiento)">
+            <div class="tratamiento-fecha">
+              {{ tratamiento.fechaAdministracion | date: 'd \'de\' MMMM \'de\' yyyy' }}
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="columna-descripcion" *ngIf="descripcionTratamiento">
+        <p>{{ descripcionTratamiento }}</p>
+      </div>
+  
+    </div>
+  </section>
+  
+  
 </main>
 
 <app-footer></app-footer>

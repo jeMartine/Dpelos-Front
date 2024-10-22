@@ -1,24 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { Mascota } from 'src/app/entidades/Mascota';
+import { Tratamiento } from 'src/app/entidades/Tratamiento';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
+import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.service';
 
 @Component({
   selector: 'app-index-cliente',
   templateUrl: './index-cliente.component.html',
   styleUrls: ['./index-cliente.component.css']
 })
-export class IndexClienteComponent implements OnInit {
+export class IndexClienteComponent implements OnInit, AfterViewInit {
   mascotas: Mascota[] = [];
   dueno?: Dueno
+  tratamientos: Tratamiento[] = [];
   selectedMascota?: Mascota;
+  selectedTratamiento?: Tratamiento;
   responsiveOptions: any[];
   carouselClass: string = '';
+  descripcionTratamiento: string = '';
+
 
   constructor(
     private toast: ToastrService,
-    private mascotaService: MascotaService
+    private mascotaService: MascotaService,
+    private tratamientoService: TratamientoService 
   ) {
     this.responsiveOptions = [
       {
@@ -40,13 +47,12 @@ export class IndexClienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    
     this.cargarDueno();
     if (this.dueno) {
       this.mascotaService.findMascotasDuenoId(this.dueno.idDueno!).subscribe(
         (mascotas) => {
           this.mascotas = mascotas;
-          this.actualizarCentradoCarousel();
+          console.log("Subir carrusel")
         },
         (error) => {
           this.toast.error(error.error, 'Error', {
@@ -56,7 +62,14 @@ export class IndexClienteComponent implements OnInit {
         }
       );
     }
+    
   }
+
+
+  ngAfterViewInit() {
+    this.actualizarCentradoCarousel();
+  }
+
 
   cargarDueno(){
     const user = localStorage.getItem('userDueno');
@@ -83,7 +96,31 @@ export class IndexClienteComponent implements OnInit {
       this.selectedMascota = undefined;
     } else {
       this.selectedMascota = mascota;
+      if (this.mascotas.length > 0) {
+        this.selectedMascota = this.mascotas[0];
+        this.obtenerTratamientosMascota(this.selectedMascota.idMascota!);
+      }
     }
+  }
+
+  obtenerTratamientosMascota(idMascota: number) {
+    this.tratamientoService.findTratamientosByMascotaId(idMascota).subscribe(
+      (tratamientos) => {
+        this.tratamientos = tratamientos;
+        this.tratamientos.sort((a, b) => {
+          return new Date(b.fechaAdministracion).getTime() - new Date(a.fechaAdministracion).getTime();
+        });
+        if (this.tratamientos.length > 0) {
+          this.mostrarDescripcion(this.tratamientos[0]);
+        }
+      },
+      (error) => {
+        this.toast.error('Error al obtener tratamientos', 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
   }
 
   isMascotaSeleccionada(mascota: Mascota) {
@@ -102,6 +139,11 @@ export class IndexClienteComponent implements OnInit {
         positionClass: 'toast-top-center',
       });
     }
+  }
+
+  mostrarDescripcion(tratamiento: Tratamiento) {
+    this.selectedTratamiento = tratamiento;
+    this.descripcionTratamiento = tratamiento.recomendacionesGenerales!;
   }
 
 }

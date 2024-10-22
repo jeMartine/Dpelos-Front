@@ -36,13 +36,23 @@ export class ActualizarDuenoComponent {
     })
   }
 
-  duenoUpdate():void{
-    this.sendDueno = Object.assign({}, this.dueno)
-    this.duenoService.updateDueno(this.sendDueno);
-    this.location.back();
-  }
+  duenoUpdate(): void {
+  this.sendDueno = Object.assign({}, this.dueno)
+  this.duenoService.updateDueno(this.sendDueno).subscribe({
+    next: (response) => {
+      console.log('Actualización exitosa', response);
+    },
+    error: (error) => {
+      console.error('Error al actualizar el dueño', error);
+    },
+    complete: () => {
+      this.location.back(); 
+    }
+  });
+}
 
-  regresar(){
-  this.location.back()
-  }
+regresar() {
+  this.location.back();
+}
+
 }
