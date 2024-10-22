@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Droga } from 'src/app/entidades/Droga';
-import { Page } from 'src/app/entidades/Page';
 import { Tratamiento } from 'src/app/entidades/Tratamiento';
 import { TratamientoDrogaAux } from 'src/app/entidades/TratamientoDrogaAux';
 import { environment } from 'src/app/environments/environment.prod';
@@ -28,18 +27,12 @@ export class TratamientoService {
 }
 
 
-  addTratamiento(tratamiento: Tratamiento) {
-    this.http.post(this.tratamientoURL + '/add', tratamiento).subscribe();
+  addTratamientoToMascota(id_mascota: number, tratamiento: Tratamiento): Observable<any> {
+    return this.http.post(`${this.tratamientoURL}/add/${id_mascota}`, tratamiento, { responseType: 'text' });
   }
 
-  updateTratamiento(tratamiento: Tratamiento): Observable<void> {
-    return this.http.put<void>(`${this.tratamientoURL}/update`, tratamiento)
-      .pipe(
-        catchError((error) => {
-          console.error('Error al actualizar el tratamiento', error);
-          return throwError(error);
-        })
-      );
+  updateTratamiento(tratamiento: Tratamiento): Observable<any> {
+    return this.http.put(`${this.tratamientoURL}/update`, tratamiento, { responseType: 'text' })
   }
   
   deleteById(id: number){

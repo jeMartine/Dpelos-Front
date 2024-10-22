@@ -186,13 +186,13 @@ const routes: Routes = [
     data: { expectedType: 'vet' },
   },
   {
-    path: 'tratamiento/update/:id',
+    path: 'tratamiento/updatetrat/:id',
     component: ActualizarTratamientoComponent,
     canActivate: [AuthGuard],
     data: { expectedType: 'vet' },
   },
   {
-    path: 'tratamiento/update/:id/addMedicamento',
+    path: 'tratamiento/update/addMedicamento',
     component: AgregarMedicamentoComponent,
     canActivate: [AuthGuard],
     data: { expectedType: 'vet' },

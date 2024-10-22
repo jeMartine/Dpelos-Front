@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { finalize } from 'rxjs';
 import { Dueno } from 'src/app/entidades/Dueno';
 import { DuenoService } from 'src/app/service/dueno/dueno.service';
 
@@ -26,12 +27,17 @@ export class ListaDuenosComponent {
   }
 
   loadAllDuenos() {
-    this.duenoService.findAll().subscribe(
-      (data: Dueno[])=>{
-        this.duenosList = data;// asignar la lista de duenos
+    this.isLoading = true; // Iniciar el estado de carga
+    this.duenoService.findAll().pipe(
+      finalize(() => {
+        this.isLoading = false; // Finalizar el estado de carga, tanto en éxito como en error
+      })
+    ).subscribe(
+      (data: Dueno[]) => {
+        this.duenosList = data; // Asignar la lista de dueños
         this.filteredDuenosList = data;
-        this.isLoading = false;
-      }, (error)=>{
+      },
+      (error) => {
         console.error('Error al cargar la lista de dueños', error); // Manejo de errores
       }
     );
