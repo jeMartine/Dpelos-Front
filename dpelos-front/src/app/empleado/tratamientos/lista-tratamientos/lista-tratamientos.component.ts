@@ -8,6 +8,7 @@ import { error } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { Page } from 'src/app/entidades/Page';
 import { Tratamiento } from 'src/app/entidades/Tratamiento';
+import { Veterinario } from 'src/app/entidades/Veterinario';
 import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class ListaTratamientosComponent implements OnInit {
   noResults: boolean = false;
   searchTerm: string = '';
   mensajeError: string = '';
+  veterinario?: Veterinario;
 
   constructor(
     private tratamientoService: TratamientoService,
@@ -29,29 +31,49 @@ export class ListaTratamientosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadTratamientos();
+    this.cargarVeterinario();
   }
 
-  //Función para cargar todos los tratamientos
+  //Funcion para cargar veterinario logueado desde localStorage
+  cargarVeterinario() {
+    const user = localStorage.getItem('userVet');
+    if (user) {
+      this.veterinario = JSON.parse(user);
+      if (this.veterinario) {
+        this.loadTratamientos();
+      }
+    }
+  }
+
+  //Función para cargar los tratamientos del veterinario
   loadTratamientos(): void {
     this.isLoading = true;
-    this.tratamientoService.getTratamientosActivos().subscribe(
-      (data: Tratamiento[]) => {
-        console.log(data);
-        this.tratamientos = data;
-        this.isLoading = false;
-        this.noResults = this.tratamientos.length === 0;
-      },
-      (error) => {
-        this.toast.error('Error al cargar los tratamientos', 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-        this.isLoading = false;
-      }
-    );
+    if (this.veterinario) {
+      this.tratamientoService.getTratamientosByVeterinario(this.veterinario.idVeterinario!).subscribe(
+        (data: Tratamiento[] | null) => {
+          // Verificamos si data no es null o undefined
+          if (data && data.length > 0) {
+            this.tratamientos = data;
+            this.noResults = false;
+          } else {
+            // Si data es null o tiene longitud 0, mostramos el mensaje de error
+            this.tratamientos = [];
+            this.noResults = true;
+            this.mensajeError = 'No tiene tratamientos activos creados.';
+          }
+          this.isLoading = false;
+        },
+        (error) => {
+          this.toast.error('Error al cargar los tratamientos', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+          this.isLoading = false;
+        }
+      );
+    }
   }
-
+  
   //Función para buscar un tratamiento por nombre de la mascota
   onSearchInput() {
     this.noResults = false;
@@ -77,7 +99,7 @@ export class ListaTratamientosComponent implements OnInit {
       );
   }
 
-  //Función para navegar al componente de actualización
+  //Función para navegar al componente de actualización de tratamiento
   verTratamiento(idTratamiento: number): void {
     this.router.navigate([`tratamiento/updatetrat`, idTratamiento]);
   }

@@ -67,8 +67,8 @@ export class TratamientoService {
       .get<Droga[]>(`${this.tratamientoURL}/${idTratamiento}/medicamentos`)
       .pipe(
         catchError((error: any) => {
-          console.error('Error en la llamada al servicio:', error); // Imprime el error en la consola
-          return throwError(error); // Propaga el error
+          console.error('Error en la llamada al servicio:', error); 
+          return throwError(error); 
         })
       );
   }
@@ -81,5 +81,9 @@ export class TratamientoService {
     return this.http.get<TratamientoDrogaAux[]>(
       `${this.tratamientoURL}/tratamientos-por-tipo-drogas`
     );
+  }
+
+  getTratamientosByVeterinario(idVeterinario: number): Observable<Tratamiento[]> {
+    return this.http.get<Tratamiento[]>(`${this.tratamientoURL}/veterinario/${idVeterinario}`);
   }
 }

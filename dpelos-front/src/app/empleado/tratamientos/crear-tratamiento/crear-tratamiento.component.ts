@@ -21,6 +21,11 @@ export class CrearTratamientoComponent implements OnInit {
     descripcionTratamiento: '',
     estado: true
   };
+  tratamientos: Tratamiento[] = [];
+  selectedTratamiento?: Tratamiento;
+  descripcionTratamiento: string = '';
+  selectedMedicamentosExistentes: Droga[] = [];
+
 
   constructor(
     private route: ActivatedRoute, 
@@ -41,6 +46,8 @@ export class CrearTratamientoComponent implements OnInit {
           this.tratamiento.mascota = findMascota;
         });
       }
+
+      this.obtenerTratamientosMascota(+idMascota!);
   }
 
   cargarVeterinario(){
@@ -98,6 +105,61 @@ export class CrearTratamientoComponent implements OnInit {
         (error) => {
           // Si hubo un error
           this.toast.error('Error al crear el tratamiento', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+        }
+      );
+  }
+
+  //Funcion para mostrar la informacion del tratamiento
+  obtenerTratamientosMascota(idMascota: number) {
+    this.tratamientoService.findTratamientosByMascotaId(idMascota).subscribe(
+      (tratamientos) => {
+        this.tratamientos = tratamientos || [];
+        this.selectedTratamiento = undefined; 
+  
+        //Validar si hay tratamientos y ordenarlos por fecha de inicio ascendente
+        if (this.tratamientos.length > 0) {
+          this.tratamientos.sort((a, b) => {
+            return (
+              new Date(b.fechaAdministracion).getTime() -
+              new Date(a.fechaAdministracion).getTime()
+            );
+          });
+          this.mostrarDescripcion(this.tratamientos[0]);
+        } else {
+          this.selectedTratamiento = undefined;
+          this.descripcionTratamiento = 'Esta mascota actualmente no tiene tratamientos.';
+        }
+      },
+      (error) => {
+        this.tratamientos = [];
+        this.selectedTratamiento = undefined;
+        this.descripcionTratamiento = '';
+        this.toast.error('Error al obtener tratamientos', 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
+  }
+
+  //Funcion para mostrar la informacion del tratamiento
+  mostrarDescripcion(tratamiento: Tratamiento) {
+    this.selectedTratamiento = tratamiento;
+
+    console.log('Tratamiento seleccionado:', this.selectedTratamiento);
+
+    this.tratamientoService
+      .getMedicamentosPorTratamiento(this.selectedTratamiento.idTratamiento!)
+      .subscribe(
+        (medicamentos: Droga[]) => {
+          this.selectedMedicamentosExistentes = medicamentos;
+          console.log('Medicamentos obtenidos:', this.selectedMedicamentosExistentes);
+        },
+        (error) => {
+          this.toast.error('Error al obtener medicamentos', 'Error', {
             timeOut: 3000,
             positionClass: 'toast-top-center',
           });

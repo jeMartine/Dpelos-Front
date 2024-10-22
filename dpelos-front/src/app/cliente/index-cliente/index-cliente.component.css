@@ -436,4 +436,26 @@ ul {
   margin: 0; 
 }
 
+.subtitulo {
+  font-weight: bold;
+}
+
+.azul {
+  color: #3775ab;
+}
+
+.activo {
+  color: green;
+  font-weight: 500;
+}
+
+.finalizado {
+  color: red;
+  font-weight: 500;
+}
+
+.sin-tratamientos{
+  color: #989797;
+  font-weight: 500;
+}
 

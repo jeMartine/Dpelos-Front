@@ -109,5 +109,69 @@ object-fit: cover;
     border: 1px solid #ff8f34;
   }
 
+  #listaTratamientos{
+    padding: 20px;
+    width: 100%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .columna-fechas {
+    width: 27%;
+    margin-right: 20px;
+  }
+  
+  .columna-descripcion {
+    width: 68%;
+  }
+  
+  .tratamiento-fecha {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  
+  .tratamiento-fecha:hover {
+    background-color: #ddd;
+  }
+  
+  .fecha-item.active .tratamiento-fecha {
+    font-weight: bold;
+    color: #3775ab;
+  }
+  
+  ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0; 
+  }
+  
+  .subtitulo {
+    font-weight: bold;
+  }
+  
+  .azul {
+    color: #3775ab;
+  }
+  
+  .activo {
+    color: green;
+    font-weight: 500;
+  }
+  
+  .finalizado {
+    color: red;
+    font-weight: 500;
+  }
+  
+  .sin-tratamientos{
+    color: #989797;
+    font-weight: 500;
+  }
+  
+
   
   

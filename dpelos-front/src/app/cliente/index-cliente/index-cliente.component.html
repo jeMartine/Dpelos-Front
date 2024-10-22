@@ -146,28 +146,54 @@
       </div>
     </div>
   </section>
-
   <section id="listaTratamientos" class="mt-4">
     <div id="info-tratamiento" *ngIf="selectedMascota" class="d-flex justify-content-between">
       <div class="columna-fechas">
         <ul>
-          <li *ngFor="let tratamiento of tratamientos" class="fecha-item" 
-            [class.active]="tratamiento === selectedTratamiento"
-            (click)="mostrarDescripcion(tratamiento)">
+          <li *ngFor="let tratamiento of tratamientos" class="fecha-item"
+              [class.active]="tratamiento === selectedTratamiento"
+              (click)="mostrarDescripcion(tratamiento)">
             <div class="tratamiento-fecha">
-              {{ tratamiento.fechaAdministracion | date: 'd \'de\' MMMM \'de\' yyyy' }}
+              {{ tratamiento.fechaAdministracion | date : "d 'de' MMMM 'de' yyyy" }}
             </div>
           </li>
         </ul>
       </div>
-      <div class="columna-descripcion" *ngIf="descripcionTratamiento">
-        <p>{{ descripcionTratamiento }}</p>
+  
+      <!-- Mostrar la descripción del tratamiento si hay tratamientos disponibles -->
+      <div class="columna-descripcion" *ngIf="selectedTratamiento">
+        <p style="color: #ff8f34">
+          <span class="subtitulo">Fecha de inicio de Tratamiento:</span>
+          {{ selectedTratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM 'de' yyyy" }}
+        </p>
+        <p>
+          <span class="subtitulo azul">Motivo de Tratamiento:</span>
+          {{ selectedTratamiento.descripcionTratamiento }}
+        </p>
+        <div *ngIf="selectedMedicamentos.length > 0">
+          <span class="subtitulo azul" style="margin: 0">Medicamentos:</span>
+          <ul>
+            <li *ngFor="let medicamento of selectedMedicamentos">
+              {{ medicamento.nombreDroga }}
+            </li>
+          </ul>
+        </div>
+        <p>
+          <span class="subtitulo azul">Recomendaciones Generales:</span>
+          {{ selectedTratamiento.recomendacionesGenerales }}
+        </p>
+        <p [ngClass]="selectedTratamiento.estado ? 'activo' : 'finalizado'">
+          {{ selectedTratamiento.estado ? 'Tratamiento activo' : 'Tratamiento finalizado' }}
+        </p>
       </div>
   
+      <!-- Mostrar un mensaje cuando no haya tratamientos -->
+      <div class="columna-descripcion" *ngIf="tratamientos && tratamientos.length === 0">
+        <p class="sin-tratamientos">{{ descripcionTratamiento }}</p>
+      </div>
     </div>
   </section>
   
-  
-</main>
+  </main>
 
 <app-footer></app-footer>
