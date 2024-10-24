@@ -1,0 +1,65 @@
+<app-header-veterinario></app-header-veterinario>
+<div class="container">
+  <section id="DatosMascota">
+    <div class="mascota-info">
+      <div class="mascota-info-image">
+        <img [src]="tratamiento.mascota?.urlFotoMascota" alt="foto" />
+      </div>
+      <div class="mascota-info-details">
+        <h2>Tratamiento de {{ tratamiento.mascota?.nombreMascota }}</h2>
+        <p class="fechaAdministracion">
+          <strong>Fecha de Registro:</strong>
+          {{ tratamiento.mascota?.fechaCreacion | date : "dd/MM/yyyy" }}
+        </p>
+        <p>
+          <strong>Nombre:</strong> {{ tratamiento.mascota?.nombreMascota }}
+        </p>
+        <p>
+          <strong>Raza:</strong> {{ tratamiento.mascota?.raza?.razaMascota }}
+        </p>
+        <p>
+          <strong>Edad:</strong> {{ tratamiento.mascota?.edadMascota }} años
+        </p>
+        <p class="estado">
+          <strong>Estado:</strong>
+          {{
+            tratamiento.mascota?.estado ? "En tratamiento" : "Sin tratamiento"
+          }}
+        </p>
+        <p>
+          <strong>Enfermedad:</strong>
+          {{ tratamiento.mascota?.enfermedad?.nombreEnfermedad }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tratamiento">
+    <h3 class="Detalles text-center">Detalles del Tratamiento</h3>
+    <p class="fechaAdministracion">
+      <span>Fecha de inicio de Tratamiento: </span>
+      {{ tratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM" }}
+    </p>
+    <br />
+    <p><strong>Motivo de tratamiento:</strong></p>
+    <p>{{ tratamiento.descripcionTratamiento }}</p>
+
+    <p><strong>Medicamentos:</strong></p>
+    <div *ngIf="selectedMedicamentos.length === 0">
+      <p>No hay medicamentos seleccionados.</p>
+    </div>
+    <ul *ngIf="selectedMedicamentos.length > 0">
+      <li *ngFor="let medicamento of selectedMedicamentos">
+        {{ medicamento.nombreDroga }}
+      </li>
+    </ul>
+
+    <p><strong>Recomendaciones generales:</strong></p>
+    <p>{{ tratamiento.recomendacionesGenerales }}</p>
+  </section>
+
+  <div class="button-container">
+    <button (click)="regresar()" class="btn btn-secondary">Regresar</button>
+  </div>
+</div>
+<app-footer></app-footer>

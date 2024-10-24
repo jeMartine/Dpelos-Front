@@ -99,8 +99,12 @@ export class ListaTratamientosComponent implements OnInit {
       );
   }
 
-  //Función para navegar al componente de actualización de tratamiento
-  verTratamiento(idTratamiento: number): void {
-    this.router.navigate([`tratamiento/updatetrat`, idTratamiento]);
+  //Función para navegar al componente adecuado según el estado del tratamiento
+  verTratamiento(idTratamiento: number, estado: boolean): void {
+    if (estado) {
+      this.router.navigate([`tratamiento/updatetrat`, idTratamiento]);
+    } else {
+      this.router.navigate([`tratamiento/mostrartrat`, idTratamiento]);
+    }
   }
 }

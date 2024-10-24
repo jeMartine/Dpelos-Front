@@ -31,6 +31,7 @@ import { AgregarMedicamentoComponent } from './empleado/tratamientos/agregar-med
 import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
+import { MostrarTratamientoComponent } from './empleado/tratamientos/mostrar-tratamiento/mostrar-tratamiento.component';
 
 const routes: Routes = [
   {
@@ -188,6 +189,12 @@ const routes: Routes = [
   {
     path: 'tratamiento/updatetrat/:id',
     component: ActualizarTratamientoComponent,
+    canActivate: [AuthGuard],
+    data: { expectedType: 'vet' },
+  },
+  {
+    path: 'tratamiento/mostrartrat/:id',
+    component: MostrarTratamientoComponent,
     canActivate: [AuthGuard],
     data: { expectedType: 'vet' },
   },

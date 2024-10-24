@@ -53,6 +53,7 @@ import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
+import { MostrarTratamientoComponent } from './empleado/tratamientos/mostrar-tratamiento/mostrar-tratamiento.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -100,6 +101,7 @@ registerLocaleData(localeEs, 'es');
     ListaVetComponent,
     DashboardComponent,
     CrearTratamientoComponent,
+    MostrarTratamientoComponent,
   ],
   imports: [
     BrowserModule, 

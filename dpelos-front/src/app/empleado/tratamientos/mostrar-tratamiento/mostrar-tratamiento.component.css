@@ -1,0 +1,110 @@
+#DatosMascota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mascota-info {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 20px;
+}
+
+.mascota-info-details {
+flex: 1; 
+margin-left: 20px;
+}
+
+.mascota-info-details h2 {
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+}
+
+.mascota-info-details p {
+margin-bottom: 4px;
+}
+
+.fechaAdministracion {
+color: #ff8f34;
+margin-bottom: 6px !important;
+}
+
+.estado {
+color: #8a8a8a;
+margin-top: 7px !important;
+margin-bottom: 7px !important;
+}
+
+.mascota-info-image {
+width: 350px;
+height: 300px; 
+overflow: hidden;
+margin-right: 20px;
+}
+
+.mascota-info-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+
+#tratamiento {
+margin-top: 20px;
+margin-left: 40px;
+margin-right: 40px;
+}
+
+.botones {
+display: flex;
+width: 100%;
+background-color: #8a8a8a;
+margin-bottom: 20px;
+}
+
+.botones button {
+padding: 10px 20px;
+border: none;
+width: 150px;
+border-radius: 0px;
+cursor: pointer;
+background-color: #8a8a8a;
+color: white;
+transition: background-color 0.3s;
+}
+
+.botones button:hover {
+background-color: #b0b0b0;
+}
+
+.botones button.active {
+background-color: #ffffff;
+border-top: 3px solid #3474ff;
+color: #3474ff;
+font-weight: 600;
+}
+
+.detalles{
+font-family: "Roboto", sans-serif;
+}
+
+span{
+font-weight: 600;
+margin-top: 10px;
+}
+
+.button-container{
+margin-top: 20px;
+margin-bottom: 20px;
+display: flex;
+width: 100%;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
+
+.btn-primary{
+background-color: #ff8f34;
+border: 1px solid #ff8f34;
+}
