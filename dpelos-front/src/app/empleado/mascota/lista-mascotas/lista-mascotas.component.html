@@ -1,7 +1,10 @@
 <app-header-veterinario></app-header-veterinario>
 <main id="inicio">
   <!--Spinner de carga-->
-  <div *ngIf="isLoading" class="spinner-container d-flex justify-content-center align-items-center">
+  <div
+    *ngIf="isLoading"
+    class="spinner-container d-flex justify-content-center align-items-center"
+  >
     <div class="spinner-border text-primary" role="status">
       <span class="sr-only">Cargando...</span>
     </div>
@@ -16,11 +19,16 @@
           type="search"
           class="form-control"
           [(ngModel)]="searchTerm"
-          (keydown.enter)="onSearchInput()" 
+          (keydown.enter)="onSearchInput()"
           placeholder="Busca una mascota D'Pelos"
         />
       </div>
-      <button id="search-button" type="button" class="btn btn-primary" (click)="onSearchInput()">
+      <button
+        id="btnSearchMascota"
+        type="button"
+        class="btn btn-primary"
+        (click)="onSearchInput()"
+      >
         <i class="fas fa-search"></i>
       </button>
       <a type="button" class="btn btn-añadir" [routerLink]="['/mascota/add']"
@@ -32,102 +40,127 @@
     </div>
   </section>
 
-    <!-- Botones de paginación -->
-<div class="d-flex justify-content-center align-items-center mb-3" *ngIf="totalPages > 0 && totalMascotas > 0">
-  <button class="btn btn-primary mx-2" (click)="previousPage()" [disabled]="currentPage === 1">
-    <fa-icon [icon]="faChevronLeft"></fa-icon>
-  </button>
-  <span>Página {{ currentPage }} de {{ totalPages }}</span>
-  <button
-    class="btn btn-primary mx-2"
-    (click)="nextPage()"
-    [disabled]="currentPage === totalPages"
+  <!-- Botones de paginación -->
+  <div
+    class="d-flex justify-content-center align-items-center mb-3"
+    *ngIf="totalPages > 0 && totalMascotas > 0"
   >
-    <fa-icon [icon]="faChevronRight"></fa-icon>
-  </button>
-</div>
+    <button
+      class="btn btn-primary mx-2"
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+    >
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button
+      class="btn btn-primary mx-2"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </button>
+  </div>
 
   <!--Contador de paginación-->
-<div class="container-paginacion mb-3" *ngIf="!isLoading">
-  <p>
-    {{ mascotas.length === 0 ? '0' : ((currentPage - 1) * pageSize) + 1 }} - 
-    {{ (currentPage * pageSize) > totalMascotas ? totalMascotas : (currentPage * pageSize) }} de {{ totalMascotas }} mascotas
-  </p>
-</div>
-
+  <div class="container-paginacion mb-3" *ngIf="!isLoading">
+    <p>
+      {{ mascotas.length === 0 ? "0" : (currentPage - 1) * pageSize + 1 }} -
+      {{
+        currentPage * pageSize > totalMascotas
+          ? totalMascotas
+          : currentPage * pageSize
+      }}
+      de {{ totalMascotas }} mascotas
+    </p>
+  </div>
 
   <!--Tarjetas de las mascotas-->
-<div id="card-container" class="container" *ngIf="!isLoading">
-  <div class="d-flex justify-content-center flex-wrap">
-    <div class="col-md-4" *ngFor="let mascota of mascotas">
-      <!-- CReatr el tratramiento de mascota -->
-      <div 
-        class="card mb-4"
-        
-        [routerLink]="['/tratamiento/add', mascota.idMascota]" 
-        style="text-decoration: none; color: inherit; cursor: pointer;"
-      >
-        <img
-          src="{{mascota.urlFotoMascota}}"
-          class="img-mascotas"
-          alt="Foto de la mascota"
-        />
-        <p class="titulo">
-          <span>{{ mascota.nombreMascota }}</span>
-          <i class="fas fa-paw ml-2"></i>
-        </p>
-        <div class="card-body d-flex">
-          <div class="flex-grow-1">
-            <p class="card-text">
-              <strong>Edad: </strong><span>{{mascota.edadMascota}} años</span><br />
-              <strong>Raza: </strong><span>{{mascota.raza?.razaMascota}}</span><br />
-              <strong>Dueño: </strong><span>{{mascota.dueno?.nombreDueno}} {{mascota.dueno?.apellidoDueno}}</span>
-            </p>
-          </div>
-          <div class="d-flex flex-column align-items-center ml-auto">
-            <a 
-              [routerLink]="['/mascota/update', mascota.idMascota]"
-              class="icon-editar mt-3"
-              id="icon-editar"
-              aria-label="Editar"
-              (click)="$event.stopPropagation()"
-            >
-              <i class="fas fa-edit fa-2x"></i>
-            </a>
-            <a 
-              class="icon-eliminar mt-3"
-              id="icon-eliminar"
-              aria-label="Eliminar"
-              (click)="deleteMascota(mascota); $event.stopPropagation()"
-              onclick="return confirm('¿Estás seguro de que quieres eliminar esta mascota?');"
-            >
-              <i class="fas fa-trash fa-2x"></i>
-            </a>
+  <div id="card-container" class="container" *ngIf="!isLoading">
+    <div class="d-flex justify-content-center flex-wrap">
+      <div class="col-md-4" *ngFor="let mascota of mascotas">
+        <!-- CReatr el tratramiento de mascota -->
+        <div
+          class="card mb-4"
+          [routerLink]="['/tratamiento/add', mascota.idMascota]"
+          style="text-decoration: none; color: inherit; cursor: pointer"
+        >
+          <img
+            src="{{ mascota.urlFotoMascota }}"
+            class="img-mascotas"
+            alt="Foto de la mascota"
+          />
+          <p class="titulo">
+            <span>{{ mascota.nombreMascota }}</span>
+            <i class="fas fa-paw ml-2"></i>
+          </p>
+          <div class="card-body d-flex">
+            <div class="flex-grow-1">
+              <p class="card-text">
+                <strong>Edad: </strong
+                ><span>{{ mascota.edadMascota }} años</span><br />
+                <strong>Raza: </strong
+                ><span>{{ mascota.raza?.razaMascota }}</span
+                ><br />
+                <strong>Dueño: </strong
+                ><span
+                  >{{ mascota.dueno?.nombreDueno }}
+                  {{ mascota.dueno?.apellidoDueno }}</span
+                >
+              </p>
+            </div>
+            <div class="d-flex flex-column align-items-center ml-auto">
+              <a
+                [routerLink]="['/mascota/update', mascota.idMascota]"
+                class="icon-editar mt-3"
+                id="icon-editar"
+                aria-label="Editar"
+                (click)="$event.stopPropagation()"
+              >
+                <i class="fas fa-edit fa-2x"></i>
+              </a>
+              <a
+                class="icon-eliminar mt-3"
+                id="icon-eliminar"
+                aria-label="Eliminar"
+                (click)="deleteMascota(mascota); $event.stopPropagation()"
+                onclick="return confirm('¿Estás seguro de que quieres eliminar esta mascota?');"
+              >
+                <i class="fas fa-trash fa-2x"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
   <!-- Botones de paginación -->
-<div class="d-flex justify-content-center align-items-center mb-3" *ngIf="totalPages > 0 && totalMascotas > 0">
-  <button class="btn btn-primary mx-2" (click)="previousPage()" [disabled]="currentPage === 1">
-    <fa-icon [icon]="faChevronLeft"></fa-icon>
-  </button>
-  <span>Página {{ currentPage }} de {{ totalPages }}</span>
-  <button
-    class="btn btn-primary mx-2"
-    (click)="nextPage()"
-    [disabled]="currentPage === totalPages"
+  <div
+    class="d-flex justify-content-center align-items-center mb-3"
+    *ngIf="totalPages > 0 && totalMascotas > 0"
   >
-    <fa-icon [icon]="faChevronRight"></fa-icon>
-  </button>
-</div>
-  
+    <button
+      class="btn btn-primary mx-2"
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+    >
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button
+      class="btn btn-primary mx-2"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </button>
+  </div>
+
   <!--Alerta de no resultados-->
   <div *ngIf="noResults" class="alert alert-warning text-center mt-3 mb-4">
-    <i class="fas fa-dog"></i> No se encontraron coincidencias para tu búsqueda <i class="fas fa-dog"></i>
+    <i class="fas fa-dog"></i> No se encontraron coincidencias para tu búsqueda
+    <i class="fas fa-dog"></i>
   </div>
 </main>
 <app-footer></app-footer>

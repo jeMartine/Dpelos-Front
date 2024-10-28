@@ -1,101 +1,101 @@
 <app-header-veterinario></app-header-veterinario>
 <main id="inicio">
-    <div class="container-titulo">
-        <p>Registrar dueño</p>
+  <div class="container-titulo">
+    <p>Registrar dueño</p>
+  </div>
+  <form id="formDueno" #duenoForm="ngForm" (ngSubmit)="addDueno()">
+    <p>Dale la bienvenida a un dueño D'Pelos</p>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input
+          type="number"
+          name="cedulaDueno"
+          class="form-control"
+          id="cedulaDueno"
+          placeholder="Número de documento"
+          [(ngModel)]="dueno.cedulaDueno"
+          (blur)="checkCedula()"
+          required
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="nombreDueno"
+          class="form-control"
+          id="nombreDueno"
+          placeholder="Nombre del dueño"
+          required
+          [(ngModel)]="dueno.nombreDueno"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El nombre solo puede contener letras y espacios"
+        />
+      </div>
     </div>
-    <form id="formDueno" #duenoForm="ngForm" (ngSubmit)="addDueno()">
-        <p>Dale la bienvenida a un dueño D'Pelos</p>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <input
-                    type="number"
-                    name="cedulaDueno"
-                    class="form-control"
-                    id="cedulaDueno"
-                    placeholder="Número de documento"
-                    [(ngModel)]="dueno.cedulaDueno"
-                    (blur)="checkCedula()"
-                    required
-                />
-            </div>
-            <div class="form-group col-md-6">
-                <input
-                    type="text"
-                    name="nombreDueno"
-                    class="form-control"
-                    id="nombreDueno"
-                    placeholder="Nombre del dueño"
-                    required
-                    [(ngModel)]="dueno.nombreDueno"
-                    pattern="[A-Za-zÀ-ÿ\s]+"
-                    title="El nombre solo puede contener letras y espacios"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <input
-                    type="text"
-                    name="apellidoDueno"
-                    class="form-control"
-                    id="apellidoDueno"
-                    placeholder="Apellido del dueño"
-                    required
-                    [(ngModel)]="dueno.apellidoDueno"
-                    pattern="[A-Za-zÀ-ÿ\s]+"
-                    title="El apellido solo puede contener letras y espacios"
-                />
-            </div>
-            <div class="form-group col-md-6">
-                <input
-                    type="email"
-                    name="correoDueno"
-                    class="form-control"
-                    id="correoDueno"
-                    placeholder="Correo electrónico"
-                    required
-                    [(ngModel)]="dueno.correoDueno"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <input
-                    type="number"
-                    class="form-control"
-                    id="celularDueno"
-                    name="celularDueno"
-                    placeholder="Número de teléfono"
-                    required
-                    [(ngModel)]="dueno.celularDueno"
-                />
-            </div>
-            <div class="form-group col-md-6">
-                <input
-                    type="text"
-                    class="form-control"
-                    id="fotoUrl"
-                    name="fotoUrl"
-                    placeholder="Foto del dueño"
-                    required
-                    [(ngModel)]="dueno.fotoUrl"
-                />
-            </div>
-        </div>
-        <div class="botones">
-            <button type="submit"
-            (click)="checkCedula()"
-            [disabled]="!duenoForm.form.valid || !isCedulaValid"
-             class="btn btn-primary mr-4">
-                Registrar Dueño
-            </button>
-            <a
-                type="button"
-                class="btn btn-secundary"
-                (click)="regresar()"
-                >Regresar</a
-            >
-        </div>
-    </form>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          name="apellidoDueno"
+          class="form-control"
+          id="apellidoDueno"
+          placeholder="Apellido del dueño"
+          required
+          [(ngModel)]="dueno.apellidoDueno"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="El apellido solo puede contener letras y espacios"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="email"
+          name="correoDueno"
+          class="form-control"
+          id="correoDueno"
+          placeholder="Correo electrónico"
+          required
+          [(ngModel)]="dueno.correoDueno"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input
+          type="number"
+          class="form-control"
+          id="celularDueno"
+          name="celularDueno"
+          placeholder="Número de teléfono"
+          required
+          [(ngModel)]="dueno.celularDueno"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          class="form-control"
+          id="fotoUrl"
+          name="fotoUrl"
+          placeholder="Foto del dueño"
+          required
+          [(ngModel)]="dueno.fotoUrl"
+        />
+      </div>
+    </div>
+    <div class="botones">
+      <button
+        type="submit"
+        (click)="checkCedula()"
+        [disabled]="!duenoForm.form.valid || !isCedulaValid"
+        class="btn btn-primary mr-4"
+        id="btnRegistrarDueno"
+      >
+        Registrar Dueño
+      </button>
+      <a type="button" class="btn btn-secundary" (click)="regresar()"
+        >Regresar</a
+      >
+    </div>
+  </form>
 </main>
 <app-footer></app-footer>

@@ -6,7 +6,7 @@
   <form id="formMascota" #mascotaForm="ngForm" (ngSubmit)="addMascota()">
     <p>Dale la bienvenida a una mascotas D'Pelos</p>
     <div class="row duenoField">
-      <div class=" col-md-6">
+      <div class="col-md-6">
         <input
           name="cedulaDueno"
           type="number"
@@ -18,12 +18,8 @@
           (blur)="verificarDueno()"
         />
       </div>
-    
-      <div 
-          *ngIf="nombreDueno"
-          class="col-md-6"
-          id="nombreDuenoContainer"
-        >
+
+      <div *ngIf="nombreDueno" class="col-md-6" id="nombreDuenoContainer">
         <input
           type="text"
           class="form-control col-md-6"
@@ -33,16 +29,14 @@
           [value]="nombreDueno"
         />
       </div>
-    
-      <div 
-            class="col-md-6"
-						id="agregarDuenoContainer"
-            *ngIf="!nombreDueno">
+
+      <div class="col-md-6" id="agregarDuenoContainer" *ngIf="!nombreDueno">
         <a
           type="button"
           class="btn btn-primary ms-4"
           id="btnAgregarDueno"
-          [routerLink]="['/dueno/add']">
+          [routerLink]="['/dueno/add']"
+        >
           Agregar Dueño
         </a>
       </div>
@@ -55,7 +49,7 @@
           name="nombreMascota"
           class="form-control"
           id="nombreMascota"
-          placeholder="Nombre de la mascotas"
+          placeholder="Nombre de la mascota"
           required
           [(ngModel)]="mascota.nombreMascota"
           pattern="[A-Za-zÀ-ÿ\s]+"
@@ -90,15 +84,16 @@
 
       <!-- Menú Desplegable de Razas -->
       <div class="form-group col-md-6">
-        <select 
-          [(ngModel)]="mascota.raza" 
-          name="razaMascota" 
+        <select
+          [(ngModel)]="mascota.raza"
+          name="razaMascota"
           class="form-control"
-          required>
-            <option [ngValue]="undefined" disabled>Selecciona una raza</option>
-            <option *ngFor="let raza of razas" [ngValue]="raza">
-              {{ raza.razaMascota }}
-            </option>
+          required
+        >
+          <option [ngValue]="undefined" disabled>Selecciona una raza</option>
+          <option *ngFor="let raza of razas" [ngValue]="raza">
+            {{ raza.razaMascota }}
+          </option>
         </select>
       </div>
     </div>
@@ -106,27 +101,30 @@
       <!-- Menú Desplegable de Enfermedades -->
 
       <div class="form-group col-md-6">
-        <select 
-        [(ngModel)]="mascota.enfermedad" 
-        name="enfermedadMascota"
-        class="form-control"
-        required>
-          <option [ngValue]="undefined" disabled selected>Enfermedad de la mascota</option>
-          <option *ngFor="let enfermedad of enfermedades" [ngValue]="enfermedad">
+        <select
+          [(ngModel)]="mascota.enfermedad"
+          name="enfermedadMascota"
+          class="form-control"
+          required
+        >
+          <option [ngValue]="undefined" disabled selected>
+            Enfermedad de la mascota
+          </option>
+          <option
+            *ngFor="let enfermedad of enfermedades"
+            [ngValue]="enfermedad"
+          >
             {{ enfermedad.nombreEnfermedad }}
           </option>
-      </select>
+        </select>
       </div>
-      
-      
-
     </div>
 
     <div class="botones">
       <button
         type="submit"
         class="btn btn-primary mr-4"
-        id="registrarMascotaBtn"
+        id="btnRegistrarMascota"
         [disabled]="!mascotaForm.form.valid"
       >
         Registrar mascotas
