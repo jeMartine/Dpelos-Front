@@ -11,9 +11,7 @@
           <strong>Fecha de Registro:</strong>
           {{ tratamiento.mascota?.fechaCreacion | date : "dd/MM/yyyy" }}
         </p>
-        <p>
-          <strong>Nombre:</strong> {{ tratamiento.mascota?.nombreMascota }}
-        </p>
+        <p><strong>Nombre:</strong> {{ tratamiento.mascota?.nombreMascota }}</p>
         <p>
           <strong>Raza:</strong> {{ tratamiento.mascota?.raza?.razaMascota }}
         </p>
@@ -39,12 +37,14 @@
       <button
         (click)="mostrarTratamiento()"
         [class.active]="mostrarTratamientoFlag"
+        id="btnTratamiento"
       >
         Tratamiento
       </button>
       <button
         (click)="mostrarResumen()"
         [class.active]="!mostrarTratamientoFlag"
+        id="btnResumenTratamiento"
       >
         Resumen
       </button>
@@ -68,7 +68,7 @@
         <i
           class="fas fa-plus"
           style="margin-left: 8px; cursor: pointer; font-size: 20px"
-          (click)=" navigateToAgregarMedicamento()"
+          (click)="navigateToAgregarMedicamento()"
         ></i>
         <div *ngIf="selectedMedicamentos.length === 0">
           <p>No hay medicamentos seleccionados.</p>
@@ -112,7 +112,11 @@
 
         <!-- Botón de finalizar tratamiento -->
         <div class="finalizar-tratamiento mt-3">
-          <button class="btn btn-success" (click)="finalizarTratamiento()">
+          <button
+            class="btn btn-success"
+            (click)="finalizarTratamiento()"
+            id="btnFinalizarTratamiento"
+          >
             Finalizar Tratamiento
           </button>
         </div>
@@ -120,7 +124,9 @@
     </div>
 
     <div class="button-container">
-      <button (click)="actualizarTratamiento()" class="btn btn-primary">Guardar</button>
+      <button (click)="actualizarTratamiento()" class="btn btn-primary">
+        Guardar
+      </button>
       <button (click)="regresar()" class="btn btn-secondary">Cancelar</button>
     </div>
   </section>
