@@ -26,11 +26,11 @@ export class LoginService {
         const user = restBackend.user;
         const role = restBackend.role;
 
-        if (role === 'VET') {
+        if (role === 'VETERINARIO') {
           localStorage.setItem('isVetLogged', 'true');        
           localStorage.setItem('userVet', JSON.stringify(user));
           this.router.navigate(['/empleado']);
-        } else if (role === 'ADMIN'){
+        } else if (role === 'ADMINISTRADOR'){
           localStorage.setItem('isAdminLogged', 'true');        
           localStorage.setItem('userAdmin', JSON.stringify(user));
           this.router.navigate(['/admin']);
