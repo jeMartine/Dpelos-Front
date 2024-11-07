@@ -1,6 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { CarouselModule } from 'primeng/carousel';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
 import { MostrarTratamientoComponent } from './empleado/tratamientos/mostrar-tratamiento/mostrar-tratamiento.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 registerLocaleData(localeEs, 'es');
 
@@ -121,7 +122,10 @@ registerLocaleData(localeEs, 'es');
     HttpClientModule,
 
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'es'}],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es'},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    ],
   bootstrap: [AppComponent],
   
 })

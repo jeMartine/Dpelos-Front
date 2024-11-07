@@ -18,7 +18,7 @@ export class HeaderAdminComponent {
   ) {}
 
   ngOnInit(){
-    this.cargarVet();
+    //this.cargarVet();
   }
 
   cargarVet(){
