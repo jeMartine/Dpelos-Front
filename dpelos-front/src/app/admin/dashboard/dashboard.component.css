@@ -46,6 +46,65 @@ p {
   border: 1px solid #ff8f34;
 }
 
+.btn-primary:hover{
+  background-color: #ffffff;
+  color: #ff8f34;
+  border: 1px solid #ff8f34;
+}
+
+.podio {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 250px;
+  margin: 0;
+  gap: 5px;
+}
+
+.nivel {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  border: 2px solid black;
+}
+
+#gold {
+  background-color: #ffdb4b;
+  height: 100%;
+}
+
+#silver {
+  background-color: #dfdfe2;
+  height: 80%;
+}
+
+#bronze {
+  background-color: #e8a554;
+  height: 60%;
+}
+
+.trofeo i {
+  margin-bottom: 7px;
+}
+
+.podio-nombre {
+  color: black;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.podio-pos {
+  font-weight: 900;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  margin-top: 5px;
+}
+
 
 
 

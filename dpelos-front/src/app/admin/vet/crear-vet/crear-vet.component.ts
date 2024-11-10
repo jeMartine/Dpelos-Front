@@ -58,20 +58,43 @@ export class CrearVetComponent {
 
   veterinarioCreate() {
     this.sendVeterinario = Object.assign({}, this.veterinario);
-
+  
     if (this.especialidad) {
-      this.toast.success('Veterinario Guardada con éxito', 'Ok', {
+      // Mensaje de éxito antes de enviar la solicitud
+      this.toast.success('Veterinario guardado con éxito', 'Ok', {
         timeOut: 3000,
         positionClass: 'toast-top-center',
       });
-      //Contraseña quemada para todos los veterinarios
+  
+      // Contraseña fija para todos los veterinarios
       this.sendVeterinario.passwordVeterinario = 'dpelos123';
-      this.veterinarioService.addVeterinario(this.sendVeterinario);
+  
+      // Llamada al servicio con subscribe
+      this.veterinarioService.addVeterinario(this.sendVeterinario).subscribe({
+        next: (response) => {
+          console.log('Veterinario agregado exitosamente:', response);
+        },
+        error: (error) => {
+          console.error('Error al guardar el veterinario:', error);
+          this.toast.error('Error al guardar el veterinario', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+        },
+        complete: () => {
+          // Navegar hacia atrás cuando la operación ha sido completada exitosamente
+          this.location.back();
+        },
+      });
     } else {
       console.error('No existe especialidad');
+      this.toast.warning('Debe seleccionar una especialidad', 'Atención', {
+        timeOut: 3000,
+        positionClass: 'toast-top-center',
+      });
     }
-    this.location.back();
   }
+  
 
   regresar() {
     this.location.back();

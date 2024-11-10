@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { forkJoin } from 'rxjs';
 import { Administrador } from 'src/app/entidades/Administrador';
 import { TratamientoDrogaAux } from 'src/app/entidades/TratamientoDrogaAux';
 import { MascotaService } from 'src/app/service/mascota/mascota.service';
@@ -33,17 +34,41 @@ export class DashboardComponent {
   ) {}
 
   ngOnInit(): void {
-    this.obtenerTotalMascotas();
-    this.obtenerTotalVeterinarios();
-    this.obtenerTotalDrogas();
-    this.obtenerTotalTratamientos();
-    this.obtenerTotalMascotasActivas();
-    this.obtenerTotalVentas();
-    this.obtenerTotalGanancias();
-    this.obtenerTotalVetActivos();
-    this.obtenerTotalVetInactivos();
-    this.obtenerTratamientosMasVendidos();
-    this.obtenerTratamientosTipoDroga();
+    // Ejecutar todas las solicitudes y esperar a que todas se completen
+    forkJoin({
+      totalMascotas: this.mascotaService.obtenerTotalMascotas(),
+      totalVeterinarios: this.veterinarioService.obtenerTotalVeterinarios(),
+      totalDrogas: this.drogasService.obtenerTotalDrogas(),
+      totalTratamientos: this.tratamientoService.findAll(),
+      totalMascotasActivas: this.mascotaService.obtenerTotalMascotasActivas(),
+      totalVentas: this.drogasService.obtenerTotalVentas(),
+      totalGanancias: this.drogasService.obtenerTotalGanancias(),
+      totalVetActivos: this.veterinarioService.obtenerActivos(),
+      totalVetInactivos: this.veterinarioService.obtenerInactivos(),
+      tratamientosMasVendidos: this.tratamientoService.tratamientosMasUnidadesVendidas(),
+      tratamientosTipoDroga: this.tratamientoService.tratamientosPorTipoDrogas()
+    }).subscribe({
+      next: (data) => {
+        // Asignar los datos recibidos a las propiedades del componente
+        this.totalMascotas = data.totalMascotas;
+        this.totalVets = data.totalVeterinarios;
+        this.totalDrogas = data.totalDrogas;
+        this.totalTratamientos = data.totalTratamientos.length;
+        this.totalMascotasActivas = data.totalMascotasActivas;
+        this.totalVentas = data.totalVentas;
+        this.totalGancias = data.totalGanancias;
+        this.totalVetActivos = data.totalVetActivos;
+        this.totalVetInactivos = data.totalVetInactivos;
+        this.tratamientosMasVendidos = data.tratamientosMasVendidos;
+        this.tratamientosTipoDroga = data.tratamientosTipoDroga;
+        
+        // Llamar a la función para mostrar el gráfico después de que todos los datos estén disponibles
+        this.verificarYMostrarGrafico();
+      },
+      error: (error) => {
+        console.error('Error al cargar los datos:', error);
+      }
+    });
   }
 
   obtenerTotalMascotas(): void {
@@ -130,7 +155,6 @@ export class DashboardComponent {
     this.veterinarioService.obtenerActivos().subscribe(
       (total: number) => {
         this.totalVetActivos = total;
-        this.verificarYMostrarGrafico();
       },
       (error) => {
         console.error(
@@ -145,7 +169,6 @@ export class DashboardComponent {
     this.veterinarioService.obtenerInactivos().subscribe(
       (total: number) => {
         this.totalVetInactivos = total;
-        this.verificarYMostrarGrafico();
       },
       (error) => {
         console.error(

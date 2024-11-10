@@ -128,7 +128,7 @@ export class ActualizarTratamientoComponent {
       response => {
         // Si la respuesta es exitosa, muestra el mensaje recibido
         this.toast.success(response, 'Éxito');
-        this.router.navigate(['/tratamientos']); // Redirigir a la lista de tratamientos
+        this.router.navigate(['/tratamientos']); 
       },
       error => {
         // Si ocurre un error, muestra un mensaje adecuado

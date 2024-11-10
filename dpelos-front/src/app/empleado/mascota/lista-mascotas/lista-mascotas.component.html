@@ -92,7 +92,7 @@
             alt="Foto de la mascota"
           />
           <p class="titulo">
-            <span>{{ mascota.nombreMascota }}</span>
+            <span>{{ mascota.nombreMascota }} </span>
             <i class="fas fa-paw ml-2"></i>
           </p>
           <div class="card-body d-flex">
@@ -113,7 +113,7 @@
             <div class="d-flex flex-column align-items-center ml-auto">
               <a
                 [routerLink]="['/mascota/update', mascota.idMascota]"
-                class="icon-editar mt-3"
+                class="icon-editar "
                 id="icon-editar"
                 aria-label="Editar"
                 (click)="$event.stopPropagation()"
@@ -121,7 +121,7 @@
                 <i class="fas fa-edit fa-2x"></i>
               </a>
               <a
-                class="icon-eliminar mt-3"
+                class="icon-eliminar mt-4"
                 id="icon-eliminar"
                 aria-label="Eliminar"
                 (click)="deleteMascota(mascota); $event.stopPropagation()"

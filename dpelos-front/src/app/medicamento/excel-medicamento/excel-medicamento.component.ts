@@ -41,7 +41,7 @@ export class ExcelMedicamentoComponent {
         precioCompra: row[2],
         unitDisponibles: +row[3],
         unitVendidas: +row[4],
-        urlFotoDroga: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlI51dhbPhXKCkkb_koRivUYPb7pjyKjfNdw&s' 
+        urlFotoDroga: row[5] 
       }));
       this.enviarBackend();
     } 

@@ -1,1 +1,91 @@
-<p>crear-medicamento works!</p>
+<app-header-admin></app-header-admin>
+<main>
+  <div class="container-titulo">
+    <p>Registrar medicamento</p>
+  </div>
+  <form id="formMascota" #mascotaForm="ngForm" (ngSubmit)="addDroga()">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="cedulaDueno">Nombre del medicamento</label>
+        <input
+          name="cedulaDueno"
+          type="text"
+          class="form-control"
+          id="cedulaDueno"
+          placeholder="Nombre del medicamento"
+          required
+          [(ngModel)]="droga.nombreDroga"
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="nombreDueno">Precio de compra</label>
+        <input
+          name="nombreDueno"
+          type="number"
+          class="form-control"
+          id="nombreDueno"
+          placeholder="Precio de compra"
+          required
+          [(ngModel)]="droga.precioCompra"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="nombreMascota">Precio de venta</label>
+        <input
+          type="number"
+          name="nombreMascota"
+          class="form-control"
+          id="nombreMascota"
+          placeholder="Precio de venta"
+          required
+          [(ngModel)]="droga.precioVenta"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="edadMascota">Unidades disponibles</label>
+        <input
+          type="number"
+          class="form-control"
+          id="edadMascota"
+          placeholder="Unidades disponibles"
+          required
+          name="edadMascota"
+          [(ngModel)]="droga.unitDisponibles"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="urlFotoMascota">Foto del medicamento</label>
+        <input
+          type="text"
+          class="form-control"
+          id="urlFotoMascota"
+          placeholder="Url foto"
+          required
+          name="urlFotoMascota"
+          [(ngModel)]="droga.urlFotoDroga"
+        />
+      </div>
+    </div>
+
+    <div class="botones">
+      <button
+        type="submit"
+        class="btn btn-primary mr-4"
+        id="btnRegistrarMascota"
+        [disabled]="!mascotaForm.form.valid"
+      >
+        Registrar medicamento
+      </button>
+      <a type="button" class="btn btn-secundary" (click)="regresar()"
+        >Regresar</a
+      >
+    </div>
+  </form>
+</main>
+<app-footer></app-footer>

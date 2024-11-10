@@ -59,7 +59,7 @@ export class ListaTratamientosComponent implements OnInit {
             // Si data es null o tiene longitud 0, mostramos el mensaje de error
             this.tratamientos = [];
             this.noResults = true;
-            this.mensajeError = 'No tiene tratamientos activos creados.';
+            this.mensajeError = 'No tiene tratamientos creados.';
           }
           this.isLoading = false;
         },

@@ -1,0 +1,90 @@
+body{
+    background-color: white;
+}
+
+main{
+    background-color: #eaf4f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+}
+
+.container-titulo{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #9496F3;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.container-titulo p{
+    margin-bottom: 0;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-weight: 600;
+}
+
+#formMascota{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    width: 800px;
+    padding: 30px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#formMascota p{
+    text-align: center;
+}
+
+#formMascota .botones{
+    display: flex;
+    justify-content: center;
+}
+
+.form-group{
+    margin-bottom: 25px;
+}
+
+.botones{
+    margin-top: 10px;
+}
+
+.botones .btn-primary{
+    background-color: #FF8F34;
+    border: none;
+}
+
+.botones .btn-secundary{
+    margin-left: 5px;
+    background-color: #333;
+    border: none;
+    color: white;
+}
+
+.duenoField{
+    background-color: #eaf4f7;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 15px 7px 15px 7px;
+}
+
+#agregarDuenoContainer{
+    display: flex;
+    justify-content: center;
+}

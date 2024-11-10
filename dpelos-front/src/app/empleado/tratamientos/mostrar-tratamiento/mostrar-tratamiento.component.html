@@ -35,14 +35,14 @@
   </section>
 
   <section id="tratamiento">
-    <h3 class="Detalles text-center">Detalles del Tratamiento</h3>
+    <div style="padding: 10px; border-top: 2px solid #3474ff; background-color: #f7f7f7; margin-bottom: 8px;">
+      <p class="Detalles text-center" style="margin-bottom: 0px; font-weight: 600; color: #3474ff;">Detalles del Tratamiento</p>
+    </div>
     <p class="fechaAdministracion">
       <span>Fecha de inicio de Tratamiento: </span>
       {{ tratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM" }}
     </p>
-    <br />
-    <p><strong>Motivo de tratamiento:</strong></p>
-    <p>{{ tratamiento.descripcionTratamiento }}</p>
+    <p><strong>Motivo de tratamiento: </strong>{{ tratamiento.descripcionTratamiento }}</p>
 
     <p><strong>Medicamentos:</strong></p>
     <div *ngIf="selectedMedicamentos.length === 0">
@@ -54,8 +54,7 @@
       </li>
     </ul>
 
-    <p><strong>Recomendaciones generales:</strong></p>
-    <p>{{ tratamiento.recomendacionesGenerales }}</p>
+    <p><strong>Recomendaciones generales: </strong>{{ tratamiento.recomendacionesGenerales }}</p>
   </section>
 
   <div class="button-container">

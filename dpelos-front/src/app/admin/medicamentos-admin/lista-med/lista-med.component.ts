@@ -5,12 +5,13 @@ import { Droga } from 'src/app/entidades/Droga';
 import { MedicamentoService } from 'src/app/service/medicamento/medicamento.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
-  selector: 'app-lista-medicamento',
-  templateUrl: './lista-medicamento.component.html',
-  styleUrls: ['./lista-medicamento.component.css']
+  selector: 'app-lista-med',
+  templateUrl: './lista-med.component.html',
+  styleUrls: ['./lista-med.component.css']
 })
-export class ListaMedicamentoComponent {
+export class ListaMedComponent {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
@@ -58,7 +59,23 @@ export class ListaMedicamentoComponent {
     );
   }
 
-  
+  //Función para añadir una nueva droga
+  addDroga(newDroga: Droga) {
+    this.drogas.push(newDroga);
+    this.drogaService.addDroga(newDroga);
+  }
+
+  //Función para editar una droga
+  updateDroga(droga: Droga){
+    this.selectedDroga = droga;
+  }
+
+  //Funcion para eliminar una droga
+  deleteDroga(droga: Droga){
+    var index = this.drogas.indexOf(droga);
+    this.drogas.splice(index, 1);
+    this.drogaService.deleteById(droga.idDroga!);
+  }
 
   //Función para realizar una busqueda
   onSearchInput() {
@@ -126,3 +143,4 @@ export class ListaMedicamentoComponent {
     }
   }
 }
+

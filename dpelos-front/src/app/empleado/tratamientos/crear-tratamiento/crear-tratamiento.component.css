@@ -61,6 +61,7 @@ object-fit: cover;
     width: 100%;
     background-color: #8a8a8a;
     margin-bottom: 20px;
+    line-height: 1;
   }
   
   .botones button {

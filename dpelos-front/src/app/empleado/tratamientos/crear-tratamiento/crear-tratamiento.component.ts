@@ -89,7 +89,7 @@ export class CrearTratamientoComponent implements OnInit {
   }
 
   //Función para mostrar el historial
-    mostrarHistorial(): void {
+  mostrarHistorial(): void {
     this.mostrarTratamientoFlag = false;
   }
 

@@ -1,0 +1,113 @@
+.detalle-medicamento-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 88vh;
+  }
+  
+  .medicamento-detalle {
+    display: flex;
+    width: 800px;
+    height: 350px;
+    background-color: white;
+    align-items: center;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .medicamento-imagen img {
+    width: 350px;
+    height: auto;
+    margin-right: 30px;
+  }
+  
+  .medicamento-informacion {
+    flex-grow: 1;
+  }
+  
+  .medicamento-nombre {
+    font-family: "Roboto", sans-serif;
+    font-weight: 800;
+    margin-bottom: 0;
+  }
+  
+  .precio-venta {
+    color: #fc801a;
+    font-weight: 700;
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .precio-venta span {
+    font-size: 30px;
+    font-weight: 800;
+  }
+  
+  .disponibilidad .badge {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .disponibilidad .disponible {
+    border: 3px solid #28a742;
+    color: #28a742;
+    padding: 8px 10px;
+  }
+  
+  .disponibilidad .agotado {
+    border: 3px solid #f52b3f;
+    color: #f52b3f;
+    padding: 8px 10px;
+  }
+  
+  .informacion-adicional {
+    margin-top: 20px;
+  }
+  
+  .informacion-adicional p {
+    margin-bottom: 0;
+    margin-top: 5px;
+  }
+  
+  .btn-info {
+    margin-bottom: 10px;
+    color: #fc801a;
+    background-color: white;
+    border: none;
+    border-top: 3px solid #fc801a;
+    border-radius: 0;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  
+  .btn-info:active {
+    background-color: white;
+    border-top: 3px solid #fa7f2d;
+    color: #fa7f2d;
+  }
+  
+  .btn-info-active {
+    border-radius: 0;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0;
+    border: none;
+    border-top: 3px solid #8f8f8f;
+    color: #8f8f8f;
+    background-color: white;
+  }
+  
+  hr {
+    width: 80%;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    opacity: 60%;
+  }
+  

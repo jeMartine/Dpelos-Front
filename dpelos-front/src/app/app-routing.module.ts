@@ -32,6 +32,8 @@ import { ListaVetComponent } from './admin/vet/lista-vet/lista-vet.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
 import { MostrarTratamientoComponent } from './empleado/tratamientos/mostrar-tratamiento/mostrar-tratamiento.component';
+import { ListaMedComponent } from './admin/medicamentos-admin/lista-med/lista-med.component';
+import { DetallerMedComponent } from './admin/medicamentos-admin/detaller-med/detaller-med.component';
 
 const routes: Routes = [
   {
@@ -133,22 +135,28 @@ const routes: Routes = [
     data: { expectedType: 'vet' },
   },
   {
-    path: 'droga-excel',
+    path: 'medicamentos',
+    component: ListaMedComponent,
+    canActivate: [AuthGuard],
+    data: { expectedType: 'admin' },
+  },
+  {
+    path: 'medicamentos-excel',
     component: ExcelMedicamentoComponent,
     canActivate: [AuthGuard],
-    data: { expectedType: 'vet' },
+    data: { expectedType: 'admin' },
   },
   {
-    path: 'droga/add',
+    path: 'medicamentos/add',
     component: CrearMedicamentoComponent,
     canActivate: [AuthGuard],
-    data: { expectedType: 'vet' },
+    data: { expectedType: 'admin' },
   },
   {
-    path: 'droga/update/:id',
+    path: 'medicamentos/update/:id',
     component: ActualizarMedicamentoComponent,
     canActivate: [AuthGuard],
-    data: { expectedType: 'vet' },
+    data: { expectedType: 'admin' },
   },
   {
     path: 'admin',
@@ -178,7 +186,13 @@ const routes: Routes = [
     path: 'detalle-medicamento/:id',
     component: VerMedicamentoComponent,
     canActivate: [AuthGuard],
-    data: { expectedType: 'vet' },
+    data: { expectedType: 'vet'},
+  },
+  {
+    path: 'detalle-medicamento-admin/:id',
+    component: DetallerMedComponent,
+    canActivate: [AuthGuard],
+    data: { expectedType: 'admin'},
   },
   {
     path: 'tratamientos',

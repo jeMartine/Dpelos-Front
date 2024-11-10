@@ -55,6 +55,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CrearTratamientoComponent } from './empleado/tratamientos/crear-tratamiento/crear-tratamiento.component';
 import { MostrarTratamientoComponent } from './empleado/tratamientos/mostrar-tratamiento/mostrar-tratamiento.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { ListaMedComponent } from './admin/medicamentos-admin/lista-med/lista-med.component';
+import { DetallerMedComponent } from './admin/medicamentos-admin/detaller-med/detaller-med.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -103,6 +105,8 @@ registerLocaleData(localeEs, 'es');
     DashboardComponent,
     CrearTratamientoComponent,
     MostrarTratamientoComponent,
+    ListaMedComponent,
+    DetallerMedComponent,
   ],
   imports: [
     BrowserModule, 

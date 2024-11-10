@@ -2,22 +2,20 @@
 <section id="main" class="justify-content-center display-flex align-center">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="card-media" style="width: fit-content; height: fit-content">
           <p style="margin-bottom: 10px; font-weight: bold; text-align: center">
-            Tratamientos por Tipo de Droga
+            Tratamientos por Tipo de Medicamento
           </p>
           <table class="table">
             <thead>
               <tr>
-                <th>ID Droga</th>
-                <th>Nombre Droga</th>
+                <th>Nombre Medicamento</th>
                 <th>Tratamientos Atendidos</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let tratamiento of tratamientosTipoDroga">
-                <td>{{ tratamiento.idDroga }}</td>
                 <td>{{ tratamiento.nombreDroga }}</td>
                 <td>{{ tratamiento.tratamientoCount }}</td>
               </tr>
@@ -26,17 +24,12 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="row">
           <div class="col-12">
             <div
               class="card-wrapper"
-              style="
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-                flex-wrap: wrap;
-              "
+              style="display: flex; justify-content: center; flex-wrap: wrap"
             >
               <div
                 class="card-media"
@@ -45,6 +38,7 @@
                   color: rgb(0, 166, 255);
                   text-align: center;
                   min-width: 150px;
+                  margin: 10px;
                 "
               >
                 <i class="fas fa-user-md" style="font-size: 24px"></i>
@@ -57,6 +51,7 @@
                   color: rgb(46, 220, 144);
                   text-align: center;
                   min-width: 150px;
+                  margin: 10px;
                 "
               >
                 <i class="fas fa-pills" style="font-size: 24px"></i>
@@ -69,6 +64,7 @@
                   color: rgb(0, 166, 255);
                   text-align: center;
                   min-width: 150px;
+                  margin: 10px;
                 "
               >
                 <i class="fas fa-briefcase-medical" style="font-size: 24px"></i>
@@ -84,18 +80,22 @@
                   color: rgb(46, 220, 144);
                   text-align: center;
                   min-width: 150px;
+                  margin: 10px;
                 "
               >
                 <i class="fas fa-paw" style="font-size: 24px"></i>
                 <p>
-                  <b>Mascotas en Tratamiento (Activas):</b>
+                  <b>Mascotas registradas en D'Pelos (Activas):</b>
                   {{ totalMascotasActivas }}.
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12">
+        <div
+          class="card-wrapper"
+          style="display: flex; justify-content: center; flex-wrap: wrap"
+        >
           <div
             class="card-media"
             style="
@@ -103,9 +103,7 @@
               color: #ff8f34;
               text-align: center;
               min-width: 150px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              margin: 10px;
             "
           >
             <i
@@ -118,7 +116,6 @@
               }}.
             </p>
           </div>
-
           <div
             class="card-media"
             style="
@@ -126,9 +123,7 @@
               color: #ff8f34;
               text-align: center;
               min-width: 150px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              margin: 10px;
             "
           >
             <i
@@ -137,15 +132,68 @@
             ></i>
             <p style="margin: 0" id="totalGanancias">
               <b>Total de Ganancias de la Veterinaria:</b>
-              <!-- //${{ totalGancias | number : "1.0-0" }}.  -->
-              ${{ totalGancias }}.
+              ${{ totalGancias | number : "1.0-0" }}.
             </p>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="card-media">
+        <div
+          class="card-wrapper"
+          style="display: flex; justify-content: center; flex-wrap: wrap"
+        >
+          <div
+            class="card-media"
+            style="
+              flex: 1;
+              color: #ff6484;
+              text-align: center;
+              min-width: 150px;
+              margin: 10px;
+            "
+          >
             <p><b>Veterinarios Activos vs Inactivos</b></p>
             <canvas id="veterinariosChart"></canvas>
+          </div>
+          <div
+            class="card-media"
+            style="
+              flex: 1.4;
+              color: #ff6484;
+              text-align: center;
+              min-width: 150px;
+              margin: 10px;
+            "
+          >
+          <p class="mb-4"><b>Top 3 tratamientos</b></p>
+            <div
+              *ngIf="
+                tratamientosMasVendidos && tratamientosMasVendidos.length >= 3
+              "
+              class="podio"
+            >
+              <div class="nivel" id="silver">
+                <p class="podio-pos" style="color: #b5b5b7;">2</p>
+                <p class="podio-nombre">
+                  <b>{{ tratamientosMasVendidos[1] }}</b>
+                </p>
+              </div>
+
+              <div class="nivel" id="gold">
+                <i
+                  class="fas fa-trophy"
+                  style="font-size: 30px; color: #ffcc00"
+                ></i>
+                <p class="podio-pos" style="color: #ffcc00;">1</p>
+                <p class="podio-nombre">
+                  <b>{{ tratamientosMasVendidos[0] }}</b>
+                </p>
+              </div>
+              <div class="nivel" id="bronze">
+                <p class="podio-pos" style="color: #c07f30;">3</p>
+                <p class="podio-nombre">
+                  <b>{{ tratamientosMasVendidos[2] }}</b>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -153,21 +201,8 @@
   </div>
 </section>
 
-<div class="container">
-  <div class="col-md-6">
-    <div class="card-media">
-      <p><b>Top 3 Tratamientos con las Drogas Más Vendidas</b></p>
-      <ul class="tratamientos-list">
-        <li *ngFor="let tratamiento of tratamientosMasVendidos">
-          {{ tratamiento }}
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <!-- Botón regresar -->
-<section id="info-servicios">
+<div class="d-flex justify-content-center mb-4">
   <a class="btn btn-primary ml-6" [routerLink]="['/admin']">Regresar</a>
-</section>
+</div>
 <app-footer></app-footer>

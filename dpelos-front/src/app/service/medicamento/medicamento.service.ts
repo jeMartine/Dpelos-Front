@@ -22,7 +22,7 @@ export class MedicamentoService {
   }
 
   addDroga(droga: Droga) {
-    this.http.post<Droga>(this.drogaURL, droga).subscribe();
+    return this.http.post(`${this.drogaURL}/add`, droga);
   }
 
   addDrogasExcel(drogas: Droga[]): Observable<any> {
@@ -30,8 +30,8 @@ export class MedicamentoService {
   }
 
   updateDroga(droga: Droga) {
-    this.http.put<Droga>(this.drogaURL, droga).subscribe();
-  }
+    return this.http.put(`${this.drogaURL}/update`, droga);
+  }  
 
   deleteById(id: number) {
     this.http.delete(`${this.drogaURL}/${id}`).subscribe();

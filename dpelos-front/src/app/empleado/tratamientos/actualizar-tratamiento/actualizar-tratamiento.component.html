@@ -52,12 +52,11 @@
 
     <div class="contenido-dinamico">
       <ng-container *ngIf="mostrarTratamientoFlag; else resumenTemplate">
-        <h3 class="Detalles text-center">Detalles del Tratamiento</h3>
+        <p class="Detalles text-center" style="margin-bottom: 10px; font-weight: 600; color: #8a8a8a; font-size: 20px;">Detalles del Tratamiento</p>  
         <p class="fechaAdministracion">
           <span>Fecha de inicio de Tratamiento: </span>
           {{ tratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM" }}
         </p>
-        <br />
         <span>Motivo de tratamiento</span>
         <textarea
           class="form-control mb-3"
@@ -86,44 +85,43 @@
       </ng-container>
 
       <ng-template #resumenTemplate>
-        <h3>Resumen del Tratamiento</h3>
-        <p>{{ tratamiento.fechaAdministracion }}</p>
-        <!--Mostrar el precio total por todos los medicamentos-->
+        <p class="Detalles text-center" style="margin-bottom: 10px; font-weight: 600; color: #8a8a8a; font-size: 20px;">Resumen del Tratamiento</p>  
+        <p class="fechaAdministracion">
+          <span>Fecha de inicio de Tratamiento: </span>
+          {{ tratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM" }}
+        </p>
         <!-- Tabla de medicamentos -->
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Nombre del Medicamento</th>
-              <th>Precio</th>
+              <th class="text-center">Nombre del Medicamento</th>
+              <th class="text-center">Precio</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let medicamento of selectedMedicamentos">
               <td>{{ medicamento.nombreDroga }}</td>
-              <td>{{ medicamento.precioVenta | currency }}</td>
+              <td>${{ medicamento.precioVenta | number : "1.0-0" }}</td>
             </tr>
           </tbody>
         </table>
 
         <!-- Mostrar el precio total de los medicamentos -->
-        <div class="total">
-          <strong>Total: </strong> {{ calcularTotal() | currency }}
+        <div class="total" style="color: #3474ff; font-size: 20px;">
+          <strong>Total: </strong> ${{ calcularTotal() | number : "1.0-0" }}
         </div>
 
-        <!-- Botón de finalizar tratamiento -->
-        <div class="finalizar-tratamiento mt-3">
-          <button
-            class="btn btn-success"
-            (click)="finalizarTratamiento()"
-            id="btnFinalizarTratamiento"
-          >
-            Finalizar Tratamiento
-          </button>
-        </div>
       </ng-template>
     </div>
 
     <div class="button-container">
+      <button
+          class="btn btn-success"
+          (click)="finalizarTratamiento()"
+          id="btnFinalizarTratamiento"
+        >
+          Finalizar Tratamiento
+      </button>
       <button (click)="actualizarTratamiento()" class="btn btn-primary">
         Guardar
       </button>

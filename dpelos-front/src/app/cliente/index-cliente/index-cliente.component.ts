@@ -46,17 +46,18 @@ export class IndexClienteComponent implements OnInit, AfterViewInit {
         numScroll: 1,
       },
     ];
+    this.actualizarCentradoCarousel();
   }
 
   //Inicialización del componente en el que se cargan los datos de la mascota
   ngOnInit() {
     this.cargarDueno();
+    this.actualizarCentradoCarousel();
     if (this.dueno) {
       this.mascotaService.findMascotasDuenoId(this.dueno.idDueno!).subscribe(
         (mascotas) => {
           this.mascotas = mascotas;
           this.actualizarCentradoCarousel();
-          console.log('Subir carrusel');
         },
         (error) => {
           this.toast.error(error.error, 'Error', {

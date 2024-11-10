@@ -24,10 +24,10 @@ export class VeterinarioService {
     this.http.put(this.vetURL + '/update', vet).subscribe();
   }
 
-  addVeterinario(vet: Veterinario) {
-    this.http.post<Veterinario>(this.vetURL, vet).subscribe();
+  addVeterinario(vet: Veterinario): Observable<Veterinario> {
+    return this.http.post<Veterinario>(this.vetURL, vet);
   }
-
+  
   deleteById(id: number) {
     this.http
       .delete(`${this.vetURL}/delete/${id}`, { responseType: 'text' })

@@ -5,10 +5,10 @@
       <div
         class="container d-flex align-items-center justify-content-center flex-column"
       >
-        <p class="bienvenida_titulo mb-10">
+        <p class="bienvenida_titulo mb-1">
           Hay {{ totalMascotas }} mascotas en D'pelos!
         </p>
-        <p class="bienvenida mb-0">¡Manten todo bajo control!</p>
+        <p class="bienvenida mb-2">¡Manten todo bajo control!</p>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
         Veterinarios</a
       >
 
-      <a [routerLink]="['/droga']" class="btn servicio-btn">
+      <a [routerLink]="['/medicamentos']" class="btn servicio-btn">
         <img src="/assets/images/empleados/pill.png" />
         Medicamentos</a
       >
@@ -48,9 +48,9 @@
     <div class="card registro-mascota">
       <p>
         Tu veterinaria ha ganado $1.500.000 en el mes de agosto.<br /><br />
-        Conoce el los movimientos de tu veterinaria.
+        Conoce los movimientos de tu veterinaria.
       </p>
-      <a [routerLink]="['/vet']" class="boton">Ver movimientos</a>
+      <a [routerLink]="['/dashboard']" class="boton">Ver movimientos</a>
     </div>
     <div>
       <div class="card-media">

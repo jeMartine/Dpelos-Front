@@ -6,7 +6,7 @@
       <img [src]="tratamiento.mascota?.urlFotoMascota" alt="foto" />
     </div>
     <div class="mascota-info-details">
-      <h2>Tratamiento de {{ tratamiento.mascota?.nombreMascota }}</h2>
+      <h2>Tratamientos de {{ tratamiento.mascota?.nombreMascota }}</h2>
       <p class="fechaAdministracion">
         <strong>Fecha de Registro:</strong>
         {{ tratamiento.mascota?.fechaCreacion | date : "dd/MM/yyyy" }}
@@ -30,19 +30,18 @@
       (click)="crearTratamiento()"
       [class.active]="mostrarTratamientoFlag"
     >
-      Tratamiento
+      Nuevo tratamiento
     </button>
     <button
       (click)="mostrarHistorial()"
       [class.active]="!mostrarTratamientoFlag"
     >
-      Historial
+      Historial de tratamiento
     </button>
   </div>
 
   <div class="contenido-dinamico">
     <ng-container *ngIf="mostrarTratamientoFlag; else resumenTemplate">
-      <h3 class="Detalles text-center">Detalles del Tratamiento</h3>
       <p class="fechaAdministracion">
         <span>Fecha de inicio de Tratamiento: </span>
         {{ tratamiento.fechaAdministracion | date : "EEEE, d 'de' MMMM" }}
@@ -63,7 +62,7 @@
         (click)="navigateToAgregarMedicamento()"
       ></i>
       <div *ngIf="selectedMedicamentos.length === 0">
-        <p>No hay medicamentos seleccionados.</p>
+        <p style="color: #949494">No hay medicamentos seleccionados.</p>
       </div>
       <ul *ngIf="selectedMedicamentos.length > 0">
         <li *ngFor="let medicamento of selectedMedicamentos">
