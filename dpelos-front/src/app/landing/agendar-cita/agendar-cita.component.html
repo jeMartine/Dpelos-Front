@@ -1,55 +1,29 @@
 <section id="agendarCita" class="container-fluid">
   <div class="row no-gutters agendar-cita-container">
-    <!-- Imagen -->
     <div class="col-sm-10 col-md-6 col-lg-5 col-xl-5 d-flex agendarCitaImg">
-      <img
-        src="assets/images/landing/perroFelizNoBk.png"
-        alt="Imagen de Agendar Cita"
-        class="img-fluid"
-      />
+      <img src="assets/images/landing/perroFelizNoBk.png" alt="Imagen de Agendar Cita" class="img-fluid" />
     </div>
-    <!-- Formulario -->
-    <div
-      class="col-sm-10 col-md-6 col-lg-5 col-xl-6 d-flex p-4 agendarCitaForm"
-    >
+    <div class="col-sm-10 col-md-6 col-lg-5 col-xl-6 d-flex p-4 agendarCitaForm">
       <h2>Agendar Cita</h2>
-      <form>
+      <form (ngSubmit)="enviarCorreo()">
         <div class="form-group">
           <label for="nombre-dueno">Nombre del Propietario:</label>
-          <input
-            type="text"
-            id="nombre-dueno"
-            name="nombre-dueno"
-            class="form-control"
-            required
-          />
+          <input type="text" id="nombre-dueno" [(ngModel)]="nombrePropietario" name="nombre-dueno" class="form-control" required />
         </div>
 
         <div class="form-group">
           <label for="nombre-mascota">Nombre de tu Mascota:</label>
-          <input
-            type="text"
-            id="nombre-mascota"
-            name="nombre-mascota"
-            class="form-control"
-            required
-          />
+          <input type="text" id="nombre-mascota" [(ngModel)]="nombreMascota" name="nombre-mascota" class="form-control" required />
         </div>
 
         <div class="form-group">
           <label for="fecha-hora">Fecha y Hora de tu consulta:</label>
-          <input
-            type="datetime-local"
-            id="fecha-hora"
-            name="fecha-hora"
-            class="form-control"
-            required
-          />
+          <input type="datetime-local" id="fecha-hora" [(ngModel)]="fechaConsulta" name="fecha-hora" class="form-control" required />
         </div>
 
         <div class="form-group">
           <label for="servicios">Servicios:</label>
-          <select id="servicios" name="servicios" class="form-control" required>
+          <select id="servicios" [(ngModel)]="servicio" name="servicios" class="form-control" required>
             <option value="" disabled selected>Seleccione un servicio</option>
             <option value="procedimientos">Procedimientos</option>
             <option value="vacunacion">Vacunación</option>
@@ -60,6 +34,10 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <label for="correo">Correo:</label>
+          <input type="email" id="correo" [(ngModel)]="correoPropietario" name="correo" class="form-control" required />
+        </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
     </div>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Veterinario } from 'src/app/entidades/Veterinario';
 import { faRightFromBracket, faKey  } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from 'src/app/service/login/login.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -17,12 +18,16 @@ export class HeaderVeterinarioComponent {
   logoutIcon = faRightFromBracket
   passIcon = faKey
   veterinario?: Veterinario;
-  @ViewChild('changePasswordModal') changePasswordModal!: ElementRef;
+  @ViewChild('changePasswordModal') changePasswordModal: any;
+  nuevaContrasena: string = '';
+  confirmarContrasena: string = '';
+
 
 
   constructor(
     private router: Router,
     private loginService: LoginService,
+    private modalService: NgbModal,
     //private modalService: NgbModal
   ) {}
 

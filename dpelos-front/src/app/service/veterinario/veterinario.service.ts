@@ -71,4 +71,5 @@ export class VeterinarioService {
   obtenerInactivos(): Observable<number> {
     return this.http.get<number>(`${this.vetURL}/totalInactivos`);
   }
+
 }

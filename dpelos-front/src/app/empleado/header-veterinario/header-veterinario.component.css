@@ -54,3 +54,14 @@ header {
   height: 55px;
 }
 
+.modal-title{
+  color: #ff992b;
+  font-weight: 600;
+}
+
+.btn-confirmar{
+  background-color: #94b1c7;
+  color: white;
+  font-weight: 400;
+}
+
