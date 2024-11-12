@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  ROOT_URL = 'http://50.90.110.40:8090';
+  ROOT_URL = 'http://52.90.110.40:8090';
   title = 'dpelos-front';
 }
