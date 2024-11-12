@@ -14,7 +14,7 @@ export class EmailService {
     private http: HttpClient
   ) { }
   
-  enviarCorreo(email: Email): Observable<string> {
-    return this.http.post<string>(this.emailURL, email);
+  enviarCorreo(email: Email): Observable<any> {
+    return this.http.post<any>(this.emailURL, email);
   }
 }

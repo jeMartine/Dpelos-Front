@@ -37,12 +37,18 @@ export class AgendarCitaComponent {
 
     this.emailService.enviarCorreo(emailData).subscribe(
       response => {
-        alert('Correo enviado exitosamente');
+        if (response && response.message) {
+          alert(response.message); // Muestra el mensaje desde el backend
+        } else {
+          alert('Correo enviado exitosamente'); // Mensaje de fallback
+        }
       },
       error => {
-        console.log(this.correoPropietario);
+        console.log("Error al enviar el correo:", error);
+        alert('Error al enviar el correo');
       }
     );
+    
   }
 
 }
