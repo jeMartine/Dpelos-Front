@@ -19,7 +19,7 @@ export class LoginComponent {
   isRegisterActive: boolean = false;
   userIcon = faUser;
   stethoscopeIcon = faStethoscope;
-
+  isLoading = false;
 
 
   constructor(
@@ -48,22 +48,34 @@ export class LoginComponent {
     }
   }
 
-  validateVet(): void {
+  async validateVet(): Promise<void> {
+    this.isLoading= true;
+
     const request: LoginRequest = {
       document: this.cedulaVeterinario, 
       password: this.contrasenaVeterinario,
       type: 1
     }
-
     this.loginService.login(request)
+    try {
+      await this.loginService.login(request);
+    } catch (error) {
+      this.isLoading = false;
+    } 
   }
 
-  validateClient(): void {
+  async validateClient(): Promise<void> {
+    this.isLoading= true;
     const request: LoginRequest = {
       document: this.cedulaDueno,
       type: 2
     }
-    this.loginService.login(request)
+    try {
+      await this.loginService.login(request);
+
+    } catch (error) {
+      this.isLoading = false;
+    } 
   }
 
   regresar(): void {

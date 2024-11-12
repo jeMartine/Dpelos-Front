@@ -51,7 +51,7 @@ export class ListaVetComponent implements OnInit{
         this.noResults = this.veterinarios.length === 0;
       },
       (error) => {
-        this.toast.error('Error al cargar las veterinario', 'Error', {
+        this.toast.error('Error al cargar los veterinarios', 'Error', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
@@ -62,9 +62,12 @@ export class ListaVetComponent implements OnInit{
 
   //Función para eliminar una mascota seleccionada
   deleteMascota(veterinario: Veterinario): void {
-    var index = this.veterinarios.indexOf(veterinario);
-    this.veterinarios.splice(index, 1);
-    this.veterinarioService.deleteById(veterinario.idVeterinario!);
+    
+    if(confirm('¿Estás seguro de que quieres eliminar este veterinario?')){
+      var index = this.veterinarios.indexOf(veterinario);
+      this.veterinarios.splice(index, 1);
+      this.veterinarioService.deleteById(veterinario.idVeterinario!);
+    }
   }
 
   //Función para editar un veterinario

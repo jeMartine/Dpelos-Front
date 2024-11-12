@@ -21,69 +21,64 @@ export class LoginService {
   //loginAdminURL = environment.apiResrURL + '/admin/details';
 
   constructor(
+    
     private http: HttpClient,
     private router: Router,
     private toast: ToastrService
   ) {}
 
   //Recibe un objeto y lo almancena en el localstorage para manejar la sesión
-  public login(peticion: LoginRequest): void {
-    this.http.post<any>(this.loginURL, peticion).subscribe(
-      (restBackend) => {
-        console.log(restBackend);
-        //const user = restBackend.user;
-        let token = restBackend.user;
-        let role = restBackend.role;
-        
-        //login de veterinario
-        if (role === 'VETERINARIO') {
-          localStorage.setItem('isVetLogged', 'true');        
-          localStorage.setItem('token', JSON.stringify(token));
-
-          this.obtenerVet().subscribe(
-            (vetBack)=>{
-              const vet = vetBack
-              localStorage.setItem('userVet', JSON.stringify(vet));          
+  public login(peticion: LoginRequest): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.http.post<any>(this.loginURL, peticion).subscribe(
+        (restBackend) => {
+          console.log(restBackend);
+          let token = restBackend.user;
+          let role = restBackend.role;
+  
+          // Login de veterinario
+          if (role === 'VETERINARIO') {
+            localStorage.setItem('isVetLogged', 'true');
+            localStorage.setItem('token', JSON.stringify(token));
+  
+            this.obtenerVet().subscribe((vetBack) => {
+              localStorage.setItem('userVet', JSON.stringify(vetBack));
               this.router.navigate(['/empleado']);
-            }
-          )
-        
-        
-        //Login de administrador
-        } else if (role === 'ADMINISTRADOR'){
-          localStorage.setItem('isAdminLogged', 'true');        
-          localStorage.setItem('token', JSON.stringify(token));
-
-          // this.obtenerAdmin().subscribe(
-          //   (back)=>{
-          //     const vet = back
-          //     localStorage.setItem('userAdmin', JSON.stringify(vet));  
-          //   }
-          // )
-          this.router.navigate(['/admin']);        
-
-          //Login de cliente
-        } else if (role === 'DUENO'){
-          localStorage.setItem('isDuenoLogged', 'true');
-          localStorage.setItem('token', JSON.stringify(token));
-
-          this.obtenerCliente().subscribe(
-            (back)=>{
-              const vet = back
-              localStorage.setItem('userDueno', JSON.stringify(vet));          
+              resolve(true); // Devuelve true al completar
+            });
+          }
+          // Login de administrador
+          else if (role === 'ADMINISTRADOR') {
+            localStorage.setItem('isAdminLogged', 'true');
+            localStorage.setItem('token', JSON.stringify(token));
+            this.router.navigate(['/admin']);
+            resolve(true);
+          }
+          // Login de cliente
+          else if (role === 'DUENO') {
+            localStorage.setItem('isDuenoLogged', 'true');
+            localStorage.setItem('token', JSON.stringify(token));
+  
+            this.obtenerCliente().subscribe((back) => {
+              localStorage.setItem('userDueno', JSON.stringify(back));
               this.router.navigate(['/cliente']);
-            }
-          )
+              resolve(true);
+            });
+          } else {
+            resolve(false);
+          }
+        },
+        (error) => {
+          this.toast.error(error.error, 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center',
+          });
+          reject(false); // Manejar error y devolver false
         }
-      },
-      (error) => {
-        this.toast.error(error.error, 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
+      );
+    });
   }
+  
 
   public logout(usuario: string, type: string): void {
     localStorage.removeItem(usuario);

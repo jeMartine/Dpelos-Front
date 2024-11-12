@@ -53,9 +53,12 @@ export class ListaDuenosComponent {
   } 
 
   eliminarDueno(dueno: Dueno): void {
-    var index = this.duenosList.indexOf(dueno);
-    this.duenosList.splice(index, 1);
-    this.duenoService.deleteById(dueno.idDueno!);
+
+    if(confirm('¿Estás seguro de que quieres eliminar este dueño?')){
+      var index = this.duenosList.indexOf(dueno);
+      this.duenosList.splice(index, 1);
+      this.duenoService.deleteById(dueno.idDueno!);
+    }
   }
 
   searchDueno() {

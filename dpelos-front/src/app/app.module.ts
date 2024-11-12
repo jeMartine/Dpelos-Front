@@ -57,7 +57,6 @@ import { MostrarTratamientoComponent } from './empleado/tratamientos/mostrar-tra
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { ListaMedComponent } from './admin/medicamentos-admin/lista-med/lista-med.component';
 import { DetallerMedComponent } from './admin/medicamentos-admin/detaller-med/detaller-med.component';
-
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -123,7 +122,7 @@ registerLocaleData(localeEs, 'es');
         preventDuplicates: true, // Evitar toasts duplicados
       }
     ), 
-    HttpClientModule,
+    HttpClientModule
 
   ],
   providers: [

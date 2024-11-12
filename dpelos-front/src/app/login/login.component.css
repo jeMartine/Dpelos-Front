@@ -52,6 +52,9 @@ body {
   letter-spacing: 0.3px;
   margin: 20px 0;
 }
+.loading-text{
+  padding-left: 10px;
+}
 
 .container span {
   text-align: center;

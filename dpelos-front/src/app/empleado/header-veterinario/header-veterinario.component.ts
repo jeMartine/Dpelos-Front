@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { Veterinario } from 'src/app/entidades/Veterinario';
 import { faRightFromBracket, faKey  } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from 'src/app/service/login/login.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -24,7 +23,7 @@ export class HeaderVeterinarioComponent {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private modalService: NgbModal
+    //private modalService: NgbModal
   ) {}
 
   ngOnInit(){
@@ -49,7 +48,7 @@ export class HeaderVeterinarioComponent {
 
   cambiarClave() {
     // Aquí se abre el modal usando el selector del modal
-    const modalRef = this.modalService.open(this.changePasswordModal, { centered: true });
+    //const modalRef = this.modalService.open(this.changePasswordModal, { centered: true });
   }
 
   guardarNuevaClave() {

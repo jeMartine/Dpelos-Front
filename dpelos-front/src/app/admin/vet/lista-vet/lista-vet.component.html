@@ -51,7 +51,7 @@
             <img
               src="{{veterinario.fotoUrl}}"
               class="img-mascotas"
-              alt="Foto de la mascota"
+              alt="Foto del veterinario"
             />
             <p class="titulo">
               <span>{{ veterinario.nombreVeterinario + ' ' + veterinario.apellidoVeterinario }}</span>
@@ -79,7 +79,6 @@
                   id="icon-eliminar"
                   aria-label="Eliminar"
                   (click)="deleteMascota(veterinario)"
-                  onclick="return confirm('¿Estás seguro de que quieres eliminar esta mascota?');"
                 >
                   <i class="fas fa-trash fa-2x"></i>
                 </a>
