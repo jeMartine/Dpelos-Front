@@ -46,10 +46,6 @@ export class HeaderVeterinarioComponent {
     this.router.navigate(['/empleado']);
   }
 
-  cambiarClave() {
-    // Aquí se abre el modal usando el selector del modal
-    //const modalRef = this.modalService.open(this.changePasswordModal, { centered: true });
-  }
 
   guardarNuevaClave() {
     console.log("Guardando la nueva clave...");
